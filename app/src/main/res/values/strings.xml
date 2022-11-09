@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">eduRIDM</string>
+    <string name="app_slogan">Your Buddy for College Acads</string>
+    <string name="google_sign_in">Sign in</string>
 </resources>
