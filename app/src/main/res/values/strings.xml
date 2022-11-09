@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">eduRIDM</string>
+    <string name="app_slogan">Your Buddy for College Acads</string>
+    <string name="google_sign_in">Sign in</string>
+    <string name="add_plan_title">Add Plan</string>
+    <string name="plan_title">Title</string>
+    <string name="repeat_plan">Repeat This Plan</string>
+    <string name="start_date">Start Date</string>
+    <string name="repeat_for">Repeat For</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
+    <string name="desc">Description</string>
+    <string name="priority">Priority</string>
+    <string name="add_plan">Add</string>
+    <string name="repeat_on">Repeat On</string>
+    <string-array name="dummy_entries">
+        <item>dummy</item>
+    </string-array>
 </resources>
