@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/days_one"
+            android:text="@string/add_plan_title"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editText_name"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/custom_input_text_layout"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/plan_title"
+            android:textColor="#0077C2"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintBottom_toTopOf="@+id/editText_name"
+            app:layout_constraintEnd_toEndOf="@+id/editText_name"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editText_name" />
+
+        <CheckBox
+            android:id="@+id/checkBox_repeat_plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/repeat_plan"
+            android:textColor="#0077C2"
+            app:buttonTint="#80D6FF"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editText_name"
+            app:layout_constraintTop_toBottomOf="@+id/editText_name" />
+
+        <TextView
+            android:id="@+id/textView_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/start_date"
+            android:textColor="#0077C2"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintBottom_toTopOf="@+id/spinner_date"
+            app:layout_constraintEnd_toEndOf="@+id/spinner_date"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/spinner_date" />
+
+        <Spinner
+            android:id="@+id/spinner_date"
+            android:layout_width="137dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/custom_spinner"
+            android:drawable="@drawable/ic_baseline_arrow"
+            android:drawableEnd="@drawable/calender_icon"
+            android:ems="10"
+            android:hint="Select a date"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/checkBox_repeat_plan"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox_repeat_plan" />
+
+        <TextView
+            android:id="@+id/textView_repeat_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/repeat_on"
+            android:textColor="#0077C2"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toEndOf="@+id/checkBox_sun"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/checkBox_mon"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox_repeat_plan" />
+
+        <CheckBox
+            android:id="@+id/checkBox_mon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:buttonTint="#80D6FF"
+            app:layout_constraintEnd_toStartOf="@+id/checkBox_tue"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/spinner_date"
+            app:layout_constraintTop_toBottomOf="@+id/textView_repeat_on" />
+
+        <TextView
+            android:id="@+id/textView_mon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mon"
+            android:textColor="#0077C2"
+            android:textSize="10sp"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toEndOf="@+id/checkBox_mon"
+            app:layout_constraintStart_toStartOf="@+id/checkBox_mon"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox_mon" />
+
+        <CheckBox
+            android:id="@+id/checkBox_tue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:buttonTint="#80D6FF"
+            app:layout_constraintEnd_toStartOf="@+id/checkBox_wed"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/checkBox_mon"
+            app:layout_constraintTop_toBottomOf="@+id/textView_repeat_on" />
+
+        <TextView
+            android:id="@+id/textView_tue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tue"
+            android:textColor="#0077C2"
+            android:textSize="10sp"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toEndOf="@+id/checkBox_tue"
+            app:layout_constraintStart_toStartOf="@+id/checkBox_tue"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox_tue" />
+
+        <CheckBox
+            android:id="@+id/checkBox_wed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:buttonTint="#80D6FF"
+            app:layout_constraintEnd_toStartOf="@+id/checkBox_thur"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/checkBox_tue"
+            app:layout_constraintTop_toBottomOf="@+id/textView_repeat_on" />
+
+        <TextView
+            android:id="@+id/textView_wed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wed"
+            android:textColor="#0077C2"
+            android:textSize="10sp"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toEndOf="@+id/checkBox_wed"
+            app:layout_constraintStart_toStartOf="@+id/checkBox_wed"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox_wed" />
+
+        <CheckBox
+            android:id="@+id/checkBox_thur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:buttonTint="#80D6FF"
+            app:layout_constraintEnd_toStartOf="@+id/checkBox_fri"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/checkBox_wed"
+            app:layout_constraintTop_toBottomOf="@+id/textView_repeat_on" />
+
+        <TextView
+            android:id="@+id/textView_thur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thu"
+            android:textColor="#0077C2"
+            android:textSize="10sp"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toEndOf="@+id/checkBox_thur"
+            app:layout_constraintStart_toStartOf="@+id/checkBox_thur"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox_thur" />
+
+        <CheckBox
+            android:id="@+id/checkBox_fri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:buttonTint="#80D6FF"
+            app:layout_constraintEnd_toStartOf="@+id/checkBox_sat"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/checkBox_thur"
+            app:layout_constraintTop_toBottomOf="@+id/textView_repeat_on" />
+
+        <TextView
+            android:id="@+id/textView_fri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fri"
+            android:textColor="#0077C2"
+            android:textSize="10sp"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toEndOf="@+id/checkBox_fri"
+            app:layout_constraintStart_toStartOf="@+id/checkBox_fri"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox_fri" />
+
+        <CheckBox
+            android:id="@+id/checkBox_sat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:buttonTint="#80D6FF"
+            app:layout_constraintEnd_toStartOf="@+id/checkBox_sun"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/checkBox_fri"
+            app:layout_constraintTop_toBottomOf="@+id/textView_repeat_on" />
+
+        <TextView
+            android:id="@+id/textView_sat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sat"
+            android:textColor="#0077C2"
+            android:textSize="10sp"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toEndOf="@+id/checkBox_sat"
+            app:layout_constraintStart_toStartOf="@+id/checkBox_sat"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox_sat" />
+
+        <CheckBox
+            android:id="@+id/checkBox_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:buttonTint="#80D6FF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/checkBox_sat"
+            app:layout_constraintTop_toBottomOf="@+id/textView_repeat_on" />
+
+        <TextView
+            android:id="@+id/textView_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sun"
+            android:textColor="#0077C2"
+            android:textSize="10sp"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintEnd_toEndOf="@+id/checkBox_sun"
+            app:layout_constraintStart_toStartOf="@+id/checkBox_sun"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox_sun" />
+
+        <TextView
+            android:id="@+id/textView_repeat_for"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/repeat_for"
+            android:textColor="#0077C2"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintBottom_toTopOf="@+id/spinner_repeat_for"
+            app:layout_constraintEnd_toEndOf="@+id/spinner_repeat_for"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/spinner_repeat_for" />
+
+        <Spinner
+            android:id="@+id/spinner_repeat_for"
+            android:layout_width="208dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/custom_spinner"
+            android:entries="@array/dummy_entries"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintStart_toStartOf="@+id/spinner_date"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_date" />
+
+        <TextView
+            android:id="@+id/textView_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/start_time"
+            android:textColor="#0077C2"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintBottom_toTopOf="@+id/spinner_start_time"
+            app:layout_constraintEnd_toEndOf="@+id/spinner_start_time"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/spinner_start_time" />
+
+        <Spinner
+            android:id="@+id/spinner_start_time"
+            android:layout_width="136dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/custom_spinner"
+            android:entries="@array/dummy_entries"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintStart_toStartOf="@+id/spinner_repeat_for"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_repeat_for" />
+
+        <TextView
+            android:id="@+id/textView_end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/end_time"
+            android:textColor="#0077C2"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintBottom_toTopOf="@+id/spinner_end_time"
+            app:layout_constraintEnd_toEndOf="@+id/spinner_end_time"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/spinner_end_time" />
+
+        <Spinner
+            android:id="@+id/spinner_end_time"
+            android:layout_width="136dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/custom_spinner"
+            android:entries="@array/dummy_entries"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/spinner_start_time"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_repeat_for" />
+
+        <TextView
+            android:id="@+id/textView_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/desc"
+            android:textColor="#0077C2"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintBottom_toTopOf="@+id/editText_desc"
+            app:layout_constraintEnd_toEndOf="@+id/editText_desc"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editText_desc" />
+
+        <EditText
+            android:id="@+id/editText_desc"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/custom_input_text_layout"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Add a Description..."
+            android:inputType="textMultiLine"
+            android:padding="10dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_start_time" />
+
+        <TextView
+            android:id="@+id/textView_priority"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/start_time"
+            android:textColor="#0077C2"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintBottom_toTopOf="@+id/spinner_priority"
+            app:layout_constraintEnd_toEndOf="@+id/spinner_priority"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/spinner_priority" />
+
+        <Spinner
+            android:id="@+id/spinner_priority"
+            android:layout_width="136dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/custom_spinner"
+            android:entries="@array/dummy_entries"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintStart_toStartOf="@+id/editText_desc"
+            app:layout_constraintTop_toBottomOf="@+id/editText_desc" />
+
+        <Button
+            android:id="@+id/button_submit_plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/add_plan"
+            android:textAllCaps="false"
+            app:backgroundTint="#0077C2"
+            app:fontFamily="@font/roboto_bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
