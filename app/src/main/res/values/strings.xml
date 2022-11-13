@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">eduRIDM</string>
     <string name="app_slogan">Your Buddy for College Acads</string>
+
+    <!--  Welcome Screen  -->
     <string name="google_sign_in">Sign in</string>
+
+    <!--  Add Plan Screen  -->
     <string name="add_plan_title">Add Plan</string>
     <string name="plan_title">Title</string>
     <string name="repeat_plan">Repeat This Plan</string>
@@ -13,7 +17,46 @@
     <string name="priority">Priority</string>
     <string name="add_plan">Add</string>
     <string name="repeat_on">Repeat On</string>
+    <string name="name_edittext_hint">Name</string>
+    <string name="select_date_hint">Select a date</string>
+    <string name="add_description_hint">Add a Description…</string>
+
+    <string-array name="priority_entries">
+        <item>High</item>
+        <item>Low</item>
+    </string-array>
+
+    <!--  Add Evaluative Screen  -->
+
+    <string name="add_evaluative_header">Add Evaluative</string>
+    <string name="subject">Subject</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="type">Type</string>
+    <string name="syllabus">Syllabus</string>
+    <string name="nature">Nature</string>
+    <string name="duration">Duration</string>
+    <string name="button_add">Add</string>
+
+    <!--  Add Extra Class Screen  -->
+    <string name="add_extra_class_header">Add Extra Class</string>
+
+    <!--  Register Screen  -->
+    <string name="register_header">You look like a new user,</string>
+    <string name="register_sub_header">We would like to know about you…</string>
+    <string name="enter_name">What should we call you?</string>
+    <string name="your_name_hint">Your Name…</string>
+    <string name="college_id">Enter your College ID</string>
+    <string name="college_id_hint">Your ID…</string>
+    <string name="are_you_a_fresher">Are you a Fresher?</string>
+    <string name="current_sem">Which semester are\nyou currently in?</string>
+    <string name="current_cg">Enter your Current\nCGPA</string>
+    <string name="current_cg_hint">8.69</string>
+    <string name="num_creds">Enter number of\ncredits completed</string>
+    <string name="num_creds_hint">74</string>
+    <string name="button_next">Next</string>
+
     <string-array name="dummy_entries">
-        <item>dummy</item>
+        <item>Dummy</item>
     </string-array>
 </resources>

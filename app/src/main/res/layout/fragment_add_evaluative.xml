@@ -1,226 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <TextView
-            android:id="@+id/add_eval"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:fontFamily="@font/days_one"
-            android:gravity="center"
-            android:text="Add Evaluative"
-            android:textSize="24sp"
+            android:id="@+id/add_eval_header"
+            style="@style/form_header_style"
+            android:text="@string/add_evaluative_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/add"
-            android:layout_width="92dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="288dp"
-            android:layout_marginTop="564dp"
-            android:background="@drawable/btn_bg"
-            android:fontFamily="@font/roboto"
-            android:text="Add"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_eval" />
-
-        <EditText
-            android:id="@+id/syllabusText"
-            android:layout_width="317dp"
-            android:layout_height="98dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/edtxt_bg"
-            android:ems="10"
-            android:fontFamily="@font/roboto"
-
-            android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/syllabus" />
+        <TextView
+            android:id="@+id/subject"
+            style="@style/form_text_style"
+            android:layout_marginTop="40dp"
+            android:text="@string/subject"
+            app:layout_constraintEnd_toEndOf="@+id/spinner_subject"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/spinner_subject"
+            app:layout_constraintTop_toBottomOf="@+id/add_eval_header" />
 
         <Spinner
             android:id="@+id/spinner_subject"
-            android:layout_width="320dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/spinner_bg"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/spinner_border"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/subject" />
 
         <TextView
             android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="204dp"
-            android:fontFamily="@font/roboto"
-            android:gravity="start"
-            android:text="Date"
-            android:textColor="#0077C2"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            style="@style/form_text_style"
+            android:layout_marginTop="32dp"
+            android:text="@string/date"
             app:layout_constraintEnd_toEndOf="@+id/spinner_date"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/spinner_date"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="204dp"
-            android:fontFamily="@font/roboto"
-            android:gravity="start"
-            android:text="Time"
-            android:textColor="#0077C2"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/spinner_time"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/spinner_time"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/spinner_subject" />
 
         <Spinner
             android:id="@+id/spinner_date"
-            android:layout_width="137dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/spinner_bg"
+            android:layout_width="136dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/spinner_border"
+            app:layout_constraintEnd_toStartOf="@+id/spinner_time"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/date" />
 
+        <TextView
+            android:id="@+id/time"
+            style="@style/form_text_style"
+            android:layout_marginTop="32dp"
+            android:text="@string/time"
+            app:layout_constraintEnd_toEndOf="@+id/spinner_time"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/spinner_time"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_subject" />
+
         <Spinner
             android:id="@+id/spinner_time"
-            android:layout_width="137dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="204dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/spinner_bg"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="136dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/spinner_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/spinner_date"
             app:layout_constraintTop_toBottomOf="@+id/time" />
 
         <TextView
             android:id="@+id/type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="284dp"
-            android:fontFamily="@font/roboto"
-            android:gravity="start"
-            android:text="Type"
-            android:textColor="#0077C2"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            style="@style/form_text_style"
+            android:layout_marginTop="32dp"
+            android:text="@string/type"
             app:layout_constraintEnd_toEndOf="@+id/spinner_type"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/spinner_type"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/spinner_date" />
 
         <Spinner
             android:id="@+id/spinner_type"
-            android:layout_width="209dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/spinner_bg"
+            android:layout_width="210dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/spinner_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/type" />
 
         <TextView
             android:id="@+id/syllabus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="360dp"
-            android:fontFamily="@font/roboto"
-            android:gravity="start"
-            android:text="Syllabus"
-            android:textColor="#0077C2"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            style="@style/form_text_style"
+            android:layout_marginTop="32dp"
+            android:text="@string/syllabus"
             app:layout_constraintEnd_toEndOf="@+id/syllabusText"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/syllabusText"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/spinner_type" />
+
+        <EditText
+            android:id="@+id/syllabusText"
+            android:layout_width="0dp"
+            android:layout_height="86dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/edit_text_border"
+
+            android:ems="10"
+            android:fontFamily="@font/roboto"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/syllabus" />
 
         <TextView
             android:id="@+id/nature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="496dp"
-            android:fontFamily="@font/roboto"
-            android:gravity="start"
-            android:text="Nature"
-            android:textColor="#0077C2"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            style="@style/form_text_style"
+            android:layout_marginTop="32dp"
+            android:text="@string/nature"
             app:layout_constraintEnd_toEndOf="@+id/spinner_nature"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/spinner_nature"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/syllabusText" />
 
         <Spinner
             android:id="@+id/spinner_nature"
-            android:layout_width="212dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/spinner_bg"
+            android:layout_width="210dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/spinner_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nature" />
 
         <TextView
             android:id="@+id/duration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="576dp"
-            android:fontFamily="@font/roboto"
-            android:gravity="start"
-            android:text="Duration"
-            android:textColor="#0077C2"
-            android:textSize="14sp"
-            android:textStyle="bold"
+            style="@style/form_text_style"
+            android:layout_marginTop="32dp"
+            android:text="@string/duration"
             app:layout_constraintEnd_toEndOf="@+id/spinner_duration"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/spinner_duration"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/spinner_nature" />
 
         <Spinner
             android:id="@+id/spinner_duration"
-            android:layout_width="147dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/spinner_bg"
+            android:layout_width="148dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/spinner_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/duration" />
 
-        <TextView
-            android:id="@+id/subject"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="124dp"
-            android:fontFamily="@font/roboto"
-            android:gravity="start"
-            android:text="Subject"
-            android:textColor="#0077C2"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/spinner_subject"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/spinner_subject"
-            app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/add"
+            style="@style/form_button_style"
+            android:text="@string/button_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
