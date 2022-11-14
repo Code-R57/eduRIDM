@@ -55,6 +55,14 @@
     <string name="num_creds">Enter number of\ncredits completed</string>
     <string name="num_creds_hint">74</string>
     <string name="button_next">Next</string>
+    <string name="course_code">CS F314</string>
+    <string name="course_name">Software Development for\nPortable Devices</string>
+    <string name="evaluative_date">16/10/1022</string>
+    <string name="evaluative_time">10:00</string>
+    <string name="evaluative_type">Type: Quiz</string>
+    <string name="evaluative_syllabus">Syllabus:\nActivity Lifecycle, Fragments, Database- SQLite\nRoom, Layouts, App Architecture.</string>
+    <string name="evaluative_nature">Nature: Open Book</string>
+    <string name="evaluative_duration">Duration: 30 Minutes</string>
 
     <string-array name="dummy_entries">
         <item>Dummy</item>
