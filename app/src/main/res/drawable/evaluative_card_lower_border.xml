@@ -4,9 +4,9 @@
     <solid android:color="@android:color/transparent" />
 
     <corners
-        android:bottomLeftRadius="13dp"
-        android:bottomRightRadius="13dp" />
+        android:bottomLeftRadius="14dp"
+        android:bottomRightRadius="14dp" />
     <stroke
-        android:width="3.5dp"
+        android:width="4dp"
         android:color="@color/app_primary" />
 </shape>
