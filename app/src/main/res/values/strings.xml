@@ -27,7 +27,6 @@
     </string-array>
 
     <!--  Add Evaluative Screen  -->
-
     <string name="add_evaluative_header">Add Evaluative</string>
     <string name="subject">Subject</string>
     <string name="date">Date</string>
@@ -56,7 +55,7 @@
     <string name="num_creds_hint">74</string>
     <string name="button_next">Next</string>
 
-<!--    Settings Screen-->
+    <!--  Settings Screen  -->
     <string name="settings_header">Settings</string>
     <string name="about_us">About Us</string>
     <string name="about_app">About App</string>
