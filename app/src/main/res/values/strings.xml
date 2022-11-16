@@ -74,6 +74,16 @@
     <string name="restore_your_data">Restore Your Data</string>
     <string name="backup_your_data">Backup Your Data</string>
 
+    <!--  Home Screen  -->
+    <string name="salutation_text">Hello,</string>
+    <string name="user_name">User</string>
+    <string name="upcoming_evals_header">Upcoming Evals</string>
+    <string name="your_classes_header">Your Classes</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="lecture_text">L1</string>
+    <string name="class_time_text">10:00 - 10:50</string>
+
     <string-array name="dummy_entries">
         <item>Dummy</item>
     </string-array>
