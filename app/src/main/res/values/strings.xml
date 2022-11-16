@@ -65,7 +65,7 @@
     <string name="evaluative_nature">Nature: Open Book</string>
     <string name="evaluative_duration">Duration: 30 Minutes</string>
 
-<!--    Backlog Card-->
+    <!--  Backlog Card  -->
     <string name="course_name_backlog">Software Development for Portable Devices</string>
     <string name="backlog_date">12 October 2022</string>
     <string name="backlog_extra">Extra Class</string>
@@ -73,6 +73,24 @@
     <string name="backlog_tut">Tut</string>
     <string name="backlog_lab">Lab</string>
 
+    <!--  Settings Screen  -->
+    <string name="settings_header">Settings</string>
+    <string name="about_us">About Us</string>
+    <string name="about_app">About App</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="logout">Logout</string>
+    <string name="restore_your_data">Restore Your Data</string>
+    <string name="backup_your_data">Backup Your Data</string>
+
+    <!--  Home Screen  -->
+    <string name="salutation_text">Hello,</string>
+    <string name="user_name">User</string>
+    <string name="upcoming_evals_header">Upcoming Evals</string>
+    <string name="your_classes_header">Your Classes</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="lecture_text">L1</string>
+    <string name="class_time_text">10:00 - 10:50</string>
 
     <string-array name="dummy_entries">
         <item>Dummy</item>
