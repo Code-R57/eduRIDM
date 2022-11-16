@@ -100,15 +100,6 @@
     <string name="desc_info">Fragment, TopBar design, Android Architectures, Databases, Multiple activities</string>
     <string name="priority_info">High</string>
 
-<!--    Settings Screen-->
-    <string name="settings_header">Settings</string>
-    <string name="about_us">About Us</string>
-    <string name="about_app">About App</string>
-    <string name="contact_us">Contact Us</string>
-    <string name="logout">Logout</string>
-    <string name="restore_your_data">Restore Your Data</string>
-    <string name="backup_your_data">Backup Your Data</string>
-
     <string-array name="dummy_entries">
         <item>Dummy</item>
     </string-array>
