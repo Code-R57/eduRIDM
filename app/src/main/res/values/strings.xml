@@ -56,6 +56,14 @@
     <string name="num_creds_hint">74</string>
     <string name="button_next">Next</string>
 
+    <!--  Planner Card  -->
+    <string name="time_duration">10:00-12:30</string>
+    <string name="plan_name">Android Development</string>
+    <string name="priority_type">Priority:</string>
+    <string name="description_plan">Description:</string>
+    <string name="desc_info">Fragment, TopBar design, Android Architectures, Databases, Multiple activities</string>
+    <string name="priority_info">High</string>
+
 <!--    Settings Screen-->
     <string name="settings_header">Settings</string>
     <string name="about_us">About Us</string>

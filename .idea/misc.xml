@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/drawable/btn_bg.xml" value="0.2405" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/drawable/edtxt_bg.xml" value="0.2405" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/drawable/evaluative_card_upper_border.xml" value="0.207" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/drawable/ic_baseline_headset_24.xml" value="0.207" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.207" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.1725" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/drawable/ic_music.xml" value="0.1725" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/drawable/ic_pause.xml" value="0.1725" />
@@ -21,9 +23,10 @@
         <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/layout/fragment_add_extraclass.xml" value="0.264" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/layout/fragment_add_plan.xml" value="0.25" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/layout/fragment_register.xml" value="0.25" />
-        <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/layout/fragment_settings.xml" value="0.536" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/layout/fragment_settings.xml" value="0.264" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/layout/fragment_stopwatch_screen.xml" value="0.136" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/layout/fragment_welcome_screen.xml" value="0.25" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/layout/planner_card.xml" value="0.32407407407407407" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/layout/stopwatch.xml" value="0.144" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/eduRIDM/app/src/main/res/layout/timer.xml" value="0.205078125" />
       </map>
