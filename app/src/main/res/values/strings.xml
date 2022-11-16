@@ -65,6 +65,15 @@
     <string name="evaluative_nature">Nature: Open Book</string>
     <string name="evaluative_duration">Duration: 30 Minutes</string>
 
+<!--    Backlog Card-->
+    <string name="course_name_backlog">Software Development for Portable Devices</string>
+    <string name="backlog_date">12 October 2022</string>
+    <string name="backlog_extra">Extra Class</string>
+    <string name="backlog_lec">Lec</string>
+    <string name="backlog_tut">Tut</string>
+    <string name="backlog_lab">Lab</string>
+
+
     <string-array name="dummy_entries">
         <item>Dummy</item>
     </string-array>
