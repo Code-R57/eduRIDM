@@ -51,4 +51,15 @@
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <!--  For FAB custom layout  -->
+    <style name="AppShapeAppearance.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="colorBackgroundFloating">@color/app_secondary</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.SmallComponent</item>
+    </style>
 </resources>
