@@ -54,7 +54,7 @@
     <string name="num_creds">Enter number of\ncredits completed</string>
     <string name="num_creds_hint">74</string>
     <string name="button_next">Next</string>
-    
+
     <!--  Evaluative Card  -->
     <string name="course_code">CS F314</string>
     <string name="course_name">Software Development for\nPortable Devices</string>
@@ -91,6 +91,24 @@
     <string name="tomorrow">Tomorrow</string>
     <string name="lecture_text">L1</string>
     <string name="class_time_text">10:00 - 10:50</string>
+
+    <!--  Planner Card  -->
+    <string name="time_duration">10:00-12:30</string>
+    <string name="plan_name">Android Development</string>
+    <string name="priority_type">Priority:</string>
+    <string name="description_plan">Description:</string>
+    <string name="desc_info">Fragment, TopBar design, Android Architectures, Databases, Multiple activities</string>
+    <string name="priority_info">High</string>
+
+    <!--  Profile Screen  -->
+    <string name="profile_name">Merchant Dhruv Deepesh Shital</string>
+    <string name="profile_email">f20202063@hyderabad.bits-pilani.ac.in</string>
+    <string name="personal_details_header">Personal Details</string>
+    <string name="current_semester_header">Current Semester</string>
+    <string name="semester_detail">2022-23 Semester I</string>
+    <string name="your_cgpa_header">Your CGPA</string>
+    <string name="cgpa_detail">8.69</string>
+    <string name="your_timetable_header">Your TimeTable</string>
 
     <string-array name="dummy_entries">
         <item>Dummy</item>
