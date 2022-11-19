@@ -113,6 +113,7 @@
     <!--  Grade Card    -->
     <string name="grade_code">CS F314</string>
     <string name="grade_course_name">Software Development for Portable Devices</string>
+    
     <!--  Add Course Card    -->
     <string name="course_code_heading">Course Code</string>
     <string name="lecture_heading">Lecture</string>
@@ -135,6 +136,14 @@
     <string name="add_course">Add Course</string>
     <string name="skip">Skip</string>
     <string name="submit">Let\'s go!!!</string>
+
+    <!--  Planner Screen  -->
+    <string name="planner_heading">Your Plans</string>
+
+    <!--  My Acads  -->
+    <string name="my_acads_header">Evaluatives</string>
+    <string name="evals">Evals</string>
+    <string name="backlog">Backlog</string>
 
     <string-array name="dummy_entries">
         <item>Dummy</item>
