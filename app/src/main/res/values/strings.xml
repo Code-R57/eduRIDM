@@ -110,7 +110,7 @@
     <string name="cgpa_detail">8.69</string>
     <string name="your_timetable_header">Your TimeTable</string>
 
-<!--    Planner Screen-->
+    <!--  Planner Screen  -->
     <string name="planner_heading">Your Plans</string>
 
     <string-array name="dummy_entries">
