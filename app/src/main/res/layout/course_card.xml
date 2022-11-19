@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/classes_card_background">
+
+        <TextView
+            android:id="@+id/course_code"
+            style="@style/form_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/course_code_heading"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/branch_spin"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/spinner_border"
+            app:layout_constraintStart_toStartOf="@+id/course_code"
+            app:layout_constraintTop_toBottomOf="@+id/course_code" />
+
+        <Spinner
+            android:id="@+id/code_spin"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/spinner_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/branch_spin"
+            app:layout_constraintTop_toBottomOf="@+id/course_code" />
+
+        <TextView
+            android:id="@+id/course_name"
+            style="@style/form_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/add_course_name"
+            app:layout_constraintEnd_toEndOf="@+id/code_spin"
+            app:layout_constraintStart_toStartOf="@+id/branch_spin"
+            app:layout_constraintTop_toBottomOf="@+id/branch_spin" />
+
+        <TextView
+            android:id="@+id/lecture"
+            style="@style/form_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/lecture_heading"
+            app:layout_constraintEnd_toStartOf="@+id/course_name"
+            app:layout_constraintStart_toStartOf="@+id/branch_spin"
+            app:layout_constraintTop_toBottomOf="@+id/course_name" />
+
+        <TextView
+            android:id="@+id/tutorial"
+            style="@style/form_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/tut_heading"
+            app:layout_constraintEnd_toEndOf="@+id/course_name"
+            app:layout_constraintStart_toEndOf="@+id/lecture"
+            app:layout_constraintTop_toBottomOf="@+id/course_name" />
+
+        <Spinner
+            android:id="@+id/lec_sel"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/spinner_border"
+            app:layout_constraintEnd_toEndOf="@+id/lecture"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/lecture"
+            app:layout_constraintTop_toBottomOf="@+id/lecture" />
+
+        <Spinner
+            android:id="@+id/tut_sel"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/spinner_border"
+            app:layout_constraintEnd_toEndOf="@+id/tutorial"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tutorial"
+            app:layout_constraintTop_toBottomOf="@+id/tutorial" />
+
+        <TextView
+            android:id="@+id/lab"
+            style="@style/form_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/lab_heading"
+            app:layout_constraintEnd_toEndOf="@+id/lec_sel"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/lec_sel"
+            app:layout_constraintTop_toBottomOf="@+id/lec_sel" />
+
+        <Spinner
+            android:id="@+id/lab_sel"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/spinner_border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/lab"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/lab"
+            app:layout_constraintTop_toBottomOf="@+id/lab" />
+
+        <ImageView
+            android:id="@+id/remove_card"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/code_spin"
+            app:layout_constraintEnd_toEndOf="@+id/code_spin"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/course_code"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_remove_circle_outline_24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
