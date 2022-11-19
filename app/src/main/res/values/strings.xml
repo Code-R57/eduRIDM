@@ -110,6 +110,33 @@
     <string name="cgpa_detail">8.69</string>
     <string name="your_timetable_header">Your TimeTable</string>
 
+    <!--  Grade Card    -->
+    <string name="grade_code">CS F314</string>
+    <string name="grade_course_name">Software Development for Portable Devices</string>
+    
+    <!--  Add Course Card    -->
+    <string name="course_code_heading">Course Code</string>
+    <string name="lecture_heading">Lecture</string>
+    <string name="tut_heading">Tutorial</string>
+    <string name="lab_heading">Lab</string>
+    <string name="add_course_name">Software Development for Portable Devices</string>
+
+    <!--  Update CGPA-->
+    <string name="update_cgpa">Update CGPA</string>
+    <string name="current_cgpa">Current CGPA</string>
+    <string name="current_cg_value">8.500</string>
+    <string name="sgpa">SGPA</string>
+    <string name="final_cgpa">Final CGPA</string>
+    <string name="sgpa_value">8.500</string>
+    <string name="final_cgpa_value">8.500</string>
+    <string name="update">Update</string>
+
+    <!--  Add Timetable-->
+    <string name="add_tt">Add Timetable</string>
+    <string name="add_course">Add Course</string>
+    <string name="skip">Skip</string>
+    <string name="submit">Let\'s go!!!</string>
+
     <!--  Planner Screen  -->
     <string name="planner_heading">Your Plans</string>
 
