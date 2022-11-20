@@ -67,7 +67,7 @@
             android:layout_marginBottom="40dp"
             android:text="@string/add_course"
             android:textColor="@color/black"
-            android:textSize="12dp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/submit_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
