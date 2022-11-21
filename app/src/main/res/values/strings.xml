@@ -145,6 +145,10 @@
     <string name="evals">Evals</string>
     <string name="backlog">Backlog</string>
 
+    <!--  Edit Timetable  -->
+    <string name="edit_tt">Edit Timetable</string>
+    <string name="edit_button_text">Edit</string>
+
     <string-array name="dummy_entries">
         <item>Dummy</item>
     </string-array>

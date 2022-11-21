@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/welcomeScreenFragment"
         android:name="com.ridm.eduRIDM.screen.onboarding.WelcomeScreenFragment"
-        android:label="WelcomeScreenFragment" >
+        android:label="WelcomeScreenFragment">
         <action
             android:id="@+id/action_welcomeScreenFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
@@ -15,7 +15,7 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.ridm.eduRIDM.screen.onboarding.RegisterFragment"
-        android:label="RegisterFragment" >
+        android:label="RegisterFragment">
         <action
             android:id="@+id/action_registerFragment_to_addTimetableFragment"
             app:destination="@id/addTimetableFragment" />
@@ -23,52 +23,60 @@
     <fragment
         android:id="@+id/addTimetableFragment"
         android:name="com.ridm.eduRIDM.screen.timetableedit.AddTimetableFragment"
-        android:label="AddTimetableFragment" >
+        android:label="AddTimetableFragment">
         <action
             android:id="@+id/action_addTimetableFragment_to_homeScreenFragment2"
             app:destination="@id/homeScreenFragment" />
     </fragment>
-        <fragment
-            android:id="@+id/homeScreenFragment"
-            android:name="com.ridm.eduRIDM.screen.homescreen.HomeScreenFragment"
-            android:label="HomeScreenFragment" >
-            <action
-                android:id="@+id/action_homeScreenFragment_to_myAcadsFragment"
-                app:destination="@id/myAcadsFragment" />
-            <action
-                android:id="@+id/action_homeScreenFragment_to_plannerFragment"
-                app:destination="@id/plannerFragment" />
-            <action
-                android:id="@+id/action_homeScreenFragment_to_stopwatchScreenFragment"
-                app:destination="@id/stopwatchScreenFragment" />
-            <action
-                android:id="@+id/action_homeScreenFragment_to_profileScreenFragment"
-                app:destination="@id/profileScreenFragment" />
-            <action
-                android:id="@+id/action_homeScreenFragment_to_settingsFragment"
-                app:destination="@id/settingsFragment" />
-        </fragment>
-        <fragment
+    <fragment
+        android:id="@+id/editTimetableFragment"
+        android:name="com.ridm.eduRIDM.screen.timetableedit.EditTimetableFragment"
+        android:label="EditTimetableFragment">
+        <action
+            android:id="@+id/action_editTimetableFragment_to_profileScreenFragment"
+            app:destination="@id/profileScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.ridm.eduRIDM.screen.homescreen.HomeScreenFragment"
+        android:label="HomeScreenFragment">
+        <action
+            android:id="@+id/action_homeScreenFragment_to_myAcadsFragment"
+            app:destination="@id/myAcadsFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_plannerFragment"
+            app:destination="@id/plannerFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_stopwatchScreenFragment"
+            app:destination="@id/stopwatchScreenFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_profileScreenFragment"
+            app:destination="@id/profileScreenFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/myAcadsFragment"
         android:name="com.ridm.eduRIDM.screen.myacads.MyAcadsFragment"
-        android:label="MyAcadsFragment" >
-            <action
-                android:id="@+id/action_myAcadsFragment_to_homeScreenFragment"
-                app:destination="@id/homeScreenFragment" />
-            <action
-                android:id="@+id/action_myAcadsFragment_to_addEvaluativeFragment"
-                app:destination="@id/addEvaluativeFragment" />
-            <action
-                android:id="@+id/action_myAcadsFragment_to_profileScreenFragment"
-                app:destination="@id/profileScreenFragment" />
-            <action
-                android:id="@+id/action_myAcadsFragment_to_settingsFragment"
-                app:destination="@id/settingsFragment" />
-        </fragment>
+        android:label="MyAcadsFragment">
+        <action
+            android:id="@+id/action_myAcadsFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
+        <action
+            android:id="@+id/action_myAcadsFragment_to_addEvaluativeFragment"
+            app:destination="@id/addEvaluativeFragment" />
+        <action
+            android:id="@+id/action_myAcadsFragment_to_profileScreenFragment"
+            app:destination="@id/profileScreenFragment" />
+        <action
+            android:id="@+id/action_myAcadsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/plannerFragment"
         android:name="com.ridm.eduRIDM.screen.planner.PlannerFragment"
-        android:label="PlannerFragment" >
+        android:label="PlannerFragment">
         <action
             android:id="@+id/action_plannerFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
@@ -88,7 +96,7 @@
     <fragment
         android:id="@+id/stopwatchScreenFragment"
         android:name="com.ridm.eduRIDM.screen.stopwatchscreen.StopwatchScreenFragment"
-        android:label="StopwatchScreenFragment" >
+        android:label="StopwatchScreenFragment">
         <action
             android:id="@+id/action_stopwatchScreenFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
@@ -96,7 +104,7 @@
     <fragment
         android:id="@+id/addEvaluativeFragment"
         android:name="com.ridm.eduRIDM.screen.addevaluative.AddEvaluativeFragment"
-        android:label="AddEvaluativeFragment" >
+        android:label="AddEvaluativeFragment">
         <action
             android:id="@+id/action_addEvaluativeFragment_to_myAcadsFragment"
             app:destination="@id/myAcadsFragment" />
@@ -104,7 +112,7 @@
     <fragment
         android:id="@+id/addPlanFragment"
         android:name="com.ridm.eduRIDM.screen.addplan.AddPlanFragment"
-        android:label="AddPlanFragment" >
+        android:label="AddPlanFragment">
         <action
             android:id="@+id/action_addPlanFragment_to_plannerFragment"
             app:destination="@id/plannerFragment" />
@@ -112,13 +120,16 @@
     <fragment
         android:id="@+id/profileScreenFragment"
         android:name="com.ridm.eduRIDM.screen.myprofile.ProfileScreenFragment"
-        android:label="ProfileScreenFragment" >
+        android:label="ProfileScreenFragment">
         <action
             android:id="@+id/action_profileScreenFragment_to_addExtraclassFragment"
             app:destination="@id/addExtraclassFragment" />
         <action
             android:id="@+id/action_profileScreenFragment_to_updateCgpaFragment"
             app:destination="@id/updateCgpaFragment" />
+        <action
+            android:id="@+id/action_profileScreenFragment_to_editTimetableFragment"
+            app:destination="@id/editTimetableFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -127,7 +138,7 @@
     <fragment
         android:id="@+id/addExtraclassFragment"
         android:name="com.ridm.eduRIDM.screen.addextraclass.AddExtraclassFragment"
-        android:label="AddExtraclassFragment" >
+        android:label="AddExtraclassFragment">
         <action
             android:id="@+id/action_addExtraclassFragment_to_profileScreenFragment"
             app:destination="@id/profileScreenFragment" />
@@ -135,7 +146,7 @@
     <fragment
         android:id="@+id/updateCgpaFragment"
         android:name="com.ridm.eduRIDM.screen.updatecgpa.UpdateCgpaFragment"
-        android:label="UpdateCgpaFragment" >
+        android:label="UpdateCgpaFragment">
         <action
             android:id="@+id/action_updateCgpaFragment_to_profileScreenFragment"
             app:destination="@id/profileScreenFragment" />

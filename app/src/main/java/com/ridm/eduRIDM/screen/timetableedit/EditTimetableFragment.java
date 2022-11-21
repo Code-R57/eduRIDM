@@ -1,4 +1,4 @@
-package com.ridm.eduRIDM.screen.myacads;
+package com.ridm.eduRIDM.screen.timetableedit;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,13 +12,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.ridm.eduRIDM.R;
-import com.ridm.eduRIDM.databinding.FragmentMyAcadsBinding;
+import com.ridm.eduRIDM.databinding.FragmentEditTimetableBinding;
+import com.ridm.eduRIDM.databinding.FragmentPlannerBinding;
 import com.ridm.eduRIDM.screen.planner.PlannerViewModel;
 
-public class MyAcadsFragment extends Fragment {
+public class EditTimetableFragment extends Fragment {
 
-    MyAcadsViewModel viewModel;
-    FragmentMyAcadsBinding binding;
+    EditTimetableViewModel viewModel;
+    FragmentEditTimetableBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,19 +28,18 @@ public class MyAcadsFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        viewModel = new ViewModelProvider(this).get(EditTimetableViewModel.class);
 
-        viewModel = new ViewModelProvider(this).get(MyAcadsViewModel.class);
-
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_acads, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_edit_timetable, container, false);
 
         binding.setLifecycleOwner(this);
 
         binding.setViewModel(viewModel);
 
-        viewModel.getNavigateToAddEval().observe(getViewLifecycleOwner(), navigateToAddEval -> {
-            if(navigateToAddEval == Boolean.TRUE) {
-                Navigation.findNavController(this.requireView()).navigate(R.id.action_myAcadsFragment_to_addEvaluativeFragment);
-                viewModel.doneNavigatingToAddEval();
+        viewModel.getOnSubmit().observe(getViewLifecycleOwner(), onSubmit -> {
+            if(onSubmit == Boolean.TRUE) {
+                Navigation.findNavController(this.requireView()).navigate(R.id.action_editTimetableFragment_to_profileScreenFragment);
+                viewModel.doneReachingProfile();
             }
         });
 
