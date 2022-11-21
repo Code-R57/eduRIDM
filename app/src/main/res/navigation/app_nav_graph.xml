@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/app_nav_graph"
-    app:startDestination="@id/editTimetableFragment">
+    app:startDestination="@id/homeScreenFragment">
 
     <fragment
         android:id="@+id/welcomeScreenFragment"
