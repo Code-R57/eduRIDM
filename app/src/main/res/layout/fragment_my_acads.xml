@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.ridm.eduRIDM.screen.myacads.MyAcadsViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -94,7 +100,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:backgroundTint="@color/app_secondary" />
+            app:backgroundTint="@color/app_secondary"
+            android:onClick="@{() -> viewModel}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
