@@ -46,8 +46,8 @@
             style="@style/form_button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/submit"
             android:onClick="@{() -> viewModel.onSubmitClicked()}"
+            android:text="@string/edit_button_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
