@@ -3,14 +3,18 @@ package com.ridm.eduRIDM.model.room.CurrentGrade;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 
 @Entity(tableName = "CurrentGrade", primaryKeys = {"deptCode", "courseCode"})
 public class CurrentGrade  implements Serializable {
 
+    @NotNull
     @ColumnInfo(name = "deptCode")
     private String deptCode;
 
+    @NotNull
     @ColumnInfo(name = "courseCode")
     private String courseCode;
 

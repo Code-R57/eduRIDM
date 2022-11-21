@@ -1,4 +1,4 @@
-package com.ridm.eduRIDM.screen.UpdateCGPA;
+package com.ridm.eduRIDM.screen.timetableedit;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.ridm.eduRIDM.R;
 
-public class UpdateCgpaFragment extends Fragment {
+public class AddTimetableFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +18,7 @@ public class UpdateCgpaFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_update_cgpa, container, false);
+        View view = inflater.inflate(R.layout.fragment_add_timetable, container, false);
         return view;
     }
 }

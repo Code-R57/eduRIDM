@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -20,7 +19,7 @@
             android:fontFamily="@font/roboto"
             android:text="@string/grade_code"
             android:textColor="@color/black"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -36,7 +35,7 @@
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/roboto"
             android:text="@string/course_name"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +47,7 @@
             android:layout_height="32dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/spinner_border"
-            app:layout_constraintBottom_toBottomOf="@+id/course_name"
+            app:layout_constraintBottom_toBottomOf="@+id/grade_course_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/course_code"
             app:layout_constraintVertical_bias="0.44" />

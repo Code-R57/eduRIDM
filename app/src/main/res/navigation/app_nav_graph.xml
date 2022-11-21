@@ -2,11 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/app_nav_graph"
-    app:startDestination="@id/welcomeScreenFragment">
+    app:startDestination="@id/plannerFragment">
 
     <fragment
         android:id="@+id/welcomeScreenFragment"
-        android:name="com.ridm.eduRIDM.screen.Onboarding.WelcomeScreenFragment"
+        android:name="com.ridm.eduRIDM.screen.onboarding.WelcomeScreenFragment"
         android:label="WelcomeScreenFragment" >
         <action
             android:id="@+id/action_welcomeScreenFragment_to_registerFragment"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.ridm.eduRIDM.screen.Onboarding.RegisterFragment"
+        android:name="com.ridm.eduRIDM.screen.onboarding.RegisterFragment"
         android:label="RegisterFragment" >
         <action
             android:id="@+id/action_registerFragment_to_addTimetableFragment"
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/addTimetableFragment"
-        android:name="com.ridm.eduRIDM.screen.TimetableEdit.AddTimetableFragment"
+        android:name="com.ridm.eduRIDM.screen.timetableedit.AddTimetableFragment"
         android:label="AddTimetableFragment" >
         <action
             android:id="@+id/action_addTimetableFragment_to_homeScreenFragment2"
@@ -30,7 +30,7 @@
     </fragment>
         <fragment
             android:id="@+id/homeScreenFragment"
-            android:name="com.ridm.eduRIDM.screen.HomeScreen.HomeScreenFragment"
+            android:name="com.ridm.eduRIDM.screen.homescreen.HomeScreenFragment"
             android:label="HomeScreenFragment" >
             <action
                 android:id="@+id/action_homeScreenFragment_to_myAcadsFragment"
@@ -50,7 +50,7 @@
         </fragment>
         <fragment
         android:id="@+id/myAcadsFragment"
-        android:name="com.ridm.eduRIDM.screen.MyAcads.MyAcadsFragment"
+        android:name="com.ridm.eduRIDM.screen.myacads.MyAcadsFragment"
         android:label="MyAcadsFragment" >
             <action
                 android:id="@+id/action_myAcadsFragment_to_homeScreenFragment"
@@ -67,7 +67,7 @@
         </fragment>
     <fragment
         android:id="@+id/plannerFragment"
-        android:name="com.ridm.eduRIDM.screen.Planner.PlannerFragment"
+        android:name="com.ridm.eduRIDM.screen.planner.PlannerFragment"
         android:label="PlannerFragment" >
         <action
             android:id="@+id/action_plannerFragment_to_homeScreenFragment"
@@ -87,7 +87,7 @@
     </fragment>
     <fragment
         android:id="@+id/stopwatchScreenFragment"
-        android:name="com.ridm.eduRIDM.screen.StopwatchScreen.StopwatchScreenFragment"
+        android:name="com.ridm.eduRIDM.screen.stopwatchscreen.StopwatchScreenFragment"
         android:label="StopwatchScreenFragment" >
         <action
             android:id="@+id/action_stopwatchScreenFragment_to_homeScreenFragment"
@@ -95,7 +95,7 @@
     </fragment>
     <fragment
         android:id="@+id/addEvaluativeFragment"
-        android:name="com.ridm.eduRIDM.screen.AddEvaluative.AddEvaluativeFragment"
+        android:name="com.ridm.eduRIDM.screen.addevaluative.AddEvaluativeFragment"
         android:label="AddEvaluativeFragment" >
         <action
             android:id="@+id/action_addEvaluativeFragment_to_myAcadsFragment"
@@ -103,7 +103,7 @@
     </fragment>
     <fragment
         android:id="@+id/addPlanFragment"
-        android:name="com.ridm.eduRIDM.screen.AddPlan.AddPlanFragment"
+        android:name="com.ridm.eduRIDM.screen.addplan.AddPlanFragment"
         android:label="AddPlanFragment" >
         <action
             android:id="@+id/action_addPlanFragment_to_plannerFragment"
@@ -111,7 +111,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileScreenFragment"
-        android:name="com.ridm.eduRIDM.screen.MyProfile.ProfileScreenFragment"
+        android:name="com.ridm.eduRIDM.screen.myprofile.ProfileScreenFragment"
         android:label="ProfileScreenFragment" >
         <action
             android:id="@+id/action_profileScreenFragment_to_addExtraclassFragment"
@@ -122,11 +122,11 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.ridm.eduRIDM.screen.Settings.SettingsFragment"
+        android:name="com.ridm.eduRIDM.screen.settings.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
         android:id="@+id/addExtraclassFragment"
-        android:name="com.ridm.eduRIDM.screen.AddExtraclass.AddExtraclassFragment"
+        android:name="com.ridm.eduRIDM.screen.addextraclass.AddExtraclassFragment"
         android:label="AddExtraclassFragment" >
         <action
             android:id="@+id/action_addExtraclassFragment_to_profileScreenFragment"
@@ -134,7 +134,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateCgpaFragment"
-        android:name="com.ridm.eduRIDM.screen.UpdateCGPA.UpdateCgpaFragment"
+        android:name="com.ridm.eduRIDM.screen.updatecgpa.UpdateCgpaFragment"
         android:label="UpdateCgpaFragment" >
         <action
             android:id="@+id/action_updateCgpaFragment_to_profileScreenFragment"

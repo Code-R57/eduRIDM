@@ -3,17 +3,22 @@ package com.ridm.eduRIDM.model.room.TimeTable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 
 @Entity(tableName = "TimeTable", primaryKeys = {"deptCode", "courseCode", "section"})
 public class TimeTable implements Serializable {
 
+    @NotNull
     @ColumnInfo(name = "deptCode")
     private String deptCode;
 
+    @NotNull
     @ColumnInfo(name = "courseCode")
     private String courseCode;
 
+    @NotNull
     @ColumnInfo(name = "section")
     private String section;
 

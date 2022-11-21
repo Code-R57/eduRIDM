@@ -1,4 +1,4 @@
-package com.ridm.eduRIDM.screen.Planner;
+package com.ridm.eduRIDM.screen.addextraclass;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.ridm.eduRIDM.R;
 
-public class PlannerFragment extends Fragment {
+public class AddExtraclassFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +18,7 @@ public class PlannerFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_planner, container, false);
+        View view = inflater.inflate(R.layout.fragment_add_extraclass, container, false);
         return view;
     }
 }

@@ -1,4 +1,4 @@
-package com.ridm.eduRIDM.screen.Onboarding;
+package com.ridm.eduRIDM.screen.myprofile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.ridm.eduRIDM.R;
 
-public class RegisterFragment extends Fragment {
+public class ProfileScreenFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +18,7 @@ public class RegisterFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_register, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile_screen, container, false);
         return view;
     }
 }

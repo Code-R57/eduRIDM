@@ -1,4 +1,4 @@
-package com.ridm.eduRIDM.screen.StopwatchScreen;
+package com.ridm.eduRIDM.screen.addplan;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.ridm.eduRIDM.R;
 
-public class StopwatchScreenFragment extends Fragment {
+public class AddPlanFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +18,7 @@ public class StopwatchScreenFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_stopwatch_screen, container, false);
+        View view = inflater.inflate(R.layout.fragment_add_plan, container, false);
         return view;
     }
 }
