@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel;
 public class EditTimetableViewModel extends ViewModel {
     private MutableLiveData<Boolean> onSubmit = new MutableLiveData<>(Boolean.FALSE);
 
-    public MutableLiveData<Boolean> getOnSubmit() {
+    public LiveData<Boolean> getOnSubmit() {
         return onSubmit;
     }
 
