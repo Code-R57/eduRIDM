@@ -18,6 +18,9 @@ public class CurrentGrade  implements Serializable {
     @ColumnInfo(name = "courseCode")
     private String courseCode;
 
+    @ColumnInfo(name = "courseName")
+    private String courseName;
+
     @ColumnInfo(name = "grade")
     private String grade;
 
@@ -37,6 +40,14 @@ public class CurrentGrade  implements Serializable {
 
     public void setCourseCode(String courseCode) {
         this.courseCode = courseCode;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public String getGrade() {
