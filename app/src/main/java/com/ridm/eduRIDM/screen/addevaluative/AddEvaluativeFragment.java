@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentAddEvaluativeBinding;
+import com.ridm.eduRIDM.model.room.Eval.Eval;
 
 public class AddEvaluativeFragment extends Fragment {
 
@@ -39,6 +40,27 @@ public class AddEvaluativeFragment extends Fragment {
             if (navigateToMyAcads == Boolean.TRUE) {
                 Navigation.findNavController(this.requireView()).navigate(R.id.action_addEvaluativeFragment_to_myAcadsFragment);
                 viewModel.doneNavigatingToMyAcads();
+            }
+        });
+
+        binding.add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Eval eval = new Eval();
+
+                String course[]=binding.spinnerSubject.getSelectedItem().toString().split(" ");
+
+                eval.setDeptCode(course[0]);
+                eval.setCourseCode(course[1]);
+                eval.setDate(binding.spinnerDate.getSelectedItem().toString());
+                eval.setTime(binding.spinnerTime.getSelectedItem().toString());
+                eval.setDuration(binding.spinnerDuration.getSelectedItemPosition());
+                eval.setType(binding.spinnerType.getSelectedItem().toString());
+                eval.setSyllabus(binding.syllabusText.getText().toString());
+                eval.setNature(binding.spinnerNature.getSelectedItem().toString());
+
+                viewModel.eval=eval;
+                viewModel.onSubmit();
             }
         });
 

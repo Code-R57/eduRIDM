@@ -13,8 +13,6 @@ import androidx.navigation.Navigation;
 
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentStopwatchScreenBinding;
-import com.ridm.eduRIDM.databinding.FragmentUpdateCgpaBinding;
-import com.ridm.eduRIDM.screen.updatecgpa.UpdateCGPAViewModel;
 
 public class StopwatchScreenFragment extends Fragment {
     StopwatchScreenViewModel viewModel;

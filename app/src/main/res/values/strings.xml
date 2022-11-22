@@ -111,8 +111,9 @@
     <string name="your_timetable_header">Your TimeTable</string>
 
     <!--  Grade Card  -->
-    <string name="grade_code">CS F314</string>
+    <string name="grade_dept_code">CS</string>
     <string name="grade_course_name">Software Development for Portable Devices</string>
+    <string name="grade_course_code">F314</string>
     
     <!--  Add Course Card  -->
     <string name="course_code_heading">Course Code</string>
@@ -149,7 +150,19 @@
     <string name="edit_tt">Edit Timetable</string>
     <string name="edit_button_text">Edit</string>
 
+    <!--  Bottom Navigation  -->
+    <string name="bottom_nav_home">Home</string>
+    <string name="bottom_nav_planner">My Acads</string>
+    <string name="bottom_nav_acads">Planner</string>
+
     <string-array name="dummy_entries">
         <item>Dummy</item>
+    </string-array>
+    <string-array name="extra_class_dummy">
+        <item>CS F314 L1</item>
+    </string-array>
+    <string-array name="time_dummy">
+        <item>12:30</item>
+        <item>14:20</item>
     </string-array>
 </resources>
