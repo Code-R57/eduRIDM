@@ -1,8 +1,12 @@
 package com.ridm.eduRIDM.screen.addplan;
 
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.ridm.eduRIDM.MainActivity;
+import com.ridm.eduRIDM.model.room.Plan.Plan;
 
 public class AddPlanViewModel extends ViewModel {
 
@@ -12,6 +16,7 @@ public class AddPlanViewModel extends ViewModel {
     }
 
     public void onSubmit() {
+        insertPlan();
         navigateToPlanner.setValue(Boolean.TRUE);
     }
 
@@ -19,4 +24,9 @@ public class AddPlanViewModel extends ViewModel {
         navigateToPlanner.setValue(Boolean.FALSE);
     }
 
+    Plan plan = new Plan();
+
+    public void insertPlan() {
+        MainActivity.roomRepository.insertPlan(plan);
+    }
 }
