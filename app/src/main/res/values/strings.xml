@@ -158,4 +158,11 @@
     <string-array name="dummy_entries">
         <item>Dummy</item>
     </string-array>
+    <string-array name="extra_class_dummy">
+        <item>CS F314 L1</item>
+    </string-array>
+    <string-array name="time_dummy">
+        <item>12:30</item>
+        <item>14:20</item>
+    </string-array>
 </resources>
