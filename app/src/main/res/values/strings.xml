@@ -150,6 +150,11 @@
     <string name="edit_tt">Edit Timetable</string>
     <string name="edit_button_text">Edit</string>
 
+    <!--  Bottom Navigation  -->
+    <string name="bottom_nav_home">Home</string>
+    <string name="bottom_nav_planner">My Acads</string>
+    <string name="bottom_nav_acads">Planner</string>
+
     <string-array name="dummy_entries">
         <item>Dummy</item>
     </string-array>
