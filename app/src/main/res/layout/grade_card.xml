@@ -11,19 +11,34 @@
 
 
         <TextView
-            android:id="@+id/course_code"
+            android:id="@+id/dept_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/roboto"
-            android:text="@string/grade_code"
+            android:text="@string/grade_dept_code"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/course_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/grade_course_code"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/dept_code"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -39,7 +54,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/course_code" />
+            app:layout_constraintTop_toBottomOf="@+id/dept_code" />
 
         <Spinner
             android:id="@+id/grade_sel"
@@ -49,7 +64,7 @@
             android:background="@drawable/spinner_border"
             app:layout_constraintBottom_toBottomOf="@+id/grade_course_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/course_code"
+            app:layout_constraintTop_toTopOf="@+id/dept_code"
             app:layout_constraintVertical_bias="0.44" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

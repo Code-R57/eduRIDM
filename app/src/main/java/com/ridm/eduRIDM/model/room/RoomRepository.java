@@ -4,9 +4,12 @@ import android.app.Application;
 
 import com.ridm.eduRIDM.model.room.Eval.Eval;
 import com.ridm.eduRIDM.model.room.ExtraClass.ExtraClass;
+import com.ridm.eduRIDM.model.room.CurrentGrade.CurrentGrade;
 import com.ridm.eduRIDM.model.room.Plan.Plan;
 import com.ridm.eduRIDM.model.room.Plan.PlanDao;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -27,6 +30,7 @@ public class RoomRepository {
             }
         });
     }
+
     public void insertEval(Eval eval){
         executor.execute(new Runnable() {
             @Override
@@ -35,6 +39,7 @@ public class RoomRepository {
             }
         });
     }
+    
     public void insertExtraClass(ExtraClass extraClass){
         executor.execute(new Runnable() {
             @Override
@@ -44,4 +49,27 @@ public class RoomRepository {
         });
     }
 
+    public void insertGrades(List<CurrentGrade> currentGradeList) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                for(CurrentGrade currentGrade: currentGradeList) {
+                    appDatabase.currentGradeDao().insertCurrentGrade(currentGrade);
+                }
+            }
+        });
+    }
+
+    public List<CurrentGrade> getAllGrades() {
+        List<CurrentGrade> currentGradeList = new ArrayList<>();
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                currentGradeList.addAll(appDatabase.currentGradeDao().getAllCurrentGrades());
+            }
+        });
+
+        return currentGradeList;
+    }
 }

@@ -16,8 +16,8 @@ public class AddPlanViewModel extends ViewModel {
     }
 
     public void onSubmit() {
-        insertPlan();
         navigateToPlanner.setValue(Boolean.TRUE);
+        insertPlan();
     }
 
     public void doneNavigatingToPlanner() {
