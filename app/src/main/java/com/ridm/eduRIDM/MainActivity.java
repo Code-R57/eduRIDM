@@ -10,6 +10,7 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.mtoolbar);
         setSupportActionBar(toolbar);
+
         NavigationUI.setupActionBarWithNavController(this,navController);
 
         bottomView = findViewById(R.id.bottomNav);
@@ -53,6 +55,23 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     bottomView.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
+                if(navDestination.getId() == R.id.welcomeScreenFragment) {
+                    toolbar.setVisibility(View.GONE);
+                }
+                else if(navDestination.getId() == R.id.stopwatchScreenFragment)
+                {
+                    toolbar.setBackground(new ColorDrawable(getResources().getColor(R.color.app_primary)));
+                }
+                else {
+                    toolbar.setVisibility(View.VISIBLE);
+                    toolbar.setBackground(new ColorDrawable(getResources().getColor(R.color.white)));
                 }
             }
         });
