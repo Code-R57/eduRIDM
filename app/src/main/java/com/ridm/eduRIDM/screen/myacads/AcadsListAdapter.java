@@ -1,12 +1,14 @@
 package com.ridm.eduRIDM.screen.myacads;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ridm.eduRIDM.R;
@@ -47,15 +49,16 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
     }
 
     @Override
-    public void onBindViewHolder(AcadsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AcadsViewHolder holder, int position) {
+        Log.i("CustomDebug", String.valueOf(currentSelection.equals("Evals")));
         if (currentSelection.equals("Evals")) {
             Eval eval = evalList.get(position);
             holder.evalDeptCode.setText(eval.getDeptCode());
             holder.evalCourseCode.setText(eval.getCourseCode());
             holder.evalCourseName.setText(eval.getCourseName());
             holder.time.setText(eval.getTime());
-            holder.date.setText(eval.getTime());
-            holder.duration.setText(eval.getDuration());
+            holder.date.setText(eval.getDate());
+            holder.duration.setText(String.valueOf(eval.getDuration()));
             holder.nature.setText(eval.getNature());
             holder.typeText.setText(eval.getType());
             holder.syllabusDesc.setText(eval.getSyllabus());
@@ -92,7 +95,7 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
             super(view);
 
             if (currentSelection.equals("Evals")) {
-                evalDeptCode = view.findViewById(R.id.dept_code);
+                evalDeptCode = view.findViewById(R.id.eval_dept_code);
                 evalCourseCode = view.findViewById(R.id.course_code_eval_card);
                 evalCourseName = view.findViewById(R.id.course_name);
                 time = view.findViewById(R.id.time);
@@ -100,7 +103,7 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
                 typeText = view.findViewById(R.id.type_text);
                 syllabusDesc = view.findViewById(R.id.syllabus_description);
                 nature = view.findViewById(R.id.nature_value);
-                duration = view.findViewById(R.id.duration_values);
+                duration = view.findViewById(R.id.duration_value);
             } else {
                 backlogDeptCode = view.findViewById(R.id.textView_course_id);
                 backlogCourseCode = view.findViewById(R.id.textView_course_code);
