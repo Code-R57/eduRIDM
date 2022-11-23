@@ -62,7 +62,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/spinner_border"
-            android:entries="@array/dummy_entries"
+            android:entries="@array/date_dummy"
             app:layout_constraintEnd_toStartOf="@+id/spinner_time"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -191,12 +191,12 @@
             app:layout_constraintTop_toBottomOf="@+id/duration" />
 
         <Button
-            android:id="@+id/add"
+            android:id="@+id/add_eval_button"
             style="@style/form_button_style"
             android:text="@string/button_add"
-            android:onClick="@{() -> viewModel.onNavigateToMyAcadsClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

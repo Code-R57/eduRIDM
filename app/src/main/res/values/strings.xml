@@ -211,5 +211,11 @@
     </string-array>
     <string-array name="date_dummy">
         <item>2022-11-23</item>
+        <item>2022-11-24</item>
+        <item>2022-11-25</item>
+        <item>2022-11-26</item>
+        <item>2022-11-27</item>
+        <item>2022-11-28</item>
+        <item>2022-11-29</item>
     </string-array>
 </resources>

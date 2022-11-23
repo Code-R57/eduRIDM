@@ -7,6 +7,7 @@ import com.ridm.eduRIDM.model.room.Eval.Eval;
 import com.ridm.eduRIDM.model.room.ExtraClass.ExtraClass;
 import com.ridm.eduRIDM.model.room.CurrentGrade.CurrentGrade;
 import com.ridm.eduRIDM.model.room.Plan.Plan;
+import com.ridm.eduRIDM.model.room.Plan.PlanDao;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.util.ArrayList;
@@ -41,7 +42,21 @@ public class RoomRepository {
         });
     }
 
+    public List<Eval> getAllEvals() {
+        List<Eval> eval = new ArrayList<>();
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                eval.addAll(appDatabase.evalDao().getAllEvals());
+            }
+        });
+
+        return eval;
+    }
+    
     public void insertExtraClass(ExtraClass extraClass) {
+
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -73,6 +88,16 @@ public class RoomRepository {
         return currentGradeList;
     }
 
+    public List<Eval> getUpcomingEvals(String date1, String date2) {
+        List<Eval> upcomingEvals = new ArrayList<>();
+        
+        upcomingEvals.addAll(appDatabase.evalDao().getUpcomingEvals(date1, date2));
+            }
+        });
+
+        return upcomingEvals;
+    }
+    
     public List<Plan> getAllPlans(String date) {
         List<Plan> planList = new ArrayList<>();
         executor.execute(new Runnable() {
@@ -83,6 +108,7 @@ public class RoomRepository {
         });
         return planList;
     }
+    
     public List<Backlog> getBacklogForCourse(String deptCode, String courseCode) {
         List<Backlog> backlogList = new ArrayList<>();
 
@@ -98,16 +124,29 @@ public class RoomRepository {
 
     public List<TimeTable> getCourses() {
         List<TimeTable> courseList = new ArrayList<>();
-
+        
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                courseList.addAll(appDatabase.timeTableDao().getAllCourses());
+              courseList.addAll(appDatabase.timeTableDao().getAllCourses());
             }
         });
 
         return courseList;
-    }
+    } 
+
+    public List<TimeTable> getAllClassesByDay(String days) {
+        List<TimeTable> classes = new ArrayList<>();
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() { 
+             classes.addAll(appDatabase.timeTableDao().getAllClassByDay(days));
+            }
+        });
+
+        return classes;
+        }
 
     public List<Eval> getAllEvals() {
         List<Eval> eval = new ArrayList<>();
@@ -115,7 +154,7 @@ public class RoomRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                eval.addAll(appDatabase.evalDao().getAllEvals());
+              eval.addAll(appDatabase.evalDao().getAllEvals());
             }
         });
 
