@@ -18,6 +18,8 @@ import android.view.View;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ridm.eduRIDM.databinding.ActivityMainBinding;
 import com.ridm.eduRIDM.model.room.RoomRepository;
+import com.ridm.eduRIDM.screen.myprofile.ProfileScreenFragment;
+import com.ridm.eduRIDM.screen.settings.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        NavigationUI.setupActionBarWithNavController(this, navController);
 
         toolbar = findViewById(R.id.mtoolbar);
         setSupportActionBar(toolbar);
@@ -66,9 +67,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         switch(item.getItemId()) {
             case R.id.settingsFragment:
-
+                navController.navigate(R.id.settingsFragment);
+                return true;
+            case R.id.profileScreenFragment:
+                navController.navigate(R.id.profileScreenFragment);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
