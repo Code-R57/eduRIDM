@@ -43,6 +43,7 @@ public class PlannerFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        viewModel = new ViewModelProvider(this).get(PlannerViewModel.class);
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_planner, container, false);
 
         binding.setLifecycleOwner(this);
@@ -50,10 +51,9 @@ public class PlannerFragment extends Fragment {
         binding.setViewModel(viewModel);
 
         PlanCardAdapter adapter = new PlanCardAdapter(requireContext(), (ArrayList<Plan>) viewModel.planList);
-
         binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        viewModel = new ViewModelProvider(this).get(PlannerViewModel.class);
+
         viewModel.getNavigateToAddPlan().observe(getViewLifecycleOwner(), navigateToAddPlan -> {
             if (navigateToAddPlan == Boolean.TRUE) {
                 Navigation.findNavController(this.requireView()).navigate(R.id.action_plannerFragment_to_addPlanFragment);

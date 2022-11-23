@@ -82,7 +82,7 @@ public class RoomRepository {
             }
         });
         return planList;
-
+    }
     public List<Backlog> getBacklogForCourse(String deptCode, String courseCode) {
         List<Backlog> backlogList = new ArrayList<>();
 

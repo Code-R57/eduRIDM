@@ -115,6 +115,10 @@ public class MainActivity extends AppCompatActivity {
                     if (item2 != null)
                         item2.setVisible(false);
                 } else if (navDestination.getId() == R.id.profileScreenFragment) {
+                    MenuItem item1 = menu.findItem(R.id.settingsFragment);
+                    if (item1 != null)
+                        item1.setVisible(true);
+
                     MenuItem item2 = menu.findItem(R.id.profileScreenFragment);
                     if (item2 != null)
                         item2.setVisible(false);
@@ -122,6 +126,10 @@ public class MainActivity extends AppCompatActivity {
                     MenuItem item1 = menu.findItem(R.id.settingsFragment);
                     if (item1 != null)
                         item1.setVisible(false);
+
+                    MenuItem item2 = menu.findItem(R.id.profileScreenFragment);
+                    if (item2 != null)
+                        item2.setVisible(true);
                 }
                 else
                 {

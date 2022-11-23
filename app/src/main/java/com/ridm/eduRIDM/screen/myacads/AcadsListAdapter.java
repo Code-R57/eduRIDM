@@ -27,7 +27,6 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
     private final String currentSelection;
     private final HashMap<String, List<Backlog>> backlogListMap;
 
-
     public AcadsListAdapter(Context mCtx, List<TimeTable> courseList, List<Eval> evalList, String currentSelection, HashMap<String, List<Backlog>> backlogListMap) {
         this.mCtx = mCtx;
         this.courseList = courseList;
@@ -50,7 +49,7 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
 
     @Override
     public void onBindViewHolder(@NonNull AcadsViewHolder holder, int position) {
-        Log.i("CustomDebug", String.valueOf(currentSelection.equals("Evals")));
+//        Log.i("CustomDebug", String.valueOf(currentSelection.equals("Evals")));
         if (currentSelection.equals("Evals")) {
             Eval eval = evalList.get(position);
             holder.evalDeptCode.setText(eval.getDeptCode());
