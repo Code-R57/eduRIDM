@@ -47,7 +47,7 @@
             app:layout_constraintTop_toBottomOf="@+id/dept_code" />
 
         <TextView
-            android:id="@+id/course_name"
+            android:id="@+id/course_name_timetable"
             style="@style/form_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,9 +64,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="@string/lecture_heading"
-            app:layout_constraintEnd_toStartOf="@+id/course_name"
+            app:layout_constraintEnd_toStartOf="@+id/course_name_timetable"
             app:layout_constraintStart_toStartOf="@+id/branch_spin"
-            app:layout_constraintTop_toBottomOf="@+id/course_name" />
+            app:layout_constraintTop_toBottomOf="@+id/course_name_timetable" />
 
         <TextView
             android:id="@+id/tutorial"
@@ -75,9 +75,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="@string/tut_heading"
-            app:layout_constraintEnd_toEndOf="@+id/course_name"
+            app:layout_constraintEnd_toEndOf="@+id/course_name_timetable"
             app:layout_constraintStart_toEndOf="@+id/lecture"
-            app:layout_constraintTop_toBottomOf="@+id/course_name" />
+            app:layout_constraintTop_toBottomOf="@+id/course_name_timetable" />
 
         <Spinner
             android:id="@+id/lec_sel"

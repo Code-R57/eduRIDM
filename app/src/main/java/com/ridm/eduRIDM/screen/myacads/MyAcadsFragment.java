@@ -76,6 +76,7 @@ public class MyAcadsFragment extends Fragment {
                 else {
                     viewModel.setCurrentSelection("Backlog");
                     binding.header.setText(R.string.my_acads_header_backlog);
+                    binding.addEval.setVisibility(View.GONE);
                 }
             }
         });

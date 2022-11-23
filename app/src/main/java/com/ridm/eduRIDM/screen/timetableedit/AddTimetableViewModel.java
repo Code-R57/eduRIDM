@@ -4,12 +4,19 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class AddTimetableViewModel extends ViewModel {
     private MutableLiveData<Boolean> navigateToHomeScreen = new MutableLiveData<>(Boolean.FALSE);
 
     public LiveData<Boolean> getNavigateToHomeScreen() {
         return navigateToHomeScreen;
     }
+
+    List<TimeTable> courseList = new ArrayList<>();
 
     public void onSubmitClicked() {
         navigateToHomeScreen.setValue(Boolean.TRUE);
