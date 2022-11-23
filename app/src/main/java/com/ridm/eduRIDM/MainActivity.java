@@ -10,28 +10,81 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.ridm.eduRIDM.databinding.ActivityMainBinding;
 import com.ridm.eduRIDM.model.room.RoomRepository;
-import com.ridm.eduRIDM.screen.myprofile.ProfileScreenFragment;
-import com.ridm.eduRIDM.screen.settings.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     public BottomNavigationView bottomView;
     public Toolbar toolbar;
     NavController navController;
+
     public static RoomRepository roomRepository;
+
+    public static GoogleSignInClient mGoogleSignInClient;
+    public FirebaseAuth mAuth;
+    public GoogleSignInAccount account;
+    public static int RC_SIGN_IN = 57;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+
+            try {
+                account = task.getResult(ApiException.class);
+                navController.navigate(R.id.registerFragment);
+            } catch (ApiException e) {
+                Toast.makeText(this, "Google Sign In Failed", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        account = GoogleSignIn.getLastSignedInAccount(this);
+
+        if(account != null) {
+            navController.navigate(R.id.homeScreenFragment);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Google Sign In
+        mAuth = FirebaseAuth.getInstance();
+
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail().build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
 
         roomRepository = new RoomRepository(getApplication());
 
@@ -144,5 +197,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         return true;
+    }
+
+    public void getFirebaseAuthWithGoogle() {
+        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+
+        mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                boolean isNewUser = task.getResult().getAdditionalUserInfo().isNewUser();
+                if (isNewUser) {
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    navController.navigate(R.id.registerFragment);
+                } else {
+                    navController.navigate(R.id.homeScreenFragment);
+                }
+            }
+        });
     }
 }

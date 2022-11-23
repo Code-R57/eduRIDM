@@ -70,6 +70,7 @@ public class MyAcadsFragment extends Fragment {
                 if(binding.evalBacklogSelector.getCheckedRadioButtonId() == R.id.evals) {
                     viewModel.setCurrentSelection("Evals");
                     binding.header.setText(R.string.my_acads_header_eval);
+                    binding.addEval.setVisibility(View.VISIBLE);
                 }
                 else {
                     viewModel.setCurrentSelection("Backlog");
