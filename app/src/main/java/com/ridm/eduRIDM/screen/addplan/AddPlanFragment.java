@@ -1,6 +1,7 @@
 package com.ridm.eduRIDM.screen.addplan;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,9 +38,9 @@ public class AddPlanFragment extends Fragment {
         binding.setViewModel(viewModel);
 
         viewModel.getNavigateToPlanner().observe(getViewLifecycleOwner(), navigateToPlanner -> {
-            if(navigateToPlanner == Boolean.TRUE) {
-                Navigation.findNavController(this.requireView()).navigate(R.id.action_addPlanFragment_to_plannerFragment);
+            if (navigateToPlanner == Boolean.TRUE) {
                 viewModel.doneNavigatingToPlanner();
+                Navigation.findNavController(this.requireView()).navigate(R.id.action_addPlanFragment_to_plannerFragment);
             }
         });
 
@@ -56,10 +57,12 @@ public class AddPlanFragment extends Fragment {
                 plan.setRepeatFor(binding.spinnerRepeatFor.getSelectedItem().toString());
                 plan.setRepeatOn(getRepeatOn(binding));
                 plan.setRepeat(binding.checkBoxRepeatPlan.isChecked());
-                plan.setPriority((Integer) binding.spinnerPriority.getSelectedItem());
-
+                String priorityString = binding.spinnerPriority.getSelectedItem().toString();
+                if (priorityString.equals("High"))
+                    plan.setPriority(1);
+                else
+                    plan.setPriority(0);
                 viewModel.plan = plan;
-
                 viewModel.onSubmit();
             }
         });
@@ -70,52 +73,45 @@ public class AddPlanFragment extends Fragment {
     private String getRepeatOn(FragmentAddPlanBinding binding) {
         StringBuilder repeatOn = new StringBuilder("");
 
-        if(binding.checkBoxMon.isChecked()) {
+        if (binding.checkBoxMon.isChecked()) {
             repeatOn.append('1');
-        }
-        else {
+        } else {
             repeatOn.append('0');
         }
 
-        if(binding.checkBoxTue.isChecked()) {
+        if (binding.checkBoxTue.isChecked()) {
             repeatOn.append('1');
-        }
-        else {
+        } else {
             repeatOn.append('0');
         }
 
-        if(binding.checkBoxWed.isChecked()) {
+        if (binding.checkBoxWed.isChecked()) {
             repeatOn.append('1');
-        }
-        else {
+        } else {
             repeatOn.append('0');
         }
 
-        if(binding.checkBoxThur.isChecked()) {
+        if (binding.checkBoxThur.isChecked()) {
             repeatOn.append('1');
-        }
-        else {
+        } else {
             repeatOn.append('0');
         }
 
-        if(binding.checkBoxFri.isChecked()) {
+        if (binding.checkBoxFri.isChecked()) {
             repeatOn.append('1');
-        }
-        else {
+        } else {
             repeatOn.append('0');
         }
 
-        if(binding.checkBoxSat.isChecked()) {
+        if (binding.checkBoxSat.isChecked()) {
             repeatOn.append('1');
-        }
-        else {
+        } else {
             repeatOn.append('0');
         }
 
-        if(binding.checkBoxSun.isChecked()) {
+        if (binding.checkBoxSun.isChecked()) {
             repeatOn.append('1');
-        }
-        else {
+        } else {
             repeatOn.append('0');
         }
 
