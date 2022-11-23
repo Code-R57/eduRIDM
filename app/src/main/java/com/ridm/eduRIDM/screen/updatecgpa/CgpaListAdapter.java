@@ -59,7 +59,8 @@ public class CgpaListAdapter extends ArrayAdapter<CurrentGrade>{
 
             LayoutInflater inflater = LayoutInflater.from(mCtx);
             convertView = inflater.inflate(R.layout.grade_card, parent, false);
-            viewHolder.courseCode = (TextView) convertView.findViewById(R.id.dept_code);
+            viewHolder.deptCode = (TextView) convertView.findViewById(R.id.dept_code_grade);
+            viewHolder.courseCode = (TextView) convertView.findViewById(R.id.course_code_grade);
             viewHolder.courseName = (TextView) convertView.findViewById(R.id.grade_course_name);
             viewHolder.gradeSelector = (Spinner) convertView.findViewById(R.id.grade_sel);
 

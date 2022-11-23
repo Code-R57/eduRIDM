@@ -104,7 +104,7 @@
     </fragment>
     <fragment
         android:id="@+id/addEvaluativeFragment"
-        android:name="com.ridm.eduRIDM.screen.onboarding.WelcomeScreenFragment"
+        android:name="com.ridm.eduRIDM.screen.addevaluative.AddEvaluativeFragment"
         android:label="AddEvaluativeFragment">
         <action
             android:id="@+id/action_addEvaluativeFragment_to_myAcadsFragment"

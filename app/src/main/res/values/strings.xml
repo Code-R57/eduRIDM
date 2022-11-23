@@ -146,7 +146,8 @@
     <string name="planner_heading">Your Plans</string>
 
     <!--  My Acads  -->
-    <string name="my_acads_header">Evaluatives</string>
+    <string name="my_acads_header_eval">Evaluatives</string>
+    <string name="my_acads_header_backlog">Your Backlogs</string>
     <string name="evals">Evals</string>
     <string name="backlog">Backlog</string>
 

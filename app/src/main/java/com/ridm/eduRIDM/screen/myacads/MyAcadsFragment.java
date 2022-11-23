@@ -16,8 +16,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentMyAcadsBinding;
+import com.ridm.eduRIDM.model.room.Backlog.Backlog;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 import com.ridm.eduRIDM.screen.planner.PlannerViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyAcadsFragment extends Fragment {
 
@@ -59,7 +63,7 @@ public class MyAcadsFragment extends Fragment {
         viewModel.getCurrentSelection().observe(getViewLifecycleOwner(), checkedState -> {
             AcadsListAdapter acadsListAdapter = new AcadsListAdapter(requireContext(), viewModel.courses, viewModel.evalList, checkedState, viewModel.courseBacklog);
             binding.acadsList.setAdapter(acadsListAdapter);
-//            binding.acadsList.setLayoutManager(new LinearLayoutManager(getContext()));
+            binding.acadsList.setLayoutManager(new LinearLayoutManager(getContext()));
         });
 
         binding.evalBacklogSelector.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -67,9 +71,11 @@ public class MyAcadsFragment extends Fragment {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if(binding.evalBacklogSelector.getCheckedRadioButtonId() == R.id.evals) {
                     viewModel.setCurrentSelection("Evals");
+                    binding.header.setText(R.string.my_acads_header_eval);
                 }
                 else {
                     viewModel.setCurrentSelection("Backlog");
+                    binding.header.setText(R.string.my_acads_header_backlog);
                 }
             }
         });
