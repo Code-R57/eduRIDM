@@ -17,5 +17,8 @@ public interface TimeTableDao {
     void deleteClass(TimeTable timeTable);
 
     @Query("SELECT * FROM TimeTable where Days like :days")
-    List<TimeTable> getAllExtraClassByDate(String days);
+    List<TimeTable> getAllClassByDay(String days);
+
+    @Query("SELECT * FROM TimeTable")
+    List<TimeTable> getAllCourses();
 }

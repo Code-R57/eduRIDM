@@ -18,4 +18,7 @@ public interface BacklogDao {
 
     @Query("SELECT * FROM Backlog")
     List<Backlog> getAllBacklogs();
+
+    @Query("SELECT * FROM Backlog where deptCode = :deptCode AND courseCode = :courseCode")
+    List<Backlog> getBacklogFor(String deptCode, String courseCode);
 }
