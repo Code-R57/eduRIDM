@@ -13,8 +13,7 @@ import androidx.navigation.Navigation;
 
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentEditTimetableBinding;
-import com.ridm.eduRIDM.databinding.FragmentPlannerBinding;
-import com.ridm.eduRIDM.screen.planner.PlannerViewModel;
+import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 public class EditTimetableFragment extends Fragment {
 
@@ -24,11 +23,12 @@ public class EditTimetableFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        viewModel = new ViewModelProvider(this).get(EditTimetableViewModel.class);
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this).get(EditTimetableViewModel.class);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_edit_timetable, container, false);
 
@@ -36,8 +36,18 @@ public class EditTimetableFragment extends Fragment {
 
         binding.setViewModel(viewModel);
 
+        binding.addCourseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TimeTable course = new TimeTable();
+                viewModel.courseList.add(course);
+                TimeTableCardAdapter adapter = new TimeTableCardAdapter(viewModel.courseList, requireContext(), viewModel.courseList.size());
+                binding.courseList.setAdapter(adapter);
+            }
+        });
+
         viewModel.getOnSubmit().observe(getViewLifecycleOwner(), onSubmit -> {
-            if(onSubmit == Boolean.TRUE) {
+            if (onSubmit == Boolean.TRUE) {
                 Navigation.findNavController(this.requireView()).navigate(R.id.action_editTimetableFragment_to_profileScreenFragment);
                 viewModel.doneReachingProfile();
             }

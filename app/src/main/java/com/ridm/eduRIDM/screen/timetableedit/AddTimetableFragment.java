@@ -16,6 +16,7 @@ import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentAddTimetableBinding;
 import com.ridm.eduRIDM.databinding.FragmentEditTimetableBinding;
 import com.ridm.eduRIDM.databinding.FragmentPlannerBinding;
+import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 import com.ridm.eduRIDM.screen.planner.PlannerViewModel;
 
 public class AddTimetableFragment extends Fragment {
@@ -26,17 +27,28 @@ public class AddTimetableFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        viewModel = new ViewModelProvider(this).get(AddTimetableViewModel.class);
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this).get(AddTimetableViewModel.class);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_timetable, container, false);
 
         binding.setLifecycleOwner(this);
 
         binding.setViewModel(viewModel);
+
+        binding.addCourseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TimeTable course = new TimeTable();
+                viewModel.courseList.add(course);
+                TimeTableCardAdapter adapter = new TimeTableCardAdapter(viewModel.courseList, requireContext(), viewModel.courseList.size());
+                binding.courseList.setAdapter(adapter);
+            }
+        });
 
         viewModel.getNavigateToHomeScreen().observe(getViewLifecycleOwner(), navigateToHomeScreen -> {
             if(navigateToHomeScreen == Boolean.TRUE) {

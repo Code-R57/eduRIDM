@@ -39,7 +39,7 @@ public class UpdateCgpaFragment extends Fragment {
 
         binding.setViewModel(viewModel);
 
-        CgpaListAdapter adapter = new CgpaListAdapter((ArrayList<CurrentGrade>) viewModel.currentGradeList, requireContext());
+        CgpaListAdapter adapter = new CgpaListAdapter(viewModel.currentGradeList, requireContext());
 
         binding.gradeList.setAdapter(adapter);
 

@@ -1,12 +1,24 @@
 package com.ridm.eduRIDM.screen.planner;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.ridm.eduRIDM.MainActivity;
+import com.ridm.eduRIDM.model.room.CurrentGrade.CurrentGrade;
+import com.ridm.eduRIDM.model.room.Plan.Plan;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlannerViewModel extends ViewModel {
 
+    List<Plan> planList = new ArrayList<>();
+
     private MutableLiveData<Boolean> navigateToAddPlan = new MutableLiveData<>(Boolean.FALSE);
+
     public LiveData<Boolean> getNavigateToAddPlan() {
         return navigateToAddPlan;
     }
@@ -17,5 +29,9 @@ public class PlannerViewModel extends ViewModel {
 
     public void doneNavigatingToAddPlan() {
         navigateToAddPlan.setValue(Boolean.FALSE);
+    }
+
+    public void getAllPlans(String date) {
+        planList = MainActivity.roomRepository.getAllPlans(date);
     }
 }
