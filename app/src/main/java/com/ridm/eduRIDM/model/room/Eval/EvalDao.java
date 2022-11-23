@@ -18,4 +18,7 @@ public interface EvalDao {
 
     @Query("SELECT * FROM Eval")
     List<Eval> getAllEvals();
+
+    @Query("SELECT * FROM Eval WHERE date BETWEEN :date1 AND :date2")
+    List<Eval> getUpcomingEvals(String date1, String date2);
 }

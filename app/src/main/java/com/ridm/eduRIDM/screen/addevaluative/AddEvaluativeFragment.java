@@ -44,7 +44,7 @@ public class AddEvaluativeFragment extends Fragment {
             }
         });
 
-        binding.add.setOnClickListener(new View.OnClickListener() {
+        binding.addEvalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Eval eval = new Eval();
