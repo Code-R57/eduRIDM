@@ -16,8 +16,7 @@ public class AddEvaluativeViewModel extends ViewModel {
         return navigateToMyAcads;
     }
 
-    public void onSubmit() {
-
+    public void onNavigateToMyAcadsClicked() {
         insertEval();
         navigateToMyAcads.setValue(Boolean.TRUE);
     }

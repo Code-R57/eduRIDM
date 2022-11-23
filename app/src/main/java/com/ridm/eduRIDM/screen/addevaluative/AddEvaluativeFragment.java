@@ -13,6 +13,7 @@ import androidx.navigation.Navigation;
 
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentAddEvaluativeBinding;
+import com.ridm.eduRIDM.databinding.FragmentAddEvaluativeBindingImpl;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
 
 public class AddEvaluativeFragment extends Fragment {
@@ -60,7 +61,7 @@ public class AddEvaluativeFragment extends Fragment {
                 eval.setNature(binding.spinnerNature.getSelectedItem().toString());
 
                 viewModel.eval=eval;
-                viewModel.onSubmit();
+                viewModel.onNavigateToMyAcadsClicked();
             }
         });
 
