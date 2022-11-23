@@ -88,7 +88,7 @@
         </ScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_plan"
+            android:id="@+id/add_eval"
             style="@style/AppShapeAppearance.SmallComponent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
