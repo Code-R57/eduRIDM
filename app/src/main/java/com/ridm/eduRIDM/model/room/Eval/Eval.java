@@ -18,6 +18,9 @@ public class Eval implements Serializable {
     @ColumnInfo(name = "courseCode")
     private String courseCode;
 
+    @ColumnInfo(name = "courseName")
+    private String courseName;
+
     @ColumnInfo(name = "date")
     private String date;
 
@@ -108,5 +111,13 @@ public class Eval implements Serializable {
 
     public void setNature(String nature) {
         this.nature = nature;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 }
