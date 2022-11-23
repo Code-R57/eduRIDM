@@ -2,11 +2,12 @@ package com.ridm.eduRIDM.model.room;
 
 import android.app.Application;
 
+import com.ridm.eduRIDM.model.room.Backlog.Backlog;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
 import com.ridm.eduRIDM.model.room.ExtraClass.ExtraClass;
 import com.ridm.eduRIDM.model.room.CurrentGrade.CurrentGrade;
 import com.ridm.eduRIDM.model.room.Plan.Plan;
-import com.ridm.eduRIDM.model.room.Plan.PlanDao;
+import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,5 +72,44 @@ public class RoomRepository {
         });
 
         return currentGradeList;
+    }
+
+    public List<Backlog> getBacklogForCourse(String deptCode, String courseCode) {
+        List<Backlog> backlogList = new ArrayList<>();
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                backlogList.addAll(appDatabase.backlogDao().getBacklogFor(deptCode, courseCode));
+            }
+        });
+
+        return backlogList;
+    }
+
+    public List<TimeTable> getCourses() {
+        List<TimeTable> courseList = new ArrayList<>();
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                courseList.addAll(appDatabase.timeTableDao().getAllCourses());
+            }
+        });
+
+        return courseList;
+    }
+
+    public List<Eval> getAllEvals() {
+        List<Eval> eval = new ArrayList<>();
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                eval.addAll(appDatabase.evalDao().getAllEvals());
+            }
+        });
+
+        return eval;
     }
 }

@@ -14,11 +14,12 @@ import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.model.room.CurrentGrade.CurrentGrade;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CgpaListAdapter extends ArrayAdapter<CurrentGrade>{
 
-    private ArrayList<CurrentGrade> currentGradesList;
-    Context mCtx;
+    private List<CurrentGrade> currentGradesList;
+    private Context mCtx;
 
     public static class ViewHolder {
         TextView deptCode;
@@ -38,7 +39,7 @@ public class CgpaListAdapter extends ArrayAdapter<CurrentGrade>{
         return currentGradesList.size();
     }
 
-    public CgpaListAdapter(ArrayList<CurrentGrade> currentGradesList, Context mCtx) {
+    public CgpaListAdapter(List<CurrentGrade> currentGradesList, Context mCtx) {
         super(mCtx, R.layout.grade_card);
         this.currentGradesList = currentGradesList;
         this.mCtx = mCtx;
@@ -56,7 +57,7 @@ public class CgpaListAdapter extends ArrayAdapter<CurrentGrade>{
         if(convertView == null) {
             viewHolder = new ViewHolder();
 
-            LayoutInflater inflater = LayoutInflater.from(getContext());
+            LayoutInflater inflater = LayoutInflater.from(mCtx);
             convertView = inflater.inflate(R.layout.grade_card, parent, false);
             viewHolder.courseCode = (TextView) convertView.findViewById(R.id.dept_code);
             viewHolder.courseName = (TextView) convertView.findViewById(R.id.grade_course_name);
