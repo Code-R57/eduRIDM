@@ -60,10 +60,14 @@
     <string name="course_name">Software Development for\nPortable Devices</string>
     <string name="evaluative_date">16/10/1022</string>
     <string name="evaluative_time">10:00</string>
-    <string name="evaluative_type">Type: Quiz</string>
-    <string name="evaluative_syllabus">Syllabus:\nActivity Lifecycle, Fragments, Database- SQLite\nRoom, Layouts, App Architecture.</string>
-    <string name="evaluative_nature">Nature: Open Book</string>
-    <string name="evaluative_duration">Duration: 30 Minutes</string>
+    <string name="evaluative_type">Type:</string>
+    <string name="evaluative_type_text">Quiz</string>
+    <string name="evaluative_syllabus">Syllabus:</string>
+    <string name="evaluative_syllabus_desc">Activity Lifecycle, Fragments, Database- SQLite\nRoom, Layouts, App Architecture.</string>
+    <string name="evaluative_nature">Nature:</string>
+    <string name="nature_value">Open Book</string>
+    <string name="evaluative_duration">Duration:</string>
+    <string name="duration_value">30 Minutes</string>
 
     <!--  Backlog Card  -->
     <string name="course_name_backlog">Software Development for Portable Devices</string>
@@ -114,7 +118,7 @@
     <string name="grade_dept_code">CS</string>
     <string name="grade_course_name">Software Development for Portable Devices</string>
     <string name="grade_course_code">F314</string>
-    
+
     <!--  Add Course Card  -->
     <string name="course_code_heading">Course Code</string>
     <string name="lecture_heading">Lecture</string>
@@ -142,7 +146,8 @@
     <string name="planner_heading">Your Plans</string>
 
     <!--  My Acads  -->
-    <string name="my_acads_header">Evaluatives</string>
+    <string name="my_acads_header_eval">Evaluatives</string>
+    <string name="my_acads_header_backlog">Your Backlogs</string>
     <string name="evals">Evals</string>
     <string name="backlog">Backlog</string>
 
@@ -164,5 +169,8 @@
     <string-array name="time_dummy">
         <item>12:30</item>
         <item>14:20</item>
+    </string-array>
+    <string-array name="date_dummy">
+        <item>2022-11-23</item>
     </string-array>
 </resources>

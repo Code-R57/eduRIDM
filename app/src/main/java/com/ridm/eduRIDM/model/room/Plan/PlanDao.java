@@ -17,5 +17,6 @@ public interface PlanDao {
     void deletePlan(Plan plan);
 
     @Query("SELECT * FROM `Plan` where Date = :date")
-    List<Plan> getAllExtraClassByDate(String date);
+    List<Plan> getPlanByDate(String date);
 }
+

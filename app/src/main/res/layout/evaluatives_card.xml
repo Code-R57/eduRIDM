@@ -16,22 +16,38 @@
             android:background="@drawable/evaluative_card_upper_border">
 
             <TextView
-                android:id="@+id/dept_code"
+                android:id="@+id/eval_dept_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="36dp"
-                android:text="@string/course_code"
+                android:layout_marginEnd="10dp"
+                android:text="@string/grade_dept_code"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/course_name"
+                app:layout_constraintEnd_toStartOf="@+id/course_code_eval_card"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.3"
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <TextView
-                android:id="@+id/course_name"
+                android:id="@+id/course_code_eval_card"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/grade_course_code"
+                android:textColor="@color/black"
+                app:layout_constraintBaseline_toBaselineOf="@+id/eval_dept_code"
+                app:layout_constraintEnd_toStartOf="@+id/time"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/eval_dept_code"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/course_name"
+                android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
@@ -40,7 +56,7 @@
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dept_code" />
+                app:layout_constraintTop_toBottomOf="@+id/eval_dept_code" />
 
             <TextView
                 android:id="@+id/date"
@@ -61,11 +77,11 @@
                 android:layout_marginEnd="16dp"
                 android:text="@string/evaluative_time"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/dept_code"
+                app:layout_constraintBottom_toBottomOf="@+id/eval_dept_code"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/dept_code"
-                app:layout_constraintTop_toTopOf="@+id/dept_code" />
+                app:layout_constraintStart_toEndOf="@+id/eval_dept_code"
+                app:layout_constraintTop_toTopOf="@+id/eval_dept_code" />
 
             <ImageView
                 android:id="@+id/more_options"
@@ -93,9 +109,20 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/evaluative_type"
                 android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/type_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/evaluative_type_text"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/type"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -114,33 +141,71 @@
                 app:layout_constraintTop_toBottomOf="@+id/type" />
 
             <TextView
+                android:id="@+id/syllabus_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/evaluative_syllabus_desc"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/syllabus" />
+
+            <TextView
                 android:id="@+id/nature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/evaluative_nature"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/nature_value"
+                app:layout_constraintTop_toBottomOf="@+id/syllabus_description" />
+
+            <TextView
+                android:id="@+id/nature_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="@string/evaluative_nature"
+                android:text="@string/nature_value"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/duration"
-                app:layout_constraintTop_toBottomOf="@+id/syllabus" />
+                app:layout_constraintTop_toBottomOf="@+id/syllabus_description" />
 
             <TextView
                 android:id="@+id/duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="@string/evaluative_duration"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/syllabus"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/syllabus"
-                app:layout_constraintTop_toBottomOf="@+id/syllabus" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/syllabus_description" />
+
+            <TextView
+                android:id="@+id/duration_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/duration_value"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/duration"
+                app:layout_constraintTop_toBottomOf="@+id/syllabus_description" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
