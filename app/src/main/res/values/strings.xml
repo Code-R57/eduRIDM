@@ -118,7 +118,7 @@
     <string name="grade_dept_code">CS</string>
     <string name="grade_course_name">Software Development for Portable Devices</string>
     <string name="grade_course_code">F314</string>
-    
+
     <!--  Add Course Card  -->
     <string name="course_code_heading">Course Code</string>
     <string name="lecture_heading">Lecture</string>
@@ -169,5 +169,8 @@
     <string-array name="time_dummy">
         <item>12:30</item>
         <item>14:20</item>
+    </string-array>
+    <string-array name="date_dummy">
+        <item>2022-11-23</item>
     </string-array>
 </resources>

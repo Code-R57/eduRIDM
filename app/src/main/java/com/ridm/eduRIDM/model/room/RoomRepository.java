@@ -32,7 +32,7 @@ public class RoomRepository {
         });
     }
 
-    public void insertEval(Eval eval){
+    public void insertEval(Eval eval) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -40,8 +40,8 @@ public class RoomRepository {
             }
         });
     }
-    
-    public void insertExtraClass(ExtraClass extraClass){
+
+    public void insertExtraClass(ExtraClass extraClass) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -54,7 +54,7 @@ public class RoomRepository {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                for(CurrentGrade currentGrade: currentGradeList) {
+                for (CurrentGrade currentGrade : currentGradeList) {
                     appDatabase.currentGradeDao().insertCurrentGrade(currentGrade);
                 }
             }
@@ -70,9 +70,18 @@ public class RoomRepository {
                 currentGradeList.addAll(appDatabase.currentGradeDao().getAllCurrentGrades());
             }
         });
-
         return currentGradeList;
     }
+
+    public List<Plan> getAllPlans(String date) {
+        List<Plan> planList = new ArrayList<>();
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                planList.addAll(appDatabase.planDao().getPlanByDate(date));
+            }
+        });
+        return planList;
 
     public List<Backlog> getBacklogForCourse(String deptCode, String courseCode) {
         List<Backlog> backlogList = new ArrayList<>();
