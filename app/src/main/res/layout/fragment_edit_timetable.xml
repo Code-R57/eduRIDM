@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <TextView
             android:id="@+id/edit_timetable"
             style="@style/form_header_style"
@@ -24,7 +23,7 @@
             android:layout_marginEnd="8dp"
             android:text="@string/edit_tt"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.500"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

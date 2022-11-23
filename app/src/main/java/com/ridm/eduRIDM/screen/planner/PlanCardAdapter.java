@@ -1,6 +1,5 @@
 package com.ridm.eduRIDM.screen.planner;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
