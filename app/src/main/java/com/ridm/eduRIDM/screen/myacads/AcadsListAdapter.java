@@ -1,7 +1,6 @@
 package com.ridm.eduRIDM.screen.myacads;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +48,6 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
 
     @Override
     public void onBindViewHolder(@NonNull AcadsViewHolder holder, int position) {
-//        Log.i("CustomDebug", String.valueOf(currentSelection.equals("Evals")));
         if (currentSelection.equals("Evals")) {
             Eval eval = evalList.get(position);
             holder.evalDeptCode.setText(eval.getDeptCode());

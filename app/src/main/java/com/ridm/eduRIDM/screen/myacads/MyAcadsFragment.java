@@ -45,8 +45,6 @@ public class MyAcadsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        viewModel = new ViewModelProvider(this).get(MyAcadsViewModel.class);
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_acads, container, false);
 
         binding.setLifecycleOwner(this);

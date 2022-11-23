@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,16 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentHomeScreenBinding;
-import com.ridm.eduRIDM.databinding.FragmentProfileScreenBinding;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
-import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
-import com.ridm.eduRIDM.screen.myprofile.ProfileViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 public class HomeScreenFragment extends Fragment {
     HomeScreenViewModel viewModel;
@@ -41,12 +36,12 @@ public class HomeScreenFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(HomeScreenViewModel.class);
 
         today = new Date();
-        String date1 = new SimpleDateFormat("yyyy-mm-dd").format(today);
-        dayAfterTomorrow = new Date(today.getTime() + (1000*60*60*24*2));
-        String date2 = new SimpleDateFormat("yyyy-mm-dd").format(dayAfterTomorrow);
+        String date1 = new SimpleDateFormat("yyyy-MM-dd").format(today);
+        dayAfterTomorrow = new Date(today.getTime() + (1000 * 60 * 60 * 24 * 2));
+        String date2 = new SimpleDateFormat("yyyy-MM-dd").format(dayAfterTomorrow);
         Calendar calender = Calendar.getInstance();
         day = calender.get(Calendar.DAY_OF_WEEK);
-        hashDay = hashDay.substring(0,day) + '1' + hashDay.substring(day+1);
+        hashDay = hashDay.substring(0, day) + '1' + hashDay.substring(day + 1);
 
         viewModel.getAllEvals();
         viewModel.getClassesToday(hashDay);
@@ -59,23 +54,18 @@ public class HomeScreenFragment extends Fragment {
         binding.setLifecycleOwner(this);
 
         binding.setViewModel(viewModel);
-//        viewModel.getAllEvals();
-//        List<Eval> evals = new ArrayList<>();
-
-
-
 
         UpcomingEvalsAdapter adapter = new UpcomingEvalsAdapter((ArrayList<Eval>) viewModel.upcomingEvalList, requireContext());
 
         binding.upcomingEvalsList.setAdapter(adapter);
 
-        UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(),viewModel.classList);
+        UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList);
 
         binding.yourClassesList.setAdapter(upcomingClassesAdapter);
         binding.yourClassesList.setLayoutManager(new LinearLayoutManager(getContext()));
 
         viewModel.getNavigateToStopwatchScreen().observe(getViewLifecycleOwner(), navigateToStopwatchScreen -> {
-            if(navigateToStopwatchScreen == Boolean.TRUE) {
+            if (navigateToStopwatchScreen == Boolean.TRUE) {
                 Navigation.findNavController(this.requireView()).navigate(R.id.action_homeScreenFragment_to_stopwatchScreenFragment);
                 viewModel.doneNavigatingToStopwatchScreen();
             }
