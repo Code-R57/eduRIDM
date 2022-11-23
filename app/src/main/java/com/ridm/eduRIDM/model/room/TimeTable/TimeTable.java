@@ -22,6 +22,9 @@ public class TimeTable implements Serializable {
     @ColumnInfo(name = "section")
     private String section;
 
+    @ColumnInfo(name = "courseName")
+    private String courseName;
+
     @ColumnInfo(name = "days")
     private String days;
 
@@ -79,5 +82,13 @@ public class TimeTable implements Serializable {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 }

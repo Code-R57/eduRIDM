@@ -41,19 +41,18 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.mtoolbar);
         setSupportActionBar(toolbar);
 
-        NavigationUI.setupActionBarWithNavController(this,navController);
+        NavigationUI.setupActionBarWithNavController(this, navController);
 
         bottomView = findViewById(R.id.bottomNav);
         NavigationUI.setupWithNavController(bottomView, navController);
-        NavigationUI.setupWithNavController(toolbar,navController);
+        NavigationUI.setupWithNavController(toolbar, navController);
 
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
-                if(navDestination.getId() == R.id.homeScreenFragment || navDestination.getId() == R.id.plannerFragment || navDestination.getId() == R.id.myAcadsFragment) {
+                if (navDestination.getId() == R.id.homeScreenFragment || navDestination.getId() == R.id.plannerFragment || navDestination.getId() == R.id.myAcadsFragment) {
                     bottomView.setVisibility(View.VISIBLE);
-                }
-                else {
+                } else {
                     bottomView.setVisibility(View.GONE);
                 }
             }
@@ -62,14 +61,17 @@ public class MainActivity extends AppCompatActivity {
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
-                if(navDestination.getId() == R.id.welcomeScreenFragment) {
+                if (navDestination.getId() == R.id.welcomeScreenFragment) {
                     toolbar.setVisibility(View.GONE);
-                }
-                else if(navDestination.getId() == R.id.stopwatchScreenFragment)
-                {
+                } else if (navDestination.getId() == R.id.stopwatchScreenFragment || navDestination.getId() == R.id.registerFragment || navDestination.getId() == R.id.addTimetableFragment) {
+                    toolbar.setVisibility(View.VISIBLE);
                     toolbar.setBackground(new ColorDrawable(getResources().getColor(R.color.app_primary)));
-                }
-                else {
+                    toolbar.setNavigationIcon(null);
+                } else if (navDestination.getId() == R.id.homeScreenFragment || navDestination.getId() == R.id.plannerFragment || navDestination.getId() == R.id.myAcadsFragment) {
+                    toolbar.setVisibility(View.VISIBLE);
+                    toolbar.setBackground(new ColorDrawable(getResources().getColor(R.color.white)));
+                    toolbar.setNavigationIcon(null);
+                } else {
                     toolbar.setVisibility(View.VISIBLE);
                     toolbar.setBackground(new ColorDrawable(getResources().getColor(R.color.white)));
                 }
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.settingsFragment:
                 navController.navigate(R.id.settingsFragment);
                 return true;
@@ -96,5 +98,43 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
+                if (navDestination.getId() == R.id.stopwatchScreenFragment || navDestination.getId() == R.id.registerFragment || navDestination.getId() == R.id.addTimetableFragment) {
+                    MenuItem item1 = menu.findItem(R.id.settingsFragment);
+                    if (item1 != null)
+                        item1.setVisible(false);
+
+                    MenuItem item2 = menu.findItem(R.id.profileScreenFragment);
+                    if (item2 != null)
+                        item2.setVisible(false);
+                } else if (navDestination.getId() == R.id.profileScreenFragment) {
+                    MenuItem item2 = menu.findItem(R.id.profileScreenFragment);
+                    if (item2 != null)
+                        item2.setVisible(false);
+                } else if (navDestination.getId() == R.id.settingsFragment) {
+                    MenuItem item1 = menu.findItem(R.id.settingsFragment);
+                    if (item1 != null)
+                        item1.setVisible(false);
+                }
+                else
+                {
+                    MenuItem item1 = menu.findItem(R.id.settingsFragment);
+                    if (item1 != null)
+                        item1.setVisible(true);
+
+                    MenuItem item2 = menu.findItem(R.id.profileScreenFragment);
+                    if (item2 != null)
+                        item2.setVisible(true);
+                }
+            }
+        });
+        return true;
     }
 }
