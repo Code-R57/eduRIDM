@@ -50,47 +50,61 @@
             style="@style/form_text_style"
             android:layout_marginTop="32dp"
             android:text="@string/date"
-            app:layout_constraintEnd_toEndOf="@+id/spinner_date"
+            app:layout_constraintEnd_toEndOf="@+id/add_eval_date_picker"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/spinner_date"
+            app:layout_constraintStart_toStartOf="@+id/add_eval_date_picker"
             app:layout_constraintTop_toBottomOf="@+id/spinner_subject" />
 
-        <Spinner
-            android:id="@+id/spinner_date"
+        <EditText
+            android:id="@+id/add_eval_date_picker"
             android:layout_width="136dp"
             android:layout_height="36dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:background="@drawable/spinner_border"
-            android:entries="@array/date_dummy"
-            app:layout_constraintEnd_toStartOf="@+id/spinner_time"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:background="@drawable/edit_text_border"
+            android:drawableEnd="@drawable/calender_icon"
+            android:padding="10dp"
+            android:ems="10"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/add_eval_time_picker"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/date" />
+            app:layout_constraintTop_toBottomOf="@+id/date"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="Select a date"/>
 
         <TextView
             android:id="@+id/time"
             style="@style/form_text_style"
             android:layout_marginTop="32dp"
             android:text="@string/time"
-            app:layout_constraintEnd_toEndOf="@+id/spinner_time"
+            app:layout_constraintEnd_toEndOf="@+id/add_eval_time_picker"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/spinner_time"
+            app:layout_constraintStart_toStartOf="@+id/add_eval_time_picker"
             app:layout_constraintTop_toBottomOf="@+id/spinner_subject" />
 
-        <Spinner
-            android:id="@+id/spinner_time"
+        <EditText
+            android:id="@+id/add_eval_time_picker"
             android:layout_width="136dp"
             android:layout_height="36dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
-            android:entries="@array/dummy_entries"
-            android:background="@drawable/spinner_border"
+            android:background="@drawable/edit_text_border"
+            android:drawableEnd="@drawable/ic_baseline_access_time_24"
+            android:padding="10dp"
+            android:ems="10"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/spinner_date"
-            app:layout_constraintTop_toBottomOf="@+id/time" />
+            app:layout_constraintStart_toEndOf="@+id/add_eval_date_picker"
+            app:layout_constraintTop_toBottomOf="@+id/time"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="Select a time"/>
 
         <TextView
             android:id="@+id/type"
@@ -100,7 +114,7 @@
             app:layout_constraintEnd_toEndOf="@+id/spinner_type"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/spinner_type"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_date" />
+            app:layout_constraintTop_toBottomOf="@+id/add_eval_date_picker" />
 
         <Spinner
             android:id="@+id/spinner_type"
@@ -134,11 +148,15 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/edit_text_border"
-
             android:ems="10"
             android:fontFamily="@font/roboto"
-            android:inputType="textPersonName"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:padding="10dp"
+            android:textSize="14sp"
+            android:hint="Add syllabus"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/syllabus" />
 
@@ -171,24 +189,29 @@
             style="@style/form_text_style"
             android:layout_marginTop="32dp"
             android:text="@string/duration"
-            app:layout_constraintEnd_toEndOf="@+id/spinner_duration"
+            app:layout_constraintEnd_toEndOf="@+id/add_eval_duration"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/spinner_duration"
+            app:layout_constraintStart_toStartOf="@+id/add_eval_duration"
             app:layout_constraintTop_toBottomOf="@+id/spinner_nature" />
 
-        <Spinner
-            android:id="@+id/spinner_duration"
+        <EditText
+            android:id="@+id/add_eval_duration"
             android:layout_width="148dp"
             android:layout_height="36dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
-            android:entries="@array/dummy_entries"
-            android:background="@drawable/spinner_border"
+            android:background="@drawable/edit_text_border"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/duration" />
+            app:layout_constraintTop_toBottomOf="@+id/duration"
+            android:drawableEnd="@drawable/ic_baseline_access_time_24"
+            android:padding="10dp"
+            android:inputType="number"
+            android:ems="10"
+            android:textSize="14sp"
+            android:hint="Specify Duration"/>
 
         <Button
             android:id="@+id/add_eval_button"
