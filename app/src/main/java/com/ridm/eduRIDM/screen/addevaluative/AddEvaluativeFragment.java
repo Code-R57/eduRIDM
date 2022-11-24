@@ -76,7 +76,11 @@ public class AddEvaluativeFragment extends Fragment {
 
                 eval.setDeptCode(course[0]);
 //                eval.setCourseCode(course[1]);
-                eval.setDate(binding.addEvalDatePicker.getText().toString());
+
+                String[] dates = binding.addEvalDatePicker.getText().toString().split("/");
+                String date = dates[2] + "-" + dates[1] + "-" + dates[0];
+                eval.setDate(date);
+
                 eval.setTime(binding.addEvalTimePicker.getText().toString());
                 eval.setDuration(Integer.parseInt(binding.addEvalDuration.getText().toString()));
                 eval.setType(binding.spinnerType.getSelectedItem().toString());
@@ -99,7 +103,8 @@ public class AddEvaluativeFragment extends Fragment {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                                binding.addEvalDatePicker.setText(day + "/" + (month + 1) + "/" + year);
+                                String date = day + "/" + (month + 1) + "/" + year;
+                                binding.addEvalDatePicker.setText(date);
                             }
                         }, year, month, dayOfMonth);
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
@@ -119,7 +124,8 @@ public class AddEvaluativeFragment extends Fragment {
                         } else {
                             amPm = "AM";
                         }
-                        binding.addEvalTimePicker.setText(String.format("%02d:%02d", hourOfDay, minutes) + amPm);
+                        String time = String.format("%02d:%02d", hourOfDay, minutes) + amPm;
+                        binding.addEvalTimePicker.setText(time);
                     }
                 }, 0, 0, false);
                 timePickerDialog.show();

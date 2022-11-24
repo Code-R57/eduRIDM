@@ -70,10 +70,13 @@ public class AddPlanFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Plan plan = new Plan();
-//                mDisplayDate = (EditText) view.findViewById(R.id.date_picker);
                 plan.setTitle(binding.editTextName.getText().toString());
                 plan.setDescription(binding.editTextDesc.getText().toString());
-                plan.setDate(binding.datePicker.getText().toString());
+
+                String[] dates = binding.datePicker.getText().toString().split("/");
+                String date = dates[2] + "-" + dates[1] + "-" + dates[0];
+                plan.setDate(date);
+
                 plan.setStartTime(binding.spinnerStartTime.getText().toString());
                 plan.setEndTime(binding.spinnerEndTime.getText().toString());
                 plan.setRepeatFor(binding.spinnerRepeatFor.getSelectedItem().toString());
@@ -101,7 +104,8 @@ public class AddPlanFragment extends Fragment {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                                binding.datePicker.setText(day + "/" + (month + 1) + "/" + year);
+                                String date = day + "/" + (month + 1) + "/" + year;
+                                binding.datePicker.setText(date);
                             }
                         }, year, month, dayOfMonth);
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
