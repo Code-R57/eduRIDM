@@ -40,7 +40,7 @@
     <string name="type">Type</string>
     <string name="syllabus">Syllabus</string>
     <string name="nature">Nature</string>
-    <string name="duration">Duration</string>
+    <string name="duration">Duration(in Minutes)</string>
     <string name="button_add">Add</string>
 
     <string-array name="add_evaluative_type">
