@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.ridm.eduRIDM.screen.addplan.AddPlanViewModel" />
@@ -69,23 +70,25 @@
             style="@style/form_text_style"
             android:layout_marginTop="16dp"
             android:text="@string/start_date"
-            app:layout_constraintEnd_toEndOf="@+id/spinner_date"
+            app:layout_constraintEnd_toEndOf="@+id/date_picker"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/spinner_date"
+            app:layout_constraintStart_toStartOf="@+id/date_picker"
             app:layout_constraintTop_toBottomOf="@+id/checkBox_repeat_plan" />
 
-        <Spinner
-            android:id="@+id/spinner_date"
+        <EditText
+            android:id="@+id/date_picker"
             android:layout_width="136dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:background="@drawable/spinner_border"
+            android:background="@drawable/edit_text_border"
+            android:clickable="false"
+            android:cursorVisible="false"
             android:drawableEnd="@drawable/calender_icon"
             android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:hint="@string/select_date_hint"
-            android:entries="@array/date_dummy"
-            android:inputType="textPersonName"
             android:padding="10dp"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +115,7 @@
             app:layout_constraintEnd_toStartOf="@+id/checkBox_tue"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@+id/spinner_date"
+            app:layout_constraintStart_toEndOf="@+id/date_picker"
             app:layout_constraintTop_toBottomOf="@+id/textView_repeat_on" />
 
         <TextView
@@ -280,7 +283,7 @@
             app:layout_constraintEnd_toEndOf="@+id/spinner_repeat_for"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/spinner_repeat_for"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_date" />
+            app:layout_constraintTop_toBottomOf="@+id/date_picker" />
 
         <Spinner
             android:id="@+id/spinner_repeat_for"
@@ -305,14 +308,18 @@
             app:layout_constraintStart_toStartOf="@+id/spinner_start_time"
             app:layout_constraintTop_toBottomOf="@+id/spinner_repeat_for" />
 
-        <Spinner
+        <EditText
             android:id="@+id/spinner_start_time"
             android:layout_width="136dp"
             android:layout_height="36dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:background="@drawable/spinner_border"
-            android:entries="@array/time_dummy"
+            android:background="@drawable/edit_text_border"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:drawableEnd="@drawable/ic_baseline_access_time_24"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -327,14 +334,18 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/spinner_end_time" />
 
-        <Spinner
+        <EditText
             android:id="@+id/spinner_end_time"
             android:layout_width="136dp"
             android:layout_height="36dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/spinner_border"
-            android:entries="@array/time_dummy"
+            android:background="@drawable/edit_text_border"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:drawableEnd="@drawable/ic_baseline_access_time_24"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -397,7 +408,7 @@
             style="@style/form_button_style"
             android:text="@string/add_plan"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
