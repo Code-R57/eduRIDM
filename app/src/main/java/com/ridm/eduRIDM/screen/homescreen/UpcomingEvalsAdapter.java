@@ -71,7 +71,10 @@ public class UpcomingEvalsAdapter extends ArrayAdapter<Eval> {
         viewHolder.deptCode.setText(eval.getDeptCode());
         viewHolder.courseName.setText(eval.getCourseName());
         viewHolder.time.setText(eval.getTime());
-        viewHolder.date.setText(eval.getDate());
+
+        String[] dates = eval.getDate().split("-");
+        String date = dates[2] + "/" + dates[1] + "/" + dates[0];
+        viewHolder.date.setText(date);
 
         return convertView;
     }

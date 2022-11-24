@@ -54,7 +54,11 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
             holder.evalCourseCode.setText(eval.getCourseCode());
             holder.evalCourseName.setText(eval.getCourseName());
             holder.time.setText(eval.getTime());
-            holder.date.setText(eval.getDate());
+
+            String[] dates = eval.getDate().split("-");
+            String date = dates[2] + "/" + dates[1] + "/" + dates[0];
+            holder.date.setText(date);
+
             holder.duration.setText(String.valueOf(eval.getDuration()));
             holder.nature.setText(eval.getNature());
             holder.typeText.setText(eval.getType());

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class AddTimetableViewModel extends ViewModel {
         return navigateToHomeScreen;
     }
 
-    List<TimeTable> courseList = new ArrayList<>();
+    List<TimeTable> currentCourseList = new ArrayList<>();
 
     public void onSubmitClicked() {
         navigateToHomeScreen.setValue(Boolean.TRUE);
@@ -28,4 +29,6 @@ public class AddTimetableViewModel extends ViewModel {
     public void doneReachingHomeScreen() {
         navigateToHomeScreen.setValue(Boolean.FALSE);
     }
+
+    List<QueryDocumentSnapshot> coursesList = new ArrayList<>();
 }
