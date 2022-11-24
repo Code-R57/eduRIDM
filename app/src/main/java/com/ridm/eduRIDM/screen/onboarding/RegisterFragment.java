@@ -1,11 +1,14 @@
 package com.ridm.eduRIDM.screen.onboarding;
 
+import static com.ridm.eduRIDM.MainActivity.account;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -46,6 +49,34 @@ public class RegisterFragment extends Fragment {
             if(navigateToAddTimetable == Boolean.TRUE) {
                 Navigation.findNavController(this.requireView()).navigate(R.id.action_registerFragment_to_addTimetableFragment);
                 viewModel.doneNavigatingToAddTimetable();
+            }
+        });
+
+        binding.fresherCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b) {
+                    binding.creditsCompleted.setText("0");
+                    binding.currentCgpa.setText("0");
+                }
+                else {
+                    binding.creditsCompleted.setText("");
+                    binding.currentCgpa.setText("");
+                }
+            }
+        });
+
+        binding.nextButtonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.userInfo.put("CGPA", Float.parseFloat(String.valueOf(binding.currentCgpa.getText())));
+                viewModel.userInfo.put("CollegeID", binding.idEditText.getText().toString());
+                viewModel.userInfo.put("CredsCompleted", Integer.parseInt(binding.creditsCompleted.getText().toString()));
+                viewModel.userInfo.put("CurrentSemester", binding.currentSemSpinner.getSelectedItem().toString());
+                viewModel.userInfo.put("EmailID", account.getEmail());
+                viewModel.userInfo.put("Name", binding.nameEditText.getText().toString());
+
+                viewModel.addUserToFirebase(account.getEmail());
             }
         });
 
