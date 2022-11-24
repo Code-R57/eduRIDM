@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -17,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.ridm.eduRIDM.MainActivity;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentAddEvaluativeBinding;
 import com.ridm.eduRIDM.databinding.FragmentAddEvaluativeBindingImpl;
@@ -25,6 +27,8 @@ import com.ridm.eduRIDM.model.room.Eval.Eval;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddEvaluativeFragment extends Fragment {
 
@@ -41,12 +45,14 @@ public class AddEvaluativeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        viewModel = new ViewModelProvider(this).get(AddEvaluativeViewModel.class);
+
+        viewModel.getMyCourses();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        viewModel = new ViewModelProvider(this).get(AddEvaluativeViewModel.class);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_evaluative, container, false);
 

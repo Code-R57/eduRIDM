@@ -7,14 +7,21 @@ import androidx.lifecycle.ViewModel;
 import com.ridm.eduRIDM.MainActivity;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
 import com.ridm.eduRIDM.model.room.Plan.Plan;
+import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddEvaluativeViewModel extends ViewModel {
 
     Eval eval = new Eval();
+
     private MutableLiveData<Boolean> navigateToMyAcads = new MutableLiveData<>(Boolean.FALSE);
     public LiveData<Boolean> getNavigateToMyAcads() {
         return navigateToMyAcads;
     }
+
+    List<TimeTable> courseList = new ArrayList<>();
 
     public void onNavigateToMyAcadsClicked() {
         insertEval();
@@ -28,4 +35,10 @@ public class AddEvaluativeViewModel extends ViewModel {
     public void insertEval() {
         MainActivity.roomRepository.insertEval(eval);
     }
+
+    public void getMyCourses() {
+        courseList = MainActivity.roomRepository.getCourses();
+    }
+
+    List<String> courseCodes = new ArrayList<>();
 }
