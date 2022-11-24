@@ -28,6 +28,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.ridm.eduRIDM.databinding.ActivityMainBinding;
 import com.ridm.eduRIDM.model.room.RoomRepository;
 import com.ridm.eduRIDM.screen.onboarding.WelcomeScreenFragment;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements WelcomeScreenFrag
     public BottomNavigationView bottomView;
     public Toolbar toolbar;
     NavController navController;
+    public static FirebaseFirestore database;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -72,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements WelcomeScreenFrag
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Firebase Firestore
+        database = FirebaseFirestore.getInstance();
 
         // Google Sign In
         mAuth = FirebaseAuth.getInstance();
