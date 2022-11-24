@@ -15,6 +15,7 @@
         <TextView
             android:id="@+id/add_eval_header"
             style="@style/form_header_style"
+            android:layout_marginTop="32dp"
             android:text="@string/add_evaluative_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -38,7 +39,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
-            android:entries="@array/extra_class_dummy"
+            android:entries="@array/dummy_entries"
             android:background="@drawable/spinner_border"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +62,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/spinner_border"
-            android:entries="@array/dummy_entries"
+            android:entries="@array/date_dummy"
             app:layout_constraintEnd_toStartOf="@+id/spinner_time"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -108,7 +109,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
-            android:entries="@array/dummy_entries"
+            android:entries="@array/add_evaluative_type"
             android:background="@drawable/spinner_border"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -158,7 +159,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
-            android:entries="@array/dummy_entries"
+            android:entries="@array/add_evaluative_nature"
             android:background="@drawable/spinner_border"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -190,12 +191,12 @@
             app:layout_constraintTop_toBottomOf="@+id/duration" />
 
         <Button
-            android:id="@+id/add"
+            android:id="@+id/add_eval_button"
             style="@style/form_button_style"
             android:text="@string/button_add"
-            android:onClick="@{() -> viewModel.onNavigateToMyAcadsClicked()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

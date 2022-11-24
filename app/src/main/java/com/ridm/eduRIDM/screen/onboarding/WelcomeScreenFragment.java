@@ -1,5 +1,6 @@
 package com.ridm.eduRIDM.screen.onboarding;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,13 @@ public class WelcomeScreenFragment extends Fragment {
 
     WelcomeScreenViewModel viewModel;
     FragmentWelcomeScreenBinding binding;
+    private Listener listener;
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.listener = (Listener) context;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,19 +37,30 @@ public class WelcomeScreenFragment extends Fragment {
 
         viewModel = new ViewModelProvider(this).get(WelcomeScreenViewModel.class);
 
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_welcome_screen, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_welcome_screen, container, false);
 
         binding.setLifecycleOwner(this);
 
         binding.setViewModel(viewModel);
 
         viewModel.getNavigateToRegister().observe(getViewLifecycleOwner(), navigateToRegister -> {
-            if(navigateToRegister == Boolean.TRUE) {
+            if (navigateToRegister == Boolean.TRUE) {
                 Navigation.findNavController(this.requireView()).navigate(R.id.action_welcomeScreenFragment_to_registerFragment);
                 viewModel.doneNavigatingToRegister();
             }
         });
 
+        binding.googleSignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.signInClicked();
+            }
+        });
+
         return binding.getRoot();
+    }
+
+    public interface Listener {
+        void signInClicked();
     }
 }

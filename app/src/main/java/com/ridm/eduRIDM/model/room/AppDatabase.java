@@ -16,7 +16,7 @@ import com.ridm.eduRIDM.model.room.Plan.PlanDao;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTableDao;
 
-@Database(entities = {Backlog.class, CurrentGrade.class, Eval.class, ExtraClass.class, Plan.class, TimeTable.class}, version = 1)
+@Database(entities = {Backlog.class, CurrentGrade.class, Eval.class, ExtraClass.class, Plan.class, TimeTable.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract BacklogDao backlogDao();
 

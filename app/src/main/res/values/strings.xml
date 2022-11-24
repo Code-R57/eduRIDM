@@ -21,6 +21,12 @@
     <string name="select_date_hint">Select a date</string>
     <string name="add_description_hint">Add a Description…</string>
 
+    <string-array name="repeat_for_entries">
+        <item>Semester</item>
+        <item>Year</item>
+        <item>Month</item>
+    </string-array>
+
     <string-array name="priority_entries">
         <item>High</item>
         <item>Low</item>
@@ -37,8 +43,29 @@
     <string name="duration">Duration</string>
     <string name="button_add">Add</string>
 
+    <string-array name="add_evaluative_type">
+        <item>Quiz</item>
+        <item>Lab Quiz</item>
+        <item>Assignment</item>
+        <item>Project</item>
+        <item>Midsem</item>
+        <item>Compre</item>
+    </string-array>
+
+    <string-array name="add_evaluative_nature">
+        <item>Open Book</item>
+        <item>Closed Book</item>
+        <item>Partial Open Book</item>
+    </string-array>
+
     <!--  Add Extra Class Screen  -->
     <string name="add_extra_class_header">Add Extra Class</string>
+
+    <string-array name="add_extra_class_type">
+        <item>Lecture</item>
+        <item>Tutorial</item>
+        <item>Lab</item>
+    </string-array>
 
     <!--  Register Screen  -->
     <string name="register_header">You look like a new user,</string>
@@ -136,6 +163,18 @@
     <string name="final_cgpa_value">8.500</string>
     <string name="update">Update</string>
 
+    <string-array name="grades">
+        <item>A</item>
+        <item>A-</item>
+        <item>B</item>
+        <item>B-</item>
+        <item>C</item>
+        <item>C-</item>
+        <item>D</item>
+        <item>E</item>
+        <item>NC</item>
+    </string-array>
+
     <!--  Add Timetable  -->
     <string name="add_tt">Add Timetable</string>
     <string name="add_course">Add Course</string>
@@ -172,5 +211,11 @@
     </string-array>
     <string-array name="date_dummy">
         <item>2022-11-23</item>
+        <item>2022-11-24</item>
+        <item>2022-11-25</item>
+        <item>2022-11-26</item>
+        <item>2022-11-27</item>
+        <item>2022-11-28</item>
+        <item>2022-11-29</item>
     </string-array>
 </resources>

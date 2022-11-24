@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -55,4 +56,15 @@ dependencies {
     // Navigation
     implementation "androidx.navigation:navigation-ui:$nav_version"
     implementation "androidx.navigation:navigation-fragment:$nav_version"
+
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:31.1.0')
+    implementation "com.google.firebase:firebase-analytics"
+    implementation "com.google.firebase:firebase-auth"
+
+    // Google Sign In
+    implementation "com.google.android.gms:play-services-auth:20.4.0"
+
+    // Firestore
+    implementation "com.google.firebase:firebase-firestore"
 }

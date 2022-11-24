@@ -45,8 +45,6 @@ public class MyAcadsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        viewModel = new ViewModelProvider(this).get(MyAcadsViewModel.class);
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_acads, container, false);
 
         binding.setLifecycleOwner(this);
@@ -72,10 +70,12 @@ public class MyAcadsFragment extends Fragment {
                 if(binding.evalBacklogSelector.getCheckedRadioButtonId() == R.id.evals) {
                     viewModel.setCurrentSelection("Evals");
                     binding.header.setText(R.string.my_acads_header_eval);
+                    binding.addEval.setVisibility(View.VISIBLE);
                 }
                 else {
                     viewModel.setCurrentSelection("Backlog");
                     binding.header.setText(R.string.my_acads_header_backlog);
+                    binding.addEval.setVisibility(View.GONE);
                 }
             }
         });

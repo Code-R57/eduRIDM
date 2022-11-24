@@ -1,6 +1,5 @@
 package com.ridm.eduRIDM.screen.planner;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,35 +9,45 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.model.room.Plan.Plan;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class PlanCardAdapter extends RecyclerView.Adapter<PlanCardAdapter.PlanHolder> {
+public class PlanCardAdapter extends RecyclerView.Adapter<PlanCardAdapter.PlanViewHolder> {
 
     private Context context;
-    private ArrayList<Plan> planList;
+    private List<Plan> planList;
 
-    public PlanCardAdapter(Context context, ArrayList<Plan> planList) {
+    public PlanCardAdapter(Context context, List<Plan> planList) {
         this.context = context;
         this.planList = planList;
     }
 
-    @NonNull
     @Override
-    public PlanHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PlanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.planner_card, parent, false);
-        return new PlanHolder(view);
+        return new PlanViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PlanHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PlanViewHolder holder, int position) {
         Plan plan = planList.get(position);
-        holder.setDetails(plan);
+
+        holder.planName.setText(plan.getTitle());
+        holder.descInfo.setText(plan.getDescription());
+        String duration =  plan.getStartTime() + " - " + plan.getEndTime();
+        holder.timeDuration.setText(duration);
+
+        String priority = "Low";
+
+        if(plan.getPriority() == 1) {
+            priority = "High";
+        }
+
+        holder.priorityInfo.setText(priority);
     }
 
     @Override
@@ -46,49 +55,21 @@ public class PlanCardAdapter extends RecyclerView.Adapter<PlanCardAdapter.PlanHo
         return planList.size();
     }
 
-    class PlanHolder extends RecyclerView.ViewHolder {
-        private TextView time_duration, plan_name, priority_info, desc_info;
-        private ImageButton attended_button;
-        private ImageView more_options;
+    class PlanViewHolder extends RecyclerView.ViewHolder {
 
-        PlanHolder(View itemView) {
+        TextView timeDuration, planName, priorityInfo, descInfo;
+        ImageButton attendedButton;
+        ImageView moreOptions;
+
+        PlanViewHolder(View itemView) {
             super(itemView);
-            time_duration = itemView.findViewById(R.id.time_duration);
-            plan_name = itemView.findViewById(R.id.plan_name);
-            priority_info = itemView.findViewById(R.id.priority_info);
-            desc_info = itemView.findViewById(R.id.desc_info);
-            attended_button = itemView.findViewById(R.id.attended_button);
-            more_options = itemView.findViewById(R.id.more_options);
-        }
 
-        void setDetails(Plan plan) {
-            String startTime = plan.getStartTime();
-            String endTime = plan.getEndTime();
-
-            time_duration.setText(startTime + "-" + endTime);
-            plan_name.setText(plan.getTitle());
-
-            int priority = plan.getPriority();
-            if (priority == 0) {
-                priority_info.setText("Low");
-            } else {
-                priority_info.setText("High");
-            }
-
-            desc_info.setText(plan.getDescription());
-            attended_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //TODO
-                }
-            });
-
-            more_options.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //TODO
-                }
-            });
+            timeDuration = (TextView) itemView.findViewById(R.id.time_duration);
+            planName = (TextView) itemView.findViewById(R.id.plan_name);
+            priorityInfo = (TextView) itemView.findViewById(R.id.priority_info_value);
+            descInfo = (TextView) itemView.findViewById(R.id.desc_info);
+            attendedButton = (ImageButton) itemView.findViewById(R.id.attended_button);
+            moreOptions = (ImageView) itemView.findViewById(R.id.more_options);
         }
     }
 }

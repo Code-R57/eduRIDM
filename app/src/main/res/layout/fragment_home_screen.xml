@@ -110,7 +110,6 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:fastScrollAlwaysVisible="false">
-
                 </ListView>
 
                 <TextView
@@ -163,7 +162,7 @@
                     android:background="@drawable/classes_list_background"
                     android:orientation="vertical">
 
-                    <ListView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/your_classes_list"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

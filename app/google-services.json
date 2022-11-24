@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "512893978066",
+    "project_id": "eduridm",
+    "storage_bucket": "eduridm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512893978066:android:76c3a360ceaf6e34b6f40b",
+        "android_client_info": {
+          "package_name": "com.ridm.eduRIDM"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512893978066-husu6pc8kkgpkd8ehg0lvkfajsqp174d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ridm.eduRIDM",
+            "certificate_hash": "ea1bcd94700e1e26313ccb20f0fedfeaa02a8440"
+          }
+        },
+        {
+          "client_id": "512893978066-dtko1outnf1pv0g23octc5ngq17m3u31.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABdp8AMxPRM33QAD-mYf_59i0bX8kWB1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512893978066-dtko1outnf1pv0g23octc5ngq17m3u31.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
