@@ -27,7 +27,7 @@ public class HomeScreenFragment extends Fragment {
     private Date today;
     private Date dayAfterTomorrow;
     private int day;
-    private String hashDay = "%%%%%%%";
+    private final String hashDay = "%%%%%%%";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,10 +41,10 @@ public class HomeScreenFragment extends Fragment {
         String date2 = new SimpleDateFormat("yyyy-MM-dd").format(dayAfterTomorrow);
         Calendar calender = Calendar.getInstance();
         day = calender.get(Calendar.DAY_OF_WEEK);
-        hashDay = hashDay.substring(0, day) + '1' + hashDay.substring(day + 1);
+        String requiredHashDay = hashDay.substring(0, day) + '1' + hashDay.substring(day + 1);
 
         viewModel.getAllEvals();
-        viewModel.getClassesToday(hashDay);
+        viewModel.getClassesToday(requiredHashDay);
     }
 
     @Override

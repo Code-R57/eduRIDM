@@ -60,4 +60,8 @@ public class AddTimetableViewModel extends ViewModel {
     public void enrollCourse(TimeTable course) {
         roomRepository.insertCourse(course);
     }
+
+    public void addCourseToFirebase(String userKey, CourseClass course, String section) {
+        firebaseQueries.addCourseToUserTimeTable(userKey, course, section);
+    }
 }

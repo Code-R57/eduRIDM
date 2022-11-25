@@ -1,7 +1,6 @@
 package com.ridm.eduRIDM.model.firebase;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,6 +17,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,7 +37,6 @@ public class FirebaseQueries {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Toast.makeText(context, "Registered Successfully", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -110,5 +109,55 @@ public class FirebaseQueries {
         });
 
         return sectionDetails[0];
+    }
+
+    public void addCourseToUserTimeTable(String userKey, CourseClass courseClass, String sectionType) {
+        Map<String, Object> course = new HashMap<>();
+        String courseCollection = "";
+
+        course.put("CourseCode", courseClass.getCourseCode());
+        course.put("DeptCode", courseClass.getDeptCode());
+
+        switch (sectionType) {
+            case "Lecture":
+                courseCollection = courseClass.getDeptCode() + " " + courseClass.getCourseCode() + " " + courseClass.getLecture();
+                course.put("Section", courseClass.getLecture());
+                course.put("Days", courseClass.getLectureDetail().getDays());
+                course.put("Duration", courseClass.getLectureDetail().getDuration());
+                course.put("Time", courseClass.getLectureDetail().getTime());
+                break;
+
+            case "Tutorial":
+                courseCollection = courseClass.getDeptCode() + " " + courseClass.getCourseCode() + " " + courseClass.getTutorial();
+                course.put("Section", courseClass.getTutorial());
+                course.put("Days", courseClass.getTutorialDetail().getDays());
+                course.put("Duration", courseClass.getTutorialDetail().getDuration());
+                course.put("Time", courseClass.getTutorialDetail().getTime());
+                break;
+
+            case "Lab":
+                courseCollection = courseClass.getDeptCode() + " " + courseClass.getCourseCode() + " " + courseClass.getLab();
+                course.put("Section", courseClass.getLab());
+                course.put("Days", courseClass.getLabDetail().getDays());
+                course.put("Duration", courseClass.getLabDetail().getDuration());
+                course.put("Time", courseClass.getLabDetail().getTime());
+                break;
+        }
+
+        database.collection("users").document(userKey).collection("Courses")
+                .document(courseCollection)
+                .set(course)
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, "Section not added to Database", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+
+                    }
+                });
     }
 }

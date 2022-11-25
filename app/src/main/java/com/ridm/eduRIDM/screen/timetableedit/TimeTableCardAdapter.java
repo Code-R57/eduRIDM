@@ -1,7 +1,6 @@
 package com.ridm.eduRIDM.screen.timetableedit;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +15,8 @@ import androidx.annotation.Nullable;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.model.firebase.CourseClass;
-import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -173,9 +170,7 @@ public class TimeTableCardAdapter extends ArrayAdapter<CourseClass> {
 
                         viewHolder.courseName.setText(courseNameDisplay);
 
-                        Log.d("Some Course Name", courseNameDisplay);
-
-                        if(lectureSections.get(keyPair) != null) {
+                        if (lectureSections.get(keyPair) != null) {
                             ArrayAdapter<String> lectureAdapter = new ArrayAdapter<>(mCtx, android.R.layout.simple_spinner_item, lectureSections.get(keyPair));
                             viewHolder.lectureSection.setAdapter(lectureAdapter);
 
@@ -186,14 +181,15 @@ public class TimeTableCardAdapter extends ArrayAdapter<CourseClass> {
                                 }
 
                                 @Override
-                                public void onNothingSelected(AdapterView<?> adapterView) {}
+                                public void onNothingSelected(AdapterView<?> adapterView) {
+                                }
                             });
-                        }
-                        else {
+                        } else {
                             viewHolder.lectureSection.setAdapter(null);
+                            course.setLecture(null);
                         }
 
-                        if(tutorialSections.get(keyPair) != null) {
+                        if (tutorialSections.get(keyPair) != null) {
                             ArrayAdapter<String> tutorialAdapter = new ArrayAdapter<>(mCtx, android.R.layout.simple_spinner_item, tutorialSections.get(keyPair));
                             viewHolder.tutorialSection.setAdapter(tutorialAdapter);
 
@@ -204,14 +200,15 @@ public class TimeTableCardAdapter extends ArrayAdapter<CourseClass> {
                                 }
 
                                 @Override
-                                public void onNothingSelected(AdapterView<?> adapterView) {}
+                                public void onNothingSelected(AdapterView<?> adapterView) {
+                                }
                             });
-                        }
-                        else {
+                        } else {
                             viewHolder.tutorialSection.setAdapter(null);
+                            course.setTutorial(null);
                         }
 
-                        if(labSections.get(keyPair) != null) {
+                        if (labSections.get(keyPair) != null) {
                             ArrayAdapter<String> labAdapter = new ArrayAdapter<>(mCtx, android.R.layout.simple_spinner_item, labSections.get(keyPair));
                             viewHolder.labSection.setAdapter(labAdapter);
 
@@ -222,21 +219,24 @@ public class TimeTableCardAdapter extends ArrayAdapter<CourseClass> {
                                 }
 
                                 @Override
-                                public void onNothingSelected(AdapterView<?> adapterView) {}
+                                public void onNothingSelected(AdapterView<?> adapterView) {
+                                }
                             });
-                        }
-                        else {
+                        } else {
                             viewHolder.labSection.setAdapter(null);
+                            course.setLab(null);
                         }
                     }
 
                     @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {}
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+                    }
                 });
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
         });
 
         return convertView;
