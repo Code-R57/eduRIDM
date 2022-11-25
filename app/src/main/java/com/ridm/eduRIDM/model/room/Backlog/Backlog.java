@@ -1,41 +1,36 @@
 package com.ridm.eduRIDM.model.room.Backlog;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
-@Entity(tableName = "Backlog")
+@Entity(tableName = "Backlog", primaryKeys = {"deptCode", "courseCode", "section", "date", "extraClass"})
 public class Backlog implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
-    private int backlogID;
-
+    @NonNull
     @ColumnInfo(name = "deptCode")
     private String deptCode;
 
+    @NonNull
     @ColumnInfo(name = "courseCode")
     private String courseCode;
 
+    @NonNull
     @ColumnInfo(name = "section")
     private String section;
 
+    @NonNull
     @ColumnInfo(name = "date")
     private String date;
 
+    @NonNull
     @ColumnInfo(name = "extraClass")
     private boolean extraClass;
 
     // Getters and Setters
-
-    public int getBacklogID() {
-        return backlogID;
-    }
-
-    public void setBacklogID(int backlogID) {
-        this.backlogID = backlogID;
-    }
 
     public String getDeptCode() {
         return deptCode;

@@ -152,11 +152,34 @@ public class RoomRepository {
         return upcomingEvalList;
     }
 
+    public void insertBacklog(Backlog backlog) {
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDatabase.backlogDao().insertBacklog(backlog);
+            }
+        });
+
+    }
+
+    public void deleteBacklog(Backlog backlog) {
+    
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDatabase.backlogDao().deleteBacklog(backlog); 
+            }
+        });
+    }
+
     public void insertCourse(TimeTable timeTable) {
+    
         executor.execute(new Runnable() {
             @Override
             public void run() {
                 appDatabase.timeTableDao().insertClass(timeTable);
+
             }
         });
     }
