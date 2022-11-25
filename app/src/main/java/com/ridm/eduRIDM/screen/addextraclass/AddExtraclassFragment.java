@@ -1,9 +1,13 @@
 package com.ridm.eduRIDM.screen.addextraclass;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -18,10 +22,16 @@ import com.ridm.eduRIDM.screen.addplan.AddPlanViewModel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class AddExtraclassFragment extends Fragment {
 
+    DatePickerDialog datePickerDialog;
+    int year;
+    int month;
+    int dayOfMonth;
+    Calendar calendar;
     AddExtraclassViewModel viewModel;
     FragmentAddExtraclassBinding binding;
 
@@ -42,7 +52,7 @@ public class AddExtraclassFragment extends Fragment {
         binding.setViewModel(viewModel);
 
         viewModel.getNavigateToProfile().observe(getViewLifecycleOwner(), navigateToProfile -> {
-            if(navigateToProfile == Boolean.TRUE) {
+            if (navigateToProfile == Boolean.TRUE) {
                 Navigation.findNavController(this.requireView()).navigate(R.id.action_addExtraclassFragment_to_profileScreenFragment);
                 viewModel.doneNavigatingToProfile();
             }
@@ -51,57 +61,85 @@ public class AddExtraclassFragment extends Fragment {
         binding.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExtraClass extraClass= new ExtraClass();
+                ExtraClass extraClass = new ExtraClass();
 
-                String course[]=binding.subjectSpinner.getSelectedItem().toString().split(" ");
+                String course[] = binding.subjectSpinner.getSelectedItem().toString().split(" ");
 
                 extraClass.setDeptCode(course[0]);
                 extraClass.setCourseCode(course[1]);
                 extraClass.setSection(course[2]);
-                extraClass.setDate(binding.dateSpinner.getSelectedItem().toString());
-                extraClass.setTime(binding.startTimeSpinner.getSelectedItem().toString());
-
-                String stime = binding.startTimeSpinner.getSelectedItem().toString();
-                String etime = binding.endTimeSpinner.getSelectedItem().toString();
-
-
-                // Creating a SimpleDateFormat object
-                // to parse time in the format HH:MM:SS
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
-
-                // Parsing the Time Period
-                Date date1 = null;
-                try {
-                    date1 = simpleDateFormat.parse(stime);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                Date date2 = null;
-                try {
-                    date2 = simpleDateFormat.parse(etime);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-                // Calculating the difference in Seconds
-
-                long differenceInSeconds=
-                        Math.abs(date2.getTime()- date1.getTime());
-
-                // Calculating the difference in Hours
-                long differenceInHours
-                        = (differenceInSeconds / (60 * 1000))
-                        % 24;
-
-                // Calculating the difference in Minutes
-                long differenceInMinutes
-                        = (differenceInSeconds / (1000)) % 60;
-
-                extraClass.setDuration((int) differenceInMinutes);
-
+                extraClass.setDate(binding.datePicker.getText().toString());
+                extraClass.setTime(binding.startTimePicker.getText().toString());
+                extraClass.setTime(binding.endTimePicker.getText().toString());
                 viewModel.extraClass = extraClass;
 
                 viewModel.onSubmit();
+            }
+        });
+        binding.datePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calendar = Calendar.getInstance();
+                year = calendar.get(Calendar.YEAR);
+                month = calendar.get(Calendar.MONTH);
+                dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog = new DatePickerDialog(getActivity(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                                binding.datePicker.setText(day + "-" + (month + 1) + "-" + year);
+                            }
+                        }, year, month, dayOfMonth);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                datePickerDialog.show();
+            }
+        });
+
+        binding.startTimePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Calendar calendar = Calendar.getInstance();
+                int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+                int currentMinute = calendar.get(Calendar.MINUTE);
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                        String amPm;
+                        if (hourOfDay >= 12) {
+                            amPm = "";
+                        } else {
+                            amPm = "";
+                        }
+                        binding.startTimePicker.setText(String.format("%02d:%02d", hourOfDay, minutes) + amPm);
+
+                    }
+                }, 0, 0, false);
+                timePickerDialog.show();
+            }
+        });
+
+        binding.endTimePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Calendar calendar = Calendar.getInstance();
+                int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+                int currentMinute = calendar.get(Calendar.MINUTE);
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                        String amPm;
+                        if (hourOfDay >= 12) {
+                            amPm = "";
+                        } else {
+                            amPm = "";
+                        }
+                        binding.endTimePicker.setText(String.format("%02d:%02d", hourOfDay, minutes) + amPm);
+
+                    }
+                }, 0, 0, false);
+                timePickerDialog.show();
             }
         });
 

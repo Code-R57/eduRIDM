@@ -41,8 +41,8 @@ public class EditTimetableFragment extends Fragment {
             public void onClick(View view) {
                 TimeTable course = new TimeTable();
                 viewModel.courseList.add(course);
-                TimeTableCardAdapter adapter = new TimeTableCardAdapter(viewModel.courseList, requireContext(), viewModel.courseList.size());
-                binding.courseList.setAdapter(adapter);
+//                TimeTableCardAdapter adapter = new TimeTableCardAdapter(viewModel.courseList, requireContext(), viewModel.courseList.size());
+//                binding.courseList.setAdapter(adapter);
             }
         });
 

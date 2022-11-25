@@ -1,9 +1,11 @@
 package com.ridm.eduRIDM.screen.myprofile;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -16,9 +18,17 @@ import com.ridm.eduRIDM.databinding.FragmentProfileScreenBinding;
 import com.ridm.eduRIDM.databinding.FragmentRegisterBinding;
 import com.ridm.eduRIDM.screen.onboarding.RegisterViewModel;
 
+import java.util.Calendar;
+
 public class ProfileScreenFragment extends Fragment {
     ProfileViewModel viewModel;
     FragmentProfileScreenBinding binding;
+
+    DatePickerDialog datePickerDialog;
+    int year;
+    int month;
+    int dayOfMonth;
+    Calendar calendar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +63,25 @@ public class ProfileScreenFragment extends Fragment {
             if(navigateToAddExtraClass == Boolean.TRUE) {
                 Navigation.findNavController(this.requireView()).navigate(R.id.action_profileScreenFragment_to_addExtraclassFragment);
                 viewModel.doneNavigatingToAddExtraClass();
+            }
+        });
+
+        binding.dateSelector.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calendar = Calendar.getInstance();
+                year = calendar.get(Calendar.YEAR);
+                month = calendar.get(Calendar.MONTH);
+                dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog = new DatePickerDialog(getActivity(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                                binding.dateSelector.setText(day + "/" + (month + 1) + "/" + year);
+                            }
+                        }, year, month, dayOfMonth);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                datePickerDialog.show();
             }
         });
 

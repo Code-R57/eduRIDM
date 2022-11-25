@@ -40,7 +40,7 @@
     <string name="type">Type</string>
     <string name="syllabus">Syllabus</string>
     <string name="nature">Nature</string>
-    <string name="duration">Duration</string>
+    <string name="duration">Duration(in Minutes)</string>
     <string name="button_add">Add</string>
 
     <string-array name="add_evaluative_type">
@@ -81,6 +81,20 @@
     <string name="num_creds">Enter number of\ncredits completed</string>
     <string name="num_creds_hint">74</string>
     <string name="button_next">Next</string>
+
+    <string-array name="semester_entries">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>PS 1</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
 
     <!--  Evaluative Card  -->
     <string name="course_code">CS F314</string>

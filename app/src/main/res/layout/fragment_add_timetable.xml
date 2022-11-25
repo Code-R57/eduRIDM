@@ -61,7 +61,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="24dp"
-            android:onClick="@{() -> viewModel.onSubmitClicked()}"
             android:text="@string/submit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

@@ -30,7 +30,11 @@ public class HomeScreenFragment extends Fragment {
     HomeScreenViewModel viewModel;
     FragmentHomeScreenBinding binding;
     private String date1;
-    private String hashToday = "%%%%%%%", hashTomorrow;
+    private String requiredHashToday, requiredHashTomorrow;
+    private Date today;
+    private Date dayAfterTomorrow;
+    private int day;
+    private final String hashDay = "%%%%%%%";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,11 +48,11 @@ public class HomeScreenFragment extends Fragment {
         String date2 = new SimpleDateFormat("yyyy-MM-dd").format(dayAfterTomorrow);
         Calendar calender = Calendar.getInstance();
         int day = calender.get(Calendar.DAY_OF_WEEK);
-        hashToday = hashToday.substring(0, day) + '1' + hashToday.substring((day + 1) % 7);
-        hashTomorrow = hashToday.substring(0, (day + 1) % 7) + '1' + hashToday.substring((day + 2) % 7);
+        String requiredHashToday = hashDay.substring(0, day) + '1' + hashDay.substring(day + 1);
+        String requiredHashTomorrow = hashDay.substring(0, (day + 1) % 7) + '1' + hashDay.substring((day + 2) % 7);
 
         viewModel.getUpcomingEvals(date1, date2);
-        viewModel.getClassesByDay(hashToday);
+        viewModel.getClassesByDay(requiredHashToday);
     }
 
     @Override
@@ -72,12 +76,12 @@ public class HomeScreenFragment extends Fragment {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (binding.daySelector.getCheckedRadioButtonId() == R.id.today) {
                     viewModel.setCurrentSelection("Today");
-                    viewModel.getClassesByDay(hashToday);
+                    viewModel.getClassesByDay(requiredHashToday);
                     upcomingClassesAdapter.notifyDataSetChanged();
                 }
                 else {
                     viewModel.setCurrentSelection("Tomorrow");
-                    viewModel.getClassesByDay(hashTomorrow);
+                    viewModel.getClassesByDay(requiredHashTomorrow);
                     upcomingClassesAdapter.notifyDataSetChanged();
                 }
             }

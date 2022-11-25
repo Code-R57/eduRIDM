@@ -34,6 +34,9 @@ public class TimeTable implements Serializable {
     @ColumnInfo(name = "duration")
     private int duration;
 
+    @ColumnInfo(name = "credits")
+    private int credits;
+
     // Getters and Setters
 
     public String getDeptCode() {
@@ -90,5 +93,13 @@ public class TimeTable implements Serializable {
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public void setCredits(int credits) {
+        this.credits = credits;
     }
 }

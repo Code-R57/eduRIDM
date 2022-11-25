@@ -30,6 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.ridm.eduRIDM.databinding.ActivityMainBinding;
+import com.ridm.eduRIDM.model.firebase.FirebaseQueries;
 import com.ridm.eduRIDM.model.room.RoomRepository;
 import com.ridm.eduRIDM.screen.onboarding.WelcomeScreenFragment;
 
@@ -40,10 +41,10 @@ public class MainActivity extends AppCompatActivity implements WelcomeScreenFrag
     public static int RC_SIGN_IN = 57;
     public static FirebaseAuth mAuth;
     public static GoogleSignInAccount account;
+    public static FirebaseQueries firebaseQueries;
     public BottomNavigationView bottomView;
     public Toolbar toolbar;
     NavController navController;
-    public static FirebaseFirestore database;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -76,7 +77,9 @@ public class MainActivity extends AppCompatActivity implements WelcomeScreenFrag
         super.onCreate(savedInstanceState);
 
         // Firebase Firestore
-        database = FirebaseFirestore.getInstance();
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+
+        firebaseQueries = new FirebaseQueries(database, this);
 
         // Google Sign In
         mAuth = FirebaseAuth.getInstance();
