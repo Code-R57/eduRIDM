@@ -151,4 +151,13 @@ public class RoomRepository {
 
         return upcomingEvalList;
     }
+
+    public void insertCourse(TimeTable timeTable) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDatabase.timeTableDao().insertClass(timeTable);
+            }
+        });
+    }
 }

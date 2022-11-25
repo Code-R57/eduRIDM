@@ -1,13 +1,19 @@
 package com.ridm.eduRIDM.screen.timetableedit;
 
+import static com.ridm.eduRIDM.MainActivity.firebaseQueries;
+import static com.ridm.eduRIDM.MainActivity.roomRepository;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.ridm.eduRIDM.model.firebase.CourseClass;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class AddTimetableViewModel extends ViewModel {
@@ -30,5 +36,28 @@ public class AddTimetableViewModel extends ViewModel {
         navigateToHomeScreen.setValue(Boolean.FALSE);
     }
 
+    public void getAllCourses() {
+        coursesList = firebaseQueries.getCourses();
+    }
+
     List<QueryDocumentSnapshot> coursesList = new ArrayList<>();
+
+    int numberOfCards = 0;
+
+    List<CourseClass> coursesToEnroll = new ArrayList<>();
+
+    public TimeTable firebaseCourseToTimetable(CourseClass firebaseCourse) {
+        TimeTable course = new TimeTable();
+
+        course.setDeptCode(firebaseCourse.getDeptCode());
+        course.setCourseCode(firebaseCourse.getCourseCode());
+        course.setCourseName(firebaseCourse.getCourseName());
+        course.setCredits(firebaseCourse.getCredits());
+
+        return course;
+    }
+
+    public void enrollCourse(TimeTable course) {
+        roomRepository.insertCourse(course);
+    }
 }
