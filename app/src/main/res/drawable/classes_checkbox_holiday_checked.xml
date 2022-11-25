@@ -6,7 +6,7 @@
                 android:width="3dp"
                 android:color="@color/app_primary" />
             <corners android:radius="4dp" />
-            <solid android:color="@color/white" />
+            <solid android:color="@color/app_primary" />
             <padding
                 android:bottom="0dp"
                 android:left="0dp"
@@ -14,6 +14,6 @@
                 android:top="0dp" />
         </shape>
     </item>
-    <item android:drawable="@drawable/ic_baseline_check_24"/>
+    <item android:drawable="@drawable/ic_outline_holiday_24"/>
 
 </layer-list>
