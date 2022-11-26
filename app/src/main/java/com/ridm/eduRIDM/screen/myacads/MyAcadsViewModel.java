@@ -1,5 +1,7 @@
 package com.ridm.eduRIDM.screen.myacads;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -7,7 +9,7 @@ import androidx.lifecycle.ViewModel;
 import com.ridm.eduRIDM.MainActivity;
 import com.ridm.eduRIDM.model.room.Backlog.Backlog;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
-import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
+import com.ridm.eduRIDM.model.room.TimeTable.DistinctClasses;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,21 +17,23 @@ import java.util.List;
 
 public class MyAcadsViewModel extends ViewModel {
 
-    private MutableLiveData<Boolean> navigateToAddEval = new MutableLiveData<>(Boolean.FALSE);
+    List<Eval> evalList = new ArrayList<>();
+    List<DistinctClasses> courses = new ArrayList<>();
+    HashMap<String, List<Backlog>> courseBacklog = new HashMap<>();
+    private final MutableLiveData<Boolean> navigateToAddEval = new MutableLiveData<>(Boolean.FALSE);
+    private final MutableLiveData<String> currentSelection = new MutableLiveData<>("Evals");
+
     public LiveData<Boolean> getNavigateToAddEval() {
         return navigateToAddEval;
     }
 
-    private MutableLiveData<String> currentSelection = new MutableLiveData<>("Evals");
     public LiveData<String> getCurrentSelection() {
         return currentSelection;
     }
 
-    List<Eval> evalList = new ArrayList<>();
-
-    List<TimeTable> courses = new ArrayList<>();
-
-    HashMap<String, List<Backlog>> courseBacklog = new HashMap<>();
+    public void setCurrentSelection(String currentSelection) {
+        this.currentSelection.setValue(currentSelection);
+    }
 
     public void onNavigateToAddEvalClicked() {
         navigateToAddEval.setValue(Boolean.TRUE);
@@ -43,15 +47,18 @@ public class MyAcadsViewModel extends ViewModel {
         evalList = MainActivity.roomRepository.getAllEvals();
     }
 
-    public void getAllCourses() {
-        courses = MainActivity.roomRepository.getCourses();
+    public void getDistinctCourses() {
+        courses = MainActivity.roomRepository.getDistinctCourses();
     }
 
     public void getBacklogForCourse(String deptCode, String courseCode, String courseName) {
-        courseBacklog.put(courseName, MainActivity.roomRepository.getBacklogForCourse(deptCode, courseCode));
+        List<Backlog> backlogList = MainActivity.roomRepository.getBacklogForCourse(deptCode, courseCode);
+        courseBacklog.put(courseName, backlogList);
     }
 
-    public void setCurrentSelection(String currentSelection) {
-        this.currentSelection.setValue(currentSelection);
+    public void getBacklogs() {
+        for (DistinctClasses course : courses) {
+            getBacklogForCourse(course.getDeptCode(), course.getCourseCode(), course.getCourseName());
+        }
     }
 }

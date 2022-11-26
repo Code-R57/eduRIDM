@@ -1,7 +1,6 @@
 package com.ridm.eduRIDM.screen.homescreen;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +13,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.ridm.eduRIDM.MainActivity;
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentHomeScreenBinding;
-import com.ridm.eduRIDM.model.room.Backlog.Backlog;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
-import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,14 +23,15 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class HomeScreenFragment extends Fragment {
+    private final String hashDay = "_______";
+
     HomeScreenViewModel viewModel;
     FragmentHomeScreenBinding binding;
-    private String date1;
+
+    private String today;
+    private String tomorrow;
+    private String dayAfterTomorrow;
     private String requiredHashToday, requiredHashTomorrow;
-    private Date today;
-    private Date dayAfterTomorrow;
-    private int day;
-    private final String hashDay = "%%%%%%%";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,15 +40,20 @@ public class HomeScreenFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(HomeScreenViewModel.class);
 
         Date today = new Date();
-        date1 = new SimpleDateFormat("yyyy-MM-dd").format(today);
+        Date tomorrow = new Date(today.getTime() + (1000 * 60 * 60 * 24));
         Date dayAfterTomorrow = new Date(today.getTime() + (1000 * 60 * 60 * 24 * 2));
-        String date2 = new SimpleDateFormat("yyyy-MM-dd").format(dayAfterTomorrow);
+        this.today = new SimpleDateFormat("yyyy-MM-dd").format(today);
+        this.tomorrow = new SimpleDateFormat("yyyy-MM-dd").format(tomorrow);
+        this.dayAfterTomorrow = new SimpleDateFormat("yyyy-MM-dd").format(dayAfterTomorrow);
         Calendar calender = Calendar.getInstance();
-        int day = calender.get(Calendar.DAY_OF_WEEK);
-        String requiredHashToday = hashDay.substring(0, day) + '1' + hashDay.substring(day + 1);
-        String requiredHashTomorrow = hashDay.substring(0, (day + 1) % 7) + '1' + hashDay.substring((day + 2) % 7);
+        int day = calender.get(Calendar.DAY_OF_WEEK) - 2;
 
-        viewModel.getUpcomingEvals(date1, date2);
+        if (day == -1) {
+            day = 6;
+        }
+        requiredHashToday = hashDay.substring(0, day) + '1' + hashDay.substring(day + 1);
+        requiredHashTomorrow = hashDay.substring(0, (day + 1) % 7) + '1' + hashDay.substring((day + 1) % 7 + 1);
+        viewModel.getUpcomingEvals(this.today, this.dayAfterTomorrow);
         viewModel.getClassesByDay(requiredHashToday);
     }
 
@@ -63,13 +65,13 @@ public class HomeScreenFragment extends Fragment {
 
         binding.setViewModel(viewModel);
 
-        UpcomingEvalsAdapter adapter = new UpcomingEvalsAdapter((ArrayList<Eval>) viewModel.upcomingEvalList, requireContext());
-        binding.upcomingEvalsList.setAdapter(adapter);
-
-        UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, viewModel, date1);
+        UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, viewModel, today);
 
         binding.yourClassesList.setAdapter(upcomingClassesAdapter);
         binding.yourClassesList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        UpcomingEvalsAdapter adapter = new UpcomingEvalsAdapter((ArrayList<Eval>) viewModel.upcomingEvalList, requireContext());
+        binding.upcomingEvalsList.setAdapter(adapter);
 
         binding.daySelector.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -77,19 +79,24 @@ public class HomeScreenFragment extends Fragment {
                 if (binding.daySelector.getCheckedRadioButtonId() == R.id.today) {
                     viewModel.setCurrentSelection("Today");
                     viewModel.getClassesByDay(requiredHashToday);
-                    upcomingClassesAdapter.notifyDataSetChanged();
-                }
-                else {
+
+                    UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, viewModel, today);
+
+                    binding.yourClassesList.setAdapter(upcomingClassesAdapter);
+                    binding.yourClassesList.setLayoutManager(new LinearLayoutManager(getContext()));
+                } else {
                     viewModel.setCurrentSelection("Tomorrow");
                     viewModel.getClassesByDay(requiredHashTomorrow);
-                    upcomingClassesAdapter.notifyDataSetChanged();
+
+                    UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, viewModel, tomorrow);
+
+                    binding.yourClassesList.setAdapter(upcomingClassesAdapter);
+                    binding.yourClassesList.setLayoutManager(new LinearLayoutManager(getContext()));
                 }
             }
         });
 
-
-
-        viewModel.getNavigateToStopwatchScreen().observe(getViewLifecycleOwner(),navigateToStopwatchScreen -> {
+        viewModel.getNavigateToStopwatchScreen().observe(getViewLifecycleOwner(), navigateToStopwatchScreen -> {
             if (navigateToStopwatchScreen == Boolean.TRUE) {
                 Navigation.findNavController(this.requireView()).navigate(R.id.action_homeScreenFragment_to_stopwatchScreenFragment);
                 viewModel.doneNavigatingToStopwatchScreen();

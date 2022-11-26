@@ -23,7 +23,7 @@ public class HomeScreenViewModel extends ViewModel {
     List<TimeTable> classList = new ArrayList<>();
 
     private MutableLiveData<String> currentSelection = new MutableLiveData<>("Today");
-    public LiveData<String> getCurrentSelecton() {
+    public LiveData<String> getCurrentSelection() {
         return currentSelection;
     }
 
@@ -51,9 +51,6 @@ public class HomeScreenViewModel extends ViewModel {
     }
 
     public void getClassesByDay(String days) {
-        if(classList.size() != 0) {
-            classList.clear();
-        }
         classList = MainActivity.roomRepository.getAllClassesByDay(days);
     }
 

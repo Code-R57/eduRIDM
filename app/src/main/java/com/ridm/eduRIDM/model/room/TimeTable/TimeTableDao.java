@@ -22,4 +22,7 @@ public interface TimeTableDao {
 
     @Query("SELECT * FROM TimeTable")
     List<TimeTable> getAllCourses();
+
+    @Query("SELECT DISTINCT courseName, courseCode, deptCode FROM TimeTable")
+    List<DistinctClasses> getDistinctCourses();
 }

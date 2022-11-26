@@ -48,21 +48,20 @@
             app:layout_constraintStart_toEndOf="@+id/textView_date_backlog"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <CheckBox
+        <ImageButton
             android:id="@+id/checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="4dp"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
             app:buttonTint="@color/app_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textView_extra_class"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/classes_options_button_background_stroke" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

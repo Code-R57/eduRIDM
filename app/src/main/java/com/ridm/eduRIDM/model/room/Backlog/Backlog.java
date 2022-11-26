@@ -30,6 +30,9 @@ public class Backlog implements Serializable {
     @ColumnInfo(name = "extraClass")
     private boolean extraClass;
 
+    @ColumnInfo(name = "courseName")
+    private String courseName;
+
     // Getters and Setters
 
     public String getDeptCode() {
@@ -70,5 +73,13 @@ public class Backlog implements Serializable {
 
     public void setExtraClass(boolean extraClass) {
         this.extraClass = extraClass;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 }

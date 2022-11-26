@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -30,7 +31,7 @@ public class BacklogListAdapter extends ArrayAdapter<Backlog> implements View.On
         TextView backlogType;
         TextView backlogDate;
         TextView extraClass;
-        CheckBox backlogDone;
+        ImageButton backlogDone;
     }
 
     public BacklogListAdapter(List<Backlog> backlogList, Context mCtx) {
@@ -47,6 +48,9 @@ public class BacklogListAdapter extends ArrayAdapter<Backlog> implements View.On
 
     @Override
     public int getCount() {
+        if(backlogList == null) {
+            return 0;
+        }
         return backlogList.size();
     }
 
@@ -67,7 +71,7 @@ public class BacklogListAdapter extends ArrayAdapter<Backlog> implements View.On
             viewHolder.backlogType = (TextView) convertView.findViewById(R.id.textView_backlog_type);
             viewHolder.backlogDate = (TextView) convertView.findViewById(R.id.textView_date_backlog);
             viewHolder.extraClass = (TextView) convertView.findViewById(R.id.textView_extra_class);
-            viewHolder.backlogDone = (CheckBox) convertView.findViewById(R.id.checkBox);
+            viewHolder.backlogDone = (ImageButton) convertView.findViewById(R.id.checkBox);
 
             result = convertView;
 

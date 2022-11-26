@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
+import com.ridm.eduRIDM.model.room.TimeTable.DistinctClasses;
+
 import java.util.List;
 
 @Dao
@@ -22,4 +24,7 @@ public interface BacklogDao {
 
     @Query("SELECT * FROM Backlog where deptCode = :deptCode AND courseCode = :courseCode")
     List<Backlog> getBacklogFor(String deptCode, String courseCode);
+
+    @Query("SELECT DISTINCT courseName, courseCode, deptCode FROM Backlog")
+    List<DistinctClasses> getDistinctCourses();
 }

@@ -7,6 +7,7 @@ import com.ridm.eduRIDM.model.room.CurrentGrade.CurrentGrade;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
 import com.ridm.eduRIDM.model.room.ExtraClass.ExtraClass;
 import com.ridm.eduRIDM.model.room.Plan.Plan;
+import com.ridm.eduRIDM.model.room.TimeTable.DistinctClasses;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.util.ArrayList;
@@ -164,23 +165,35 @@ public class RoomRepository {
     }
 
     public void deleteBacklog(Backlog backlog) {
-    
+
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                appDatabase.backlogDao().deleteBacklog(backlog); 
+                appDatabase.backlogDao().deleteBacklog(backlog);
             }
         });
     }
 
     public void insertCourse(TimeTable timeTable) {
-    
+
         executor.execute(new Runnable() {
             @Override
             public void run() {
                 appDatabase.timeTableDao().insertClass(timeTable);
-
             }
         });
+    }
+
+    public List<DistinctClasses> getDistinctCourses() {
+        List<DistinctClasses> distinctCourses = new ArrayList<>();
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                distinctCourses.addAll(appDatabase.backlogDao().getDistinctCourses());
+            }
+        });
+
+        return distinctCourses;
     }
 }

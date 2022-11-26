@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.model.room.Backlog.Backlog;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
+import com.ridm.eduRIDM.model.room.TimeTable.DistinctClasses;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.util.HashMap;
@@ -21,12 +22,12 @@ import java.util.List;
 public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.AcadsViewHolder> {
 
     private final Context mCtx;
-    private final List<TimeTable> courseList;
+    private final List<DistinctClasses> courseList;
     private final List<Eval> evalList;
     private final String currentSelection;
     private final HashMap<String, List<Backlog>> backlogListMap;
 
-    public AcadsListAdapter(Context mCtx, List<TimeTable> courseList, List<Eval> evalList, String currentSelection, HashMap<String, List<Backlog>> backlogListMap) {
+    public AcadsListAdapter(Context mCtx, List<DistinctClasses> courseList, List<Eval> evalList, String currentSelection, HashMap<String, List<Backlog>> backlogListMap) {
         this.mCtx = mCtx;
         this.courseList = courseList;
         this.evalList = evalList;
@@ -64,12 +65,12 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
             holder.typeText.setText(eval.getType());
             holder.syllabusDesc.setText(eval.getSyllabus());
         } else {
-            TimeTable course = courseList.get(position);
+            DistinctClasses course = courseList.get(position);
             holder.backlogDeptCode.setText(course.getDeptCode());
             holder.backlogCourseCode.setText(course.getCourseCode());
             holder.backlogCourseName.setText(course.getCourseName());
 
-            BacklogListAdapter listAdapter = new BacklogListAdapter(backlogListMap.get(courseList.get(position).getCourseName()), mCtx.getApplicationContext());
+            BacklogListAdapter listAdapter = new BacklogListAdapter(backlogListMap.get(course.getCourseName()), mCtx.getApplicationContext());
 
             holder.backlogListView.setAdapter(listAdapter);
         }
@@ -80,7 +81,7 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
         if (currentSelection.equals("Evals")) {
             return evalList.size();
         } else {
-            return courseList.size();
+            return backlogListMap.keySet().size();
         }
     }
 

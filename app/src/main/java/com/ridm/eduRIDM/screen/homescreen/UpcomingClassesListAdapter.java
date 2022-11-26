@@ -22,8 +22,8 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
 
     private final Context mCtx;
     private final List<TimeTable> classList;
-    private HomeScreenViewModel viewModel;
-    private String date;
+    private final HomeScreenViewModel viewModel;
+    private final String date;
 
     public UpcomingClassesListAdapter(Context mCtx, List<TimeTable> classList, HomeScreenViewModel viewModel, String date) {
         this.mCtx = mCtx;
@@ -41,10 +41,32 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
     @Override
     public void onBindViewHolder(@NonNull UpcomingClassesViewHolder holder, int position) {
         TimeTable lec = classList.get(position);
-        holder.todayCourseCode.setText(lec.getCourseCode());
+        String courseCode = lec.getDeptCode() + " " + lec.getCourseCode();
+        holder.todayCourseCode.setText(courseCode);
         holder.todayCourseName.setText(lec.getCourseName());
         holder.todayClassTime.setText(lec.getTime());
         holder.todayLecture.setText(lec.getSection());
+
+        holder.missed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                TimeTable tt = lec;
+
+                Backlog backlog = new Backlog();
+                backlog.setDeptCode(tt.getDeptCode());
+                backlog.setCourseCode(tt.getCourseCode());
+                backlog.setDate(date);
+                backlog.setSection(tt.getSection());
+                backlog.setExtraClass(Boolean.FALSE);
+                backlog.setCourseName(tt.getCourseName());
+
+                if (isChecked) {
+                    MainActivity.roomRepository.insertBacklog(backlog);
+                } else {
+                    MainActivity.roomRepository.deleteBacklog(backlog);
+                }
+            }
+        });
     }
 
     @Override
@@ -66,32 +88,6 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
             todayLecture = view.findViewById(R.id.tt_lecture_text);
             todayClassTime = view.findViewById(R.id.tt_class_time_text);
             missed = view.findViewById(R.id.tt_missed_button);
-
-
-            missed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        Backlog backlog = new Backlog();
-                        TimeTable tt = viewModel.classList.get(getAdapterPosition());
-                        backlog.setDeptCode(tt.getDeptCode());
-                        backlog.setCourseCode(tt.getCourseCode());
-                        backlog.setDate(date);
-                        backlog.setSection(tt.getSection());
-                        backlog.setExtraClass(Boolean.FALSE);
-                        MainActivity.roomRepository.insertBacklog(backlog);
-                    } else {
-                        Backlog backlog = new Backlog();
-                        TimeTable tt = viewModel.classList.get(getAdapterPosition());
-                        backlog.setDeptCode(tt.getDeptCode());
-                        backlog.setCourseCode(tt.getCourseCode());
-                        backlog.setDate(date);
-                        backlog.setSection(tt.getSection());
-                        backlog.setExtraClass(Boolean.FALSE);
-                        MainActivity.roomRepository.deleteBacklog(backlog);
-                    }
-                }
-            });
         }
     }
 }
