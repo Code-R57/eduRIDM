@@ -184,13 +184,26 @@ public class RoomRepository {
         });
     }
 
-    public List<DistinctClasses> getDistinctCourses() {
+    public List<DistinctClasses> getDistinctBacklogCourses() {
         List<DistinctClasses> distinctCourses = new ArrayList<>();
 
         executor.execute(new Runnable() {
             @Override
             public void run() {
                 distinctCourses.addAll(appDatabase.backlogDao().getDistinctCourses());
+            }
+        });
+
+        return distinctCourses;
+    }
+
+    public List<DistinctClasses> getDistinctCourses() {
+        List<DistinctClasses> distinctCourses = new ArrayList<>();
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                distinctCourses.addAll(appDatabase.timeTableDao().getDistinctCourses());
             }
         });
 

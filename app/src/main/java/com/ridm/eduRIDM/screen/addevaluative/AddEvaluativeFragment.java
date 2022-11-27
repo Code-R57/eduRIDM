@@ -23,6 +23,8 @@ import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentAddEvaluativeBinding;
 import com.ridm.eduRIDM.databinding.FragmentAddEvaluativeBindingImpl;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
+import com.ridm.eduRIDM.model.room.TimeTable.DistinctClasses;
+import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -59,6 +61,10 @@ public class AddEvaluativeFragment extends Fragment {
         binding.setLifecycleOwner(this);
 
         binding.setViewModel(viewModel);
+
+        ArrayAdapter<DistinctClasses> coursesAdapter = new ArrayAdapter<DistinctClasses>(requireActivity(), android.R.layout.simple_spinner_item, viewModel.courseList);
+
+        binding.spinnerSubject.setAdapter(coursesAdapter);
 
         viewModel.getNavigateToMyAcads().observe(getViewLifecycleOwner(), navigateToMyAcads -> {
             if (navigateToMyAcads == Boolean.TRUE) {

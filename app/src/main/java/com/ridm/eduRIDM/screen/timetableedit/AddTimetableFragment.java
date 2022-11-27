@@ -22,6 +22,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentAddTimetableBinding;
 import com.ridm.eduRIDM.model.firebase.CourseClass;
+import com.ridm.eduRIDM.model.room.CurrentGrade.CurrentGrade;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.util.ArrayList;
@@ -79,10 +80,21 @@ public class AddTimetableFragment extends Fragment {
                 if (binding.courseList.getAdapter() != null) {
                     int numberOfCourses = binding.courseList.getAdapter().getCount();
                     List<CourseClass> courseList = new ArrayList<>();
+                    List<CurrentGrade> currentGradeList = new ArrayList<>();
+
                     for (int i = 0; i < numberOfCourses; i++) {
                         courseList.add((CourseClass) binding.courseList.getAdapter().getItem(i));
                         CourseClass course = courseList.get(i);
                         String course_key = course.getDeptCode() + " " + course.getCourseCode();
+
+                        CurrentGrade currentGrade = new CurrentGrade();
+
+                        currentGrade.setDeptCode(course.getDeptCode());
+                        currentGrade.setCourseCode(course.getCourseCode());
+                        currentGrade.setCourseName(course.getCourseName());
+                        currentGrade.setGrade("NA");
+
+                        currentGradeList.add(currentGrade);
 
                         if (course.getLecture() != null) {
                             TimeTable toEnroll = viewModel.firebaseCourseToTimetable(course);
@@ -188,6 +200,7 @@ public class AddTimetableFragment extends Fragment {
                     }
 
                     if (numberOfCourses > 0) {
+                        viewModel.insertInitialGrades(currentGradeList);
                         viewModel.onSubmitClicked();
                     } else {
                         Toast.makeText(requireContext(), "No Course Selected", Toast.LENGTH_SHORT).show();

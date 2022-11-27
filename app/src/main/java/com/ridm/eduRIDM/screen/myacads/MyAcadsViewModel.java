@@ -1,7 +1,5 @@
 package com.ridm.eduRIDM.screen.myacads;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -49,7 +47,7 @@ public class MyAcadsViewModel extends ViewModel {
     }
 
     public void getDistinctCourses() {
-        courses.setValue(MainActivity.roomRepository.getDistinctCourses());
+        courses.setValue(MainActivity.roomRepository.getDistinctBacklogCourses());
     }
 
     public void getBacklogForCourse(String deptCode, String courseCode, String courseName) {
