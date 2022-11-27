@@ -12,13 +12,16 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentProfileScreenBinding;
-import com.ridm.eduRIDM.databinding.FragmentRegisterBinding;
-import com.ridm.eduRIDM.screen.onboarding.RegisterViewModel;
+import com.ridm.eduRIDM.screen.homescreen.UpcomingClassesListAdapter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class ProfileScreenFragment extends Fragment {
     ProfileViewModel viewModel;
@@ -30,14 +33,17 @@ public class ProfileScreenFragment extends Fragment {
     int dayOfMonth;
     Calendar calendar;
 
+    private final String hashDay = "_______";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_screen, container, false);
 
@@ -78,10 +84,40 @@ public class ProfileScreenFragment extends Fragment {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                                 binding.dateSelector.setText(day + "/" + (month + 1) + "/" + year);
+
+                                String date = year + "-" + (month + 1) + "-" + day;
+
+                                viewModel.setDate(date);
                             }
                         }, year, month, dayOfMonth);
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePickerDialog.show();
+            }
+        });
+
+        viewModel.getDate().observe(getViewLifecycleOwner(), date -> {
+            try {
+                Date reqdDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(reqdDate);
+
+                int day = cal.get(Calendar.DAY_OF_WEEK) - 2;
+
+                if (day == -1) {
+                    day = 6;
+                }
+
+                String requiredHashDay = hashDay.substring(0, day) + '1' + hashDay.substring(day + 1);
+
+                viewModel.getClassesByDay(requiredHashDay);
+
+                UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, date);
+
+                binding.classesList.setAdapter(upcomingClassesAdapter);
+                binding.classesList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
         });
 

@@ -65,13 +65,14 @@ public class HomeScreenFragment extends Fragment {
 
         binding.setViewModel(viewModel);
 
-        UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, viewModel, today);
+        UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, today);
 
         binding.yourClassesList.setAdapter(upcomingClassesAdapter);
         binding.yourClassesList.setLayoutManager(new LinearLayoutManager(getContext()));
 
         UpcomingEvalsAdapter adapter = new UpcomingEvalsAdapter((ArrayList<Eval>) viewModel.upcomingEvalList, requireContext());
         binding.upcomingEvalsList.setAdapter(adapter);
+        binding.yourClassesList.setLayoutManager(new LinearLayoutManager(getContext()));
 
         binding.daySelector.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -80,7 +81,7 @@ public class HomeScreenFragment extends Fragment {
                     viewModel.setCurrentSelection("Today");
                     viewModel.getClassesByDay(requiredHashToday);
 
-                    UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, viewModel, today);
+                    UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, today);
 
                     binding.yourClassesList.setAdapter(upcomingClassesAdapter);
                     binding.yourClassesList.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -88,7 +89,7 @@ public class HomeScreenFragment extends Fragment {
                     viewModel.setCurrentSelection("Tomorrow");
                     viewModel.getClassesByDay(requiredHashTomorrow);
 
-                    UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, viewModel, tomorrow);
+                    UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, tomorrow);
 
                     binding.yourClassesList.setAdapter(upcomingClassesAdapter);
                     binding.yourClassesList.setLayoutManager(new LinearLayoutManager(getContext()));

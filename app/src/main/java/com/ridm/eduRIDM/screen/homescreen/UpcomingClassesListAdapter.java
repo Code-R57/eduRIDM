@@ -24,14 +24,12 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
 
     private final Context mCtx;
     private final List<TimeTable> classList;
-    private final HomeScreenViewModel viewModel;
     private final String date;
     private final String today;
 
-    public UpcomingClassesListAdapter(Context mCtx, List<TimeTable> classList, HomeScreenViewModel viewModel, String date) {
+    public UpcomingClassesListAdapter(Context mCtx, List<TimeTable> classList, String date) {
         this.mCtx = mCtx;
         this.classList = classList;
-        this.viewModel = viewModel;
         this.date = date;
 
         Date today = new Date();
