@@ -93,6 +93,7 @@ public class AddTimetableFragment extends Fragment {
                         currentGrade.setCourseCode(course.getCourseCode());
                         currentGrade.setCourseName(course.getCourseName());
                         currentGrade.setGrade("NA");
+                        currentGrade.setCredits(course.getCredits());
 
                         currentGradeList.add(currentGrade);
 
