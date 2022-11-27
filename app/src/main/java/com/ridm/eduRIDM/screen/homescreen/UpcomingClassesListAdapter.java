@@ -16,6 +16,8 @@ import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.model.room.Backlog.Backlog;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingClassesListAdapter.UpcomingClassesViewHolder> {
@@ -24,12 +26,16 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
     private final List<TimeTable> classList;
     private final HomeScreenViewModel viewModel;
     private final String date;
+    private final String today;
 
     public UpcomingClassesListAdapter(Context mCtx, List<TimeTable> classList, HomeScreenViewModel viewModel, String date) {
         this.mCtx = mCtx;
         this.classList = classList;
         this.viewModel = viewModel;
         this.date = date;
+
+        Date today = new Date();
+        this.today = new SimpleDateFormat("yyyy-MM-dd").format(today);
     }
 
     @Override
@@ -46,6 +52,12 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
         holder.todayCourseName.setText(lec.getCourseName());
         holder.todayClassTime.setText(lec.getTime());
         holder.todayLecture.setText(lec.getSection());
+
+        if(!date.equals(today)) {
+            holder.missed.setVisibility(View.GONE);
+            holder.attended.setVisibility(View.GONE);
+            holder.holiday.setVisibility(View.GONE);
+        }
 
         holder.missed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -78,7 +90,7 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
 
         //Today
         TextView todayCourseCode, todayCourseName, todayLecture, todayClassTime;
-        CheckBox missed;
+        CheckBox missed, attended, holiday;
 
         public UpcomingClassesViewHolder(View view) {
             super(view);
@@ -88,6 +100,8 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
             todayLecture = view.findViewById(R.id.tt_lecture_text);
             todayClassTime = view.findViewById(R.id.tt_class_time_text);
             missed = view.findViewById(R.id.tt_missed_button);
+            attended = view.findViewById(R.id.tt_attended_button);
+            holiday = view.findViewById(R.id.tt_holiday_button);
         }
     }
 }

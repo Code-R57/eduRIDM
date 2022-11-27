@@ -18,8 +18,9 @@ import java.util.List;
 public class MyAcadsViewModel extends ViewModel {
 
     List<Eval> evalList = new ArrayList<>();
-    List<DistinctClasses> courses = new ArrayList<>();
+    MutableLiveData<List<DistinctClasses>> courses = new MutableLiveData<>();
     HashMap<String, List<Backlog>> courseBacklog = new HashMap<>();
+
     private final MutableLiveData<Boolean> navigateToAddEval = new MutableLiveData<>(Boolean.FALSE);
     private final MutableLiveData<String> currentSelection = new MutableLiveData<>("Evals");
 
@@ -48,7 +49,7 @@ public class MyAcadsViewModel extends ViewModel {
     }
 
     public void getDistinctCourses() {
-        courses = MainActivity.roomRepository.getDistinctCourses();
+        courses.setValue(MainActivity.roomRepository.getDistinctCourses());
     }
 
     public void getBacklogForCourse(String deptCode, String courseCode, String courseName) {
@@ -57,7 +58,7 @@ public class MyAcadsViewModel extends ViewModel {
     }
 
     public void getBacklogs() {
-        for (DistinctClasses course : courses) {
+        for (DistinctClasses course : courses.getValue()) {
             getBacklogForCourse(course.getDeptCode(), course.getCourseCode(), course.getCourseName());
         }
     }

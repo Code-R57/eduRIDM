@@ -1,5 +1,7 @@
 package com.ridm.eduRIDM.screen.myacads;
 
+import static com.ridm.eduRIDM.MainActivity.roomRepository;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +16,6 @@ import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.model.room.Backlog.Backlog;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
 import com.ridm.eduRIDM.model.room.TimeTable.DistinctClasses;
-import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,13 +27,15 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
     private final List<Eval> evalList;
     private final String currentSelection;
     private final HashMap<String, List<Backlog>> backlogListMap;
+    private final MyAcadsFragment.OnItemDeleteClickListener listener;
 
-    public AcadsListAdapter(Context mCtx, List<DistinctClasses> courseList, List<Eval> evalList, String currentSelection, HashMap<String, List<Backlog>> backlogListMap) {
+    public AcadsListAdapter(Context mCtx, List<DistinctClasses> courseList, List<Eval> evalList, String currentSelection, HashMap<String, List<Backlog>> backlogListMap, MyAcadsFragment.OnItemDeleteClickListener listener) {
         this.mCtx = mCtx;
         this.courseList = courseList;
         this.evalList = evalList;
         this.currentSelection = currentSelection;
         this.backlogListMap = backlogListMap;
+        this.listener = listener;
     }
 
     @Override
@@ -70,7 +73,16 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
             holder.backlogCourseCode.setText(course.getCourseCode());
             holder.backlogCourseName.setText(course.getCourseName());
 
-            BacklogListAdapter listAdapter = new BacklogListAdapter(backlogListMap.get(course.getCourseName()), mCtx.getApplicationContext());
+            BacklogListAdapter listAdapter = new BacklogListAdapter(backlogListMap.get(course.getCourseName()), mCtx.getApplicationContext(), new OnItemClickListener() {
+                @Override
+                public void onBacklogItemClick(Backlog backlog) {
+                    roomRepository.deleteBacklog(backlog);
+                    backlogListMap.get(course.getCourseName()).remove(backlog);
+
+                    listener.onBacklogItemDeleted();
+                    notifyDataSetChanged();
+                }
+            });
 
             holder.backlogListView.setAdapter(listAdapter);
         }
@@ -81,7 +93,7 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
         if (currentSelection.equals("Evals")) {
             return evalList.size();
         } else {
-            return backlogListMap.keySet().size();
+            return courseList.size();
         }
     }
 
@@ -113,5 +125,9 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
                 backlogListView = view.findViewById(R.id.backlog_list);
             }
         }
+    }
+
+    public interface OnItemClickListener {
+        void onBacklogItemClick(Backlog backlog);
     }
 }

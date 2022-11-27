@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentMyAcadsBinding;
+import com.ridm.eduRIDM.model.room.TimeTable.DistinctClasses;
 
 public class MyAcadsFragment extends Fragment {
 
@@ -51,9 +52,18 @@ public class MyAcadsFragment extends Fragment {
         });
 
         viewModel.getCurrentSelection().observe(getViewLifecycleOwner(), checkedState -> {
-            AcadsListAdapter acadsListAdapter = new AcadsListAdapter(requireContext(), viewModel.courses, viewModel.evalList, checkedState, viewModel.courseBacklog);
-            binding.acadsList.setAdapter(acadsListAdapter);
-            binding.acadsList.setLayoutManager(new LinearLayoutManager(getContext()));
+            viewModel.courses.observe(getViewLifecycleOwner(), value -> {
+                AcadsListAdapter acadsListAdapter = new AcadsListAdapter(requireContext(), viewModel.courses.getValue(), viewModel.evalList, checkedState, viewModel.courseBacklog, new OnItemDeleteClickListener() {
+                    @Override
+                    public void onBacklogItemDeleted() {
+                        viewModel.getDistinctCourses();
+                        viewModel.getBacklogs();
+                    }
+                });
+
+                binding.acadsList.setAdapter(acadsListAdapter);
+                binding.acadsList.setLayoutManager(new LinearLayoutManager(getContext()));
+            });
         });
 
         binding.evalBacklogSelector.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -72,5 +82,9 @@ public class MyAcadsFragment extends Fragment {
         });
 
         return binding.getRoot();
+    }
+
+    public interface OnItemDeleteClickListener {
+        void onBacklogItemDeleted();
     }
 }
