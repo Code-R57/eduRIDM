@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/classes_options_button_background_filled">
+        android:background="@drawable/upcoming_eval_card_background">
 
         <TextView
             android:id="@+id/upcoming_eval_dept_code"

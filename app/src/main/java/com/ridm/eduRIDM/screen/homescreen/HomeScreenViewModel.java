@@ -22,6 +22,16 @@ public class HomeScreenViewModel extends ViewModel {
     List<Eval> upcomingEvalList = new ArrayList<>();
     List<TimeTable> classList = new ArrayList<>();
 
+    private MutableLiveData<String> currentSelection = new MutableLiveData<>("Today");
+    public LiveData<String> getCurrentSelection() {
+        return currentSelection;
+    }
+
+    private MutableLiveData<Boolean> classMissed = new MutableLiveData<>(Boolean.FALSE);
+    public LiveData<Boolean> getClassMissed() {
+        return classMissed;
+    }
+
     public void onNavigateToStopwatchScreen() {
         navigateToStopwatchScreen.setValue(Boolean.TRUE);
     }
@@ -35,13 +45,16 @@ public class HomeScreenViewModel extends ViewModel {
        Log.d("upcomingEvals",upcomingEvalList.toString());
     }
 
-    public void getAllEvals() {
-        upcomingEvalList = MainActivity.roomRepository.getAllEvals();
-        Log.d("upcomingEvals",upcomingEvalList.toString());
+    public void getAllEvals(String date) {
+        upcomingEvalList = MainActivity.roomRepository.getAllEvals(date);
     }
 
-    public void getClassesToday(String days) {
+    public void getClassesByDay(String days) {
         classList = MainActivity.roomRepository.getAllClassesByDay(days);
+    }
+
+    public void setCurrentSelection(String currentSelection) {
+        this.currentSelection.setValue(currentSelection);
     }
 
 }

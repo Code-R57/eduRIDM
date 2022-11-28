@@ -22,6 +22,7 @@
     <string name="add_description_hint">Add a Description…</string>
 
     <string-array name="repeat_for_entries">
+        <item>None</item>
         <item>Semester</item>
         <item>Year</item>
         <item>Month</item>

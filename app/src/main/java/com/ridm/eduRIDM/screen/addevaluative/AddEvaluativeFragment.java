@@ -1,7 +1,12 @@
 package com.ridm.eduRIDM.screen.addevaluative;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,15 +22,19 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.ridm.eduRIDM.AppBroadcastReceiver;
 import com.ridm.eduRIDM.MainActivity;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentAddEvaluativeBinding;
 import com.ridm.eduRIDM.databinding.FragmentAddEvaluativeBindingImpl;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
+import com.ridm.eduRIDM.model.room.TimeTable.DistinctClasses;
+import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +69,10 @@ public class AddEvaluativeFragment extends Fragment {
 
         binding.setViewModel(viewModel);
 
+        ArrayAdapter<DistinctClasses> coursesAdapter = new ArrayAdapter<DistinctClasses>(requireActivity(), android.R.layout.simple_spinner_item, viewModel.courseList);
+
+        binding.spinnerSubject.setAdapter(coursesAdapter);
+
         viewModel.getNavigateToMyAcads().observe(getViewLifecycleOwner(), navigateToMyAcads -> {
             if (navigateToMyAcads == Boolean.TRUE) {
                 Navigation.findNavController(this.requireView()).navigate(R.id.action_addEvaluativeFragment_to_myAcadsFragment);
@@ -86,6 +99,22 @@ public class AddEvaluativeFragment extends Fragment {
                 eval.setType(binding.spinnerType.getSelectedItem().toString());
                 eval.setSyllabus(binding.syllabusText.getText().toString());
                 eval.setNature(binding.spinnerNature.getSelectedItem().toString());
+
+                Intent notifyIntent = new Intent(getActivity(), AppBroadcastReceiver.class);
+                notifyIntent.putExtra("Notif Desc - Receiver", eval.getCourseName() + " " + eval.getNature() + " tomorrow");
+                notifyIntent.putExtra("Notif ID - Receiver", 5);
+
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 13, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+
+                String[] time = binding.addEvalTimePicker.getText().toString().split(":");
+
+                Date today = new Date();
+                Date toSet = new Date(Integer.parseInt(dates[2]), Integer.parseInt(dates[1])-1, Integer.parseInt(dates[0]), Integer.parseInt(time[0]),Integer.parseInt(time[1]));
+
+                long timeDiff = Math.abs(toSet.getTime() - 86400000 - today.getTime());
+
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeDiff, pendingIntent);
 
                 viewModel.eval = eval;
                 viewModel.onNavigateToMyAcadsClicked();
@@ -118,12 +147,12 @@ public class AddEvaluativeFragment extends Fragment {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
-                        String amPm;
-                        if (hourOfDay >= 12) {
-                            amPm = "PM";
-                        } else {
-                            amPm = "AM";
-                        }
+                        String amPm = "";
+//                        if (hourOfDay >= 12) {
+//                            amPm = "PM";
+//                        } else {
+//                            amPm = "AM";
+//                        }
                         String time = String.format("%02d:%02d", hourOfDay, minutes) + amPm;
                         binding.addEvalTimePicker.setText(time);
                     }

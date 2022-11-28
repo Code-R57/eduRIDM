@@ -40,28 +40,12 @@
             app:layout_constraintTop_toBottomOf="@+id/add_timetable" />
 
         <Button
-            android:id="@+id/skip_btn"
-            style="@style/form_button_style"
-            android:layout_width="77dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="24dp"
-            android:text="@string/skip"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/submit_button"
-            app:layout_constraintHorizontal_bias="0.024"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/submit_button"
-            android:onClick="@{() -> viewModel.onSkipClicked()}"/>
-
-        <Button
             android:id="@+id/submit_button"
             style="@style/form_button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="24dp"
-            android:onClick="@{() -> viewModel.onSubmitClicked()}"
             android:text="@string/submit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

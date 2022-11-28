@@ -75,6 +75,12 @@ public class PlannerFragment extends Fragment {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                                 binding.plannerDateSelector.setText(day + "/" + (month + 1) + "/" + year);
+
+                                viewModel.getAllPlans(year + "-" + (month+1) + "-" + day);
+
+                                PlanCardAdapter adapter = new PlanCardAdapter(requireContext(), viewModel.planList);
+                                binding.recyclerView.setAdapter(adapter);
+                                binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                             }
                         }, year, month, dayOfMonth);
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());

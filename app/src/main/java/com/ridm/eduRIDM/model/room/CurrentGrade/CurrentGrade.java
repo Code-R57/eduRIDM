@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.Serializable;
 
 @Entity(tableName = "CurrentGrade", primaryKeys = {"deptCode", "courseCode"})
-public class CurrentGrade  implements Serializable {
+public class CurrentGrade implements Serializable {
 
     @NotNull
     @ColumnInfo(name = "deptCode")
@@ -23,6 +23,9 @@ public class CurrentGrade  implements Serializable {
 
     @ColumnInfo(name = "grade")
     private String grade;
+
+    @ColumnInfo(name = "credits")
+    private int credits;
 
     // Getters and Setters
 
@@ -56,5 +59,13 @@ public class CurrentGrade  implements Serializable {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public void setCredits(int credits) {
+        this.credits = credits;
     }
 }

@@ -7,6 +7,7 @@ import com.ridm.eduRIDM.model.room.CurrentGrade.CurrentGrade;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
 import com.ridm.eduRIDM.model.room.ExtraClass.ExtraClass;
 import com.ridm.eduRIDM.model.room.Plan.Plan;
+import com.ridm.eduRIDM.model.room.TimeTable.DistinctClasses;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.util.ArrayList;
@@ -41,13 +42,13 @@ public class RoomRepository {
         });
     }
 
-    public List<Eval> getAllEvals() {
+    public List<Eval> getAllEvals(String date) {
         List<Eval> eval = new ArrayList<>();
 
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                eval.addAll(appDatabase.evalDao().getAllEvals());
+                eval.addAll(appDatabase.evalDao().getAllEvals(date));
             }
         });
 
@@ -150,5 +151,62 @@ public class RoomRepository {
         });
 
         return upcomingEvalList;
+    }
+
+    public void insertBacklog(Backlog backlog) {
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDatabase.backlogDao().insertBacklog(backlog);
+            }
+        });
+
+    }
+
+    public void deleteBacklog(Backlog backlog) {
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDatabase.backlogDao().deleteBacklog(backlog);
+            }
+        });
+    }
+
+    public void insertCourse(TimeTable timeTable) {
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDatabase.timeTableDao().insertClass(timeTable);
+            }
+        });
+    }
+
+    public List<DistinctClasses> getDistinctBacklogCourses() {
+        List<DistinctClasses> distinctCourses = new ArrayList<>();
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                distinctCourses.addAll(appDatabase.backlogDao().getDistinctCourses());
+            }
+        });
+
+        return distinctCourses;
+    }
+
+    public List<DistinctClasses> getDistinctCourses() {
+        List<DistinctClasses> distinctCourses = new ArrayList<>();
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                distinctCourses.addAll(appDatabase.timeTableDao().getDistinctCourses());
+            }
+        });
+
+        return distinctCourses;
     }
 }

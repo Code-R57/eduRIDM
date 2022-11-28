@@ -3,6 +3,7 @@ package com.ridm.eduRIDM;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,12 +24,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.ridm.eduRIDM.databinding.ActivityMainBinding;
 import com.ridm.eduRIDM.model.firebase.FirebaseQueries;
 import com.ridm.eduRIDM.model.room.RoomRepository;
@@ -42,9 +46,11 @@ public class MainActivity extends AppCompatActivity implements WelcomeScreenFrag
     public static FirebaseAuth mAuth;
     public static GoogleSignInAccount account;
     public static FirebaseQueries firebaseQueries;
+    public static DocumentSnapshot userInfo;
     public BottomNavigationView bottomView;
     public Toolbar toolbar;
     NavController navController;
+    FirebaseFirestore database;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -68,7 +74,23 @@ public class MainActivity extends AppCompatActivity implements WelcomeScreenFrag
         account = GoogleSignIn.getLastSignedInAccount(this);
 
         if (account != null) {
-            navController.navigate(R.id.homeScreenFragment);
+            database.collection("users").document(account.getEmail())
+                            .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if(task.isSuccessful()) {
+                                DocumentSnapshot taskResult = task.getResult();
+
+                                if(!taskResult.contains("Name")) {
+                                    navController.navigate(R.id.registerFragment);
+                                }
+                                else {
+                                    userInfo = taskResult;
+                                    navController.navigate(R.id.homeScreenFragment);
+                                }
+                            }
+                        }
+                    });
         }
     }
 
@@ -77,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements WelcomeScreenFrag
         super.onCreate(savedInstanceState);
 
         // Firebase Firestore
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        database = FirebaseFirestore.getInstance();
 
         firebaseQueries = new FirebaseQueries(database, this);
 

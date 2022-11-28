@@ -1,42 +1,41 @@
 package com.ridm.eduRIDM.screen.myacads;
 
+import static com.ridm.eduRIDM.MainActivity.roomRepository;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.model.room.Backlog.Backlog;
+import com.ridm.eduRIDM.screen.myacads.AcadsListAdapter.OnItemClickListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class BacklogListAdapter extends ArrayAdapter<Backlog> implements View.OnLongClickListener {
+public class BacklogListAdapter extends ArrayAdapter<Backlog> {
 
     private List<Backlog> backlogList;
     private Context mCtx;
-
-    @Override
-    public boolean onLongClick(View view) {
-        return false;
-    }
+    private OnItemClickListener listener;
 
     public static class ViewHolder {
         TextView backlogType;
         TextView backlogDate;
         TextView extraClass;
-        CheckBox backlogDone;
+        ImageButton backlogDone;
     }
 
-    public BacklogListAdapter(List<Backlog> backlogList, Context mCtx) {
+    public BacklogListAdapter(List<Backlog> backlogList, Context mCtx, OnItemClickListener listener) {
         super(mCtx, R.layout.backlog_list_item);
         this.backlogList = backlogList;
         this.mCtx = mCtx;
+        this.listener = listener;
     }
 
     @Nullable
@@ -47,6 +46,9 @@ public class BacklogListAdapter extends ArrayAdapter<Backlog> implements View.On
 
     @Override
     public int getCount() {
+        if(backlogList == null) {
+            return 0;
+        }
         return backlogList.size();
     }
 
@@ -67,7 +69,7 @@ public class BacklogListAdapter extends ArrayAdapter<Backlog> implements View.On
             viewHolder.backlogType = (TextView) convertView.findViewById(R.id.textView_backlog_type);
             viewHolder.backlogDate = (TextView) convertView.findViewById(R.id.textView_date_backlog);
             viewHolder.extraClass = (TextView) convertView.findViewById(R.id.textView_extra_class);
-            viewHolder.backlogDone = (CheckBox) convertView.findViewById(R.id.checkBox);
+            viewHolder.backlogDone = (ImageButton) convertView.findViewById(R.id.checkBox);
 
             result = convertView;
 
@@ -85,6 +87,15 @@ public class BacklogListAdapter extends ArrayAdapter<Backlog> implements View.On
             viewHolder.extraClass.setVisibility(View.GONE);
         }
 
+        viewHolder.backlogDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onBacklogItemClick(backlog);
+                notifyDataSetChanged();
+            }
+        });
+
         return convertView;
     }
 }
+
