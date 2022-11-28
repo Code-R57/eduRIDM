@@ -104,7 +104,7 @@ public class AddEvaluativeFragment extends Fragment {
                 notifyIntent.putExtra("Notif Desc - Receiver", eval.getCourseName() + " " + eval.getNature() + " tomorrow");
                 notifyIntent.putExtra("Notif ID - Receiver", 5);
 
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 13, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 13, notifyIntent, PendingIntent.FLAG_MUTABLE);
                 AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
 
                 String[] time = binding.addEvalTimePicker.getText().toString().split(":");
