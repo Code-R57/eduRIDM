@@ -42,13 +42,13 @@ public class RoomRepository {
         });
     }
 
-    public List<Eval> getAllEvals() {
+    public List<Eval> getAllEvals(String date) {
         List<Eval> eval = new ArrayList<>();
 
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                eval.addAll(appDatabase.evalDao().getAllEvals());
+                eval.addAll(appDatabase.evalDao().getAllEvals(date));
             }
         });
 

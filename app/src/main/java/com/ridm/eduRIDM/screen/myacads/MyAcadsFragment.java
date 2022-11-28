@@ -17,6 +17,10 @@ import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentMyAcadsBinding;
 import com.ridm.eduRIDM.model.room.TimeTable.DistinctClasses;
 
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 public class MyAcadsFragment extends Fragment {
 
     MyAcadsViewModel viewModel;
@@ -26,10 +30,13 @@ public class MyAcadsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Date date = new Date();
+        String today = new SimpleDateFormat("yyyy-MM-dd").format(date);
+
         viewModel = new ViewModelProvider(this).get(MyAcadsViewModel.class);
 
         viewModel.getDistinctCourses();
-        viewModel.getAllEvals();
+        viewModel.getAllEvals(today);
         viewModel.getBacklogs();
     }
 

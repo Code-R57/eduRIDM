@@ -42,8 +42,8 @@ public class MyAcadsViewModel extends ViewModel {
         navigateToAddEval.setValue(Boolean.FALSE);
     }
 
-    public void getAllEvals() {
-        evalList = MainActivity.roomRepository.getAllEvals();
+    public void getAllEvals(String date) {
+        evalList = MainActivity.roomRepository.getAllEvals(date);
     }
 
     public void getDistinctCourses() {

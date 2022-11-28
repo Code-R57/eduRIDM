@@ -45,9 +45,8 @@ public class HomeScreenViewModel extends ViewModel {
        Log.d("upcomingEvals",upcomingEvalList.toString());
     }
 
-    public void getAllEvals() {
-        upcomingEvalList = MainActivity.roomRepository.getAllEvals();
-        Log.d("upcomingEvals",upcomingEvalList.toString());
+    public void getAllEvals(String date) {
+        upcomingEvalList = MainActivity.roomRepository.getAllEvals(date);
     }
 
     public void getClassesByDay(String days) {
