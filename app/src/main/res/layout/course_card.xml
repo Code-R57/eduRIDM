@@ -8,7 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/classes_card_background">
+        android:background="@drawable/classes_card_background"
+        android:layout_margin="10dp">
 
         <TextView
             android:id="@+id/dept_code"

@@ -57,7 +57,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_baseline_more_vert_24" />
 
-            <ImageButton
+            <CheckBox
                 android:id="@+id/attended_button"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -65,13 +65,13 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/classes_options_button_background_stroke"
+                android:background="@drawable/classes_checkbox_attended"
+                android:button="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/more_options"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/plan_name"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_check_24" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
