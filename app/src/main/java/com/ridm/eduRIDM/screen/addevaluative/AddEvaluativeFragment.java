@@ -112,7 +112,7 @@ public class AddEvaluativeFragment extends Fragment {
                 Date today = new Date();
                 Date toSet = new Date(Integer.parseInt(dates[2]), Integer.parseInt(dates[1])-1, Integer.parseInt(dates[0]), Integer.parseInt(time[0]),Integer.parseInt(time[1]));
 
-                long timeDiff = Math.abs(toSet.getTime() + 86400000 - today.getTime());
+                long timeDiff = Math.abs(toSet.getTime() - 86400000 - today.getTime());
 
                 alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeDiff, pendingIntent);
 
