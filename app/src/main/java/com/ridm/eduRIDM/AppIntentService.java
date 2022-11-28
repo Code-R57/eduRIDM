@@ -28,7 +28,7 @@ public class AppIntentService extends IntentService {
         builder.setSmallIcon(R.mipmap.ic_launcher_round);
 
         Intent notifyIntent = new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 13, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 13, notifyIntent, PendingIntent.FLAG_MUTABLE);
         builder.setContentIntent(pendingIntent);
 
         Notification notification = builder.build();
