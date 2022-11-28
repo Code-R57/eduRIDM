@@ -16,7 +16,7 @@ public interface EvalDao {
     @Delete
     void deleteEval(Eval eval);
 
-    @Query("SELECT * FROM Eval")
+    @Query("SELECT * FROM Eval ORDER BY date, time")
     List<Eval> getAllEvals();
 
     @Query("SELECT * FROM Eval WHERE date BETWEEN :date1 AND :date2")

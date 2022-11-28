@@ -16,7 +16,7 @@ public interface PlanDao {
     @Delete
     void deletePlan(Plan plan);
 
-    @Query("SELECT * FROM `Plan` where Date = :date")
+    @Query("SELECT * FROM `Plan` where Date = :date ORDER BY priority desc, endTime")
     List<Plan> getPlanByDate(String date);
 }
 
