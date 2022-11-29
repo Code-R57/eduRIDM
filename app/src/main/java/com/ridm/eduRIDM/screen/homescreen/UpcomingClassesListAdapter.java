@@ -1,6 +1,9 @@
 package com.ridm.eduRIDM.screen.homescreen;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.Preference;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +29,12 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
     private final List<TimeTable> classList;
     private final String date;
     private final String today;
+    private final String tomorrow;
+
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String CHECKBOX = "checkbox";
+
+    private boolean checkboxState;
 
     public UpcomingClassesListAdapter(Context mCtx, List<TimeTable> classList, String date) {
         this.mCtx = mCtx;
@@ -34,6 +43,8 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
 
         Date today = new Date();
         this.today = new SimpleDateFormat("yyyy-MM-dd").format(today);
+        Date tomorrow = new Date(today.getTime() + (1000 * 60 * 60 * 24));
+        this.tomorrow = new SimpleDateFormat("yyyy-MM-dd").format(tomorrow);
     }
 
     @Override
@@ -50,12 +61,17 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
         holder.todayCourseName.setText(lec.getCourseName());
         holder.todayClassTime.setText(lec.getTime());
         holder.todayLecture.setText(lec.getSection());
+        List<Backlog> backlog = MainActivity.roomRepository.getBacklogForCourseAndDate(lec.getDeptCode(), lec.getCourseCode(), today);
 
         if(!date.equals(today)) {
             holder.missed.setVisibility(View.GONE);
             holder.attended.setVisibility(View.GONE);
             holder.holiday.setVisibility(View.GONE);
         }
+
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        checkboxState = sharedPreferences.getBoolean(CHECKBOX, false);
+        holder.missed.setChecked(checkboxState);
 
         holder.missed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -69,6 +85,10 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
                 backlog.setSection(tt.getSection());
                 backlog.setExtraClass(Boolean.FALSE);
                 backlog.setCourseName(tt.getCourseName());
+
+                SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean(CHECKBOX, isChecked);
 
                 if (isChecked) {
                     MainActivity.roomRepository.insertBacklog(backlog);

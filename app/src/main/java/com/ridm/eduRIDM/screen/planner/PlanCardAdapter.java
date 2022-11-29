@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ridm.eduRIDM.MainActivity;
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.model.room.Plan.Plan;
 
@@ -35,7 +38,6 @@ public class PlanCardAdapter extends RecyclerView.Adapter<PlanCardAdapter.PlanVi
     @Override
     public void onBindViewHolder(@NonNull PlanViewHolder holder, int position) {
         Plan plan = planList.get(position);
-
         holder.planName.setText(plan.getTitle());
         holder.descInfo.setText(plan.getDescription());
         String duration =  plan.getStartTime() + " - " + plan.getEndTime();
@@ -48,6 +50,17 @@ public class PlanCardAdapter extends RecyclerView.Adapter<PlanCardAdapter.PlanVi
         }
 
         holder.priorityInfo.setText(priority);
+
+        holder.attendedButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    MainActivity.roomRepository.deletePlan(plan);
+                    planList.remove(plan);
+                    notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     @Override
@@ -58,7 +71,7 @@ public class PlanCardAdapter extends RecyclerView.Adapter<PlanCardAdapter.PlanVi
     class PlanViewHolder extends RecyclerView.ViewHolder {
 
         TextView timeDuration, planName, priorityInfo, descInfo;
-        ImageButton attendedButton;
+        CheckBox attendedButton;
         ImageView moreOptions;
 
         PlanViewHolder(View itemView) {

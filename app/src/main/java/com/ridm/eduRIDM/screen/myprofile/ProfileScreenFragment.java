@@ -1,5 +1,7 @@
 package com.ridm.eduRIDM.screen.myprofile;
 
+import static com.ridm.eduRIDM.MainActivity.userInfo;
+
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +20,8 @@ import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentProfileScreenBinding;
 import com.ridm.eduRIDM.screen.homescreen.UpcomingClassesListAdapter;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -33,6 +37,8 @@ public class ProfileScreenFragment extends Fragment {
     int dayOfMonth;
     Calendar calendar;
 
+    private DecimalFormat decimalFormat;
+
     private final String hashDay = "_______";
 
     @Override
@@ -40,6 +46,9 @@ public class ProfileScreenFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+
+        decimalFormat = new DecimalFormat("0.000");
+        decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
     }
 
     @Override
@@ -50,6 +59,11 @@ public class ProfileScreenFragment extends Fragment {
         binding.setLifecycleOwner(this);
 
         binding.setViewModel(viewModel);
+
+        binding.profileName.setText(userInfo.getString("Name"));
+        binding.cgpaDetail.setText(String.valueOf(decimalFormat.format(userInfo.get("CGPA"))));
+        binding.profileEmail.setText(userInfo.getString("EmailID"));
+        binding.semesterDetail.setText(userInfo.getString("CurrentSemester"));
 
         viewModel.getNavigateToUpdateCGPA().observe(getViewLifecycleOwner(), navigateToUpdateCGPA -> {
             if(navigateToUpdateCGPA == Boolean.TRUE) {
