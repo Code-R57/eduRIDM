@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.ridm.eduRIDM.MainActivity;
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentAddTimetableBinding;
 import com.ridm.eduRIDM.model.firebase.CourseClass;
@@ -54,16 +56,17 @@ public class AddTimetableFragment extends Fragment {
         binding.addCourseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(binding.courseList.getAdapter() != null) {
+                    int count = binding.courseList.getAdapter().getCount();
+
+                    for (int i = 0; i < count; i++) {
+                        viewModel.coursesToEnroll.set(i, (CourseClass) binding.courseList.getAdapter().getItem(i));
+                    }
+                }
                 viewModel.numberOfCards += 1;
                 viewModel.coursesToEnroll.add(new CourseClass());
                 TimeTableCardAdapter adapter = new TimeTableCardAdapter(requireContext(), viewModel.coursesList, viewModel.coursesToEnroll, viewModel.numberOfCards);
                 binding.courseList.setAdapter(adapter);
-
-                int count = binding.courseList.getAdapter().getCount();
-
-                for (int i = 0; i < count; i++) {
-                    viewModel.coursesToEnroll.set(i, (CourseClass) binding.courseList.getAdapter().getItem(i));
-                }
             }
         });
 
@@ -199,6 +202,18 @@ public class AddTimetableFragment extends Fragment {
                             });
                         }
                     }
+
+                    FirebaseFirestore.getInstance().collection("users").document(account.getEmail())
+                            .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if(task.isSuccessful()) {
+                                        DocumentSnapshot taskResult = task.getResult();
+
+                                        MainActivity.userInfo = taskResult;
+                                    }
+                                }
+                            });
 
                     if (numberOfCourses > 0) {
                         viewModel.insertInitialGrades(currentGradeList);

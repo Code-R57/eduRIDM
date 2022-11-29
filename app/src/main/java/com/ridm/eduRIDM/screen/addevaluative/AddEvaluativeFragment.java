@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,14 +95,15 @@ public class AddEvaluativeFragment extends Fragment {
                 eval.setDate(date);
 
                 eval.setTime(binding.addEvalTimePicker.getText().toString());
-                eval.setDuration(Integer.parseInt(binding.addEvalDuration.getText().toString()));
                 eval.setType(binding.spinnerType.getSelectedItem().toString());
                 eval.setSyllabus(binding.syllabusText.getText().toString());
                 eval.setNature(binding.spinnerNature.getSelectedItem().toString());
 
                 Intent notifyIntent = new Intent(getActivity(), AppBroadcastReceiver.class);
                 notifyIntent.putExtra("Notif Desc - Receiver", eval.getCourseName() + " " + eval.getNature() + " tomorrow");
-                notifyIntent.putExtra("Notif ID - Receiver", 5);
+                notifyIntent.putExtra("Notif ID - Receiver", eval.getEvalID());
+
+                Log.d("Debug Debug", eval.getEvalID() + " ");
 
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 13, notifyIntent, PendingIntent.FLAG_MUTABLE);
                 AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
@@ -109,9 +111,13 @@ public class AddEvaluativeFragment extends Fragment {
                 String[] time = binding.addEvalTimePicker.getText().toString().split(":");
 
                 Date today = new Date();
-                Date toSet = new Date(Integer.parseInt(dates[2]), Integer.parseInt(dates[1])-1, Integer.parseInt(dates[0]), Integer.parseInt(time[0]),Integer.parseInt(time[1]));
+                Date toSet = new Date();
+                toSet.setYear(Integer.parseInt(dates[2]));
+                toSet.setMonth(Integer.parseInt(dates[1]));
+                toSet.setDate(Integer.parseInt(dates[0]));
 
                 long timeDiff = Math.abs(toSet.getTime() - 86400000 - today.getTime());
+                Log.d("Debug Debug",  dates[0] +" " +dates[1]+ " " + dates[2]+" "+new SimpleDateFormat("yyyy-MM-dd").format(toSet)+" "+ Math.abs(toSet.getTime() - 86400000 - today.getTime()) + " " + Math.abs(toSet.getTime() - today.getTime()) + " " + toSet.getTime() + " " + today.getTime() );
 
                 alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeDiff, pendingIntent);
 

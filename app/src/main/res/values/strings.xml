@@ -39,7 +39,7 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="type">Type</string>
-    <string name="syllabus">Syllabus</string>
+    <string name="syllabus">Description</string>
     <string name="nature">Nature</string>
     <string name="duration">Duration(in Minutes)</string>
     <string name="button_add">Add</string>
@@ -104,7 +104,7 @@
     <string name="evaluative_time">10:00</string>
     <string name="evaluative_type">Type:</string>
     <string name="evaluative_type_text">Quiz</string>
-    <string name="evaluative_syllabus">Syllabus:</string>
+    <string name="evaluative_syllabus">Description:</string>
     <string name="evaluative_syllabus_desc">Activity Lifecycle, Fragments, Database- SQLite\nRoom, Layouts, App Architecture.</string>
     <string name="evaluative_nature">Nature:</string>
     <string name="nature_value">Open Book</string>
@@ -176,7 +176,7 @@
     <string name="final_cgpa">Final CGPA</string>
     <string name="sgpa_value">8.500</string>
     <string name="final_cgpa_value">8.500</string>
-    <string name="update">Update</string>
+    <string name="update">Calculate</string>
 
     <string-array name="grades">
         <item>A</item>

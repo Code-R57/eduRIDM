@@ -61,8 +61,8 @@ public class UpdateCgpaFragment extends Fragment {
             }
         });
 
-
         binding.currCgpaValue.setText(String.valueOf(decimalFormat.format(userInfo.get("CGPA"))));
+        binding.finalCgpaValue.setText(String.valueOf(decimalFormat.format(userInfo.get("CGPA"))));
 
         if(String.valueOf(viewModel.currentSG).equals("NaN")) {
             viewModel.currentSG = 0;
@@ -100,7 +100,7 @@ public class UpdateCgpaFragment extends Fragment {
 
                 viewModel.currentGradeList = currentGradeList;
 
-                if (binding.updateCgpaButton.getText() == "Submit")
+                if (binding.updateCgpaButton.getText() == "Done")
                     viewModel.onNavigateToProfileClicked();
                 else {
                     SGPA = Float.parseFloat(decimalFormat.format(SGPA));
@@ -109,7 +109,7 @@ public class UpdateCgpaFragment extends Fragment {
                     CGPA = Float.parseFloat(decimalFormat.format(CGPA));
                     binding.finalCgpaValue.setText(String.valueOf(CGPA));
 
-                    String submitText = "Submit";
+                    String submitText = "Done";
                     binding.updateCgpaButton.setText(submitText);
                 }
             }

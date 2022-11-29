@@ -60,15 +60,14 @@ public class PlanCardAdapter extends RecyclerView.Adapter<PlanCardAdapter.PlanVi
         if (!date.equals(today)) {
             holder.attendedButton.setVisibility(View.GONE);
         }
-        
+
         holder.attendedButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
-                    MainActivity.roomRepository.deletePlan(plan);
-                    planList.remove(plan);
-                    notifyDataSetChanged();
-                }
+                holder.attendedButton.setChecked(false);
+                MainActivity.roomRepository.deletePlan(plan);
+                planList.remove(plan);
+                notifyDataSetChanged();
             }
         });
     }
@@ -91,7 +90,7 @@ public class PlanCardAdapter extends RecyclerView.Adapter<PlanCardAdapter.PlanVi
             planName = (TextView) itemView.findViewById(R.id.plan_name);
             priorityInfo = (TextView) itemView.findViewById(R.id.priority_info_value);
             descInfo = (TextView) itemView.findViewById(R.id.desc_info);
-            attendedButton = (ImageButton) itemView.findViewById(R.id.attended_button);
+            attendedButton = (CheckBox) itemView.findViewById(R.id.attended_button);
 //            moreOptions = (ImageView) itemView.findViewById(R.id.more_options);
         }
     }

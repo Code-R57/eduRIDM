@@ -24,7 +24,7 @@
             app:layout_constraintBottom_toTopOf="@+id/play_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/stopwatch_round" />
 
         <Chronometer
@@ -79,20 +79,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/play_button"
             app:srcCompat="@drawable/ic_baseline_music_note_24" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="64dp"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-             />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

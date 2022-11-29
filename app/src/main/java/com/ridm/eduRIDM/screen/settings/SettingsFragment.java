@@ -1,5 +1,6 @@
 package com.ridm.eduRIDM.screen.settings;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +13,17 @@ import androidx.navigation.Navigation;
 
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentSettingsBinding;
+import com.ridm.eduRIDM.screen.onboarding.WelcomeScreenFragment;
 
 public class SettingsFragment extends Fragment {
     FragmentSettingsBinding binding;
+    private Listener listener;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.listener = (Listener) context;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,7 +42,17 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        binding.buttonLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.signOutClicked();
+            }
+        });
+
         return binding.getRoot();
     }
 
+    public interface Listener {
+        void signOutClicked();
+    }
 }

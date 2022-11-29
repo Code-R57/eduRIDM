@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
@@ -68,7 +70,8 @@ public class HomeScreenFragment extends Fragment {
 
         binding.setViewModel(viewModel);
 
-        binding.nameText.setText(userInfo.getString("Name").split(" ")[0]);
+        if(userInfo != null)
+            binding.nameText.setText(userInfo.getString("Name").split(" ")[0]);
 
         UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, today);
 
@@ -77,7 +80,6 @@ public class HomeScreenFragment extends Fragment {
 
         UpcomingEvalsAdapter adapter = new UpcomingEvalsAdapter((ArrayList<Eval>) viewModel.upcomingEvalList, requireContext());
         binding.upcomingEvalsList.setAdapter(adapter);
-        binding.yourClassesList.setLayoutManager(new LinearLayoutManager(getContext()));
 
         binding.daySelector.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

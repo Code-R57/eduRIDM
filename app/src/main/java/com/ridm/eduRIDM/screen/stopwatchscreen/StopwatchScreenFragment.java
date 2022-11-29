@@ -157,7 +157,7 @@ public class StopwatchScreenFragment extends Fragment {
             sec= sec%60;
             milisec=(int)(tupdate%100);
 
-            binding.timer.setText((String.format("%02d",min))+":"+String.format("%02d",sec)+":"+String.format("%02d",milisec));
+            binding.timer.setText((String.format("%02d",hours))+":"+String.format("%02d",min)+":"+String.format("%02d",sec));
             handler.postDelayed(this, 60);
 
         }
