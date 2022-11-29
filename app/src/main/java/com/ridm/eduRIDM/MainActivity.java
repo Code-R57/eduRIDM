@@ -3,6 +3,7 @@ package com.ridm.eduRIDM;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +38,8 @@ import com.ridm.eduRIDM.databinding.ActivityMainBinding;
 import com.ridm.eduRIDM.model.firebase.FirebaseQueries;
 import com.ridm.eduRIDM.model.room.RoomRepository;
 import com.ridm.eduRIDM.screen.onboarding.WelcomeScreenFragment;
+
+import java.util.function.Predicate;
 
 public class MainActivity extends AppCompatActivity implements WelcomeScreenFragment.Listener {
 

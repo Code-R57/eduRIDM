@@ -12,7 +12,6 @@
         android:layout_marginBottom="4dp"
         android:background="@drawable/classes_card_background">
 
-
         <TextView
             android:id="@+id/dept_code"
             style="@style/form_text_style"

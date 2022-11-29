@@ -27,4 +27,7 @@ public interface BacklogDao {
 
     @Query("SELECT DISTINCT courseName, courseCode, deptCode FROM Backlog")
     List<DistinctClasses> getDistinctCourses();
+
+    @Query("SELECT * FROM Backlog WHERE deptCode = :deptCode AND courseCode = :courseCode AND date = :date")
+    List<Backlog> getBacklogForCourseAndDate(String deptCode, String courseCode, String date);
 }
