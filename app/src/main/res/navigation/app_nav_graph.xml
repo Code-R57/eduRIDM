@@ -135,7 +135,11 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.ridm.eduRIDM.screen.settings.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_contactUsFragment"
+            app:destination="@id/contactUsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addExtraclassFragment"
         android:name="com.ridm.eduRIDM.screen.addextraclass.AddExtraclassFragment"
@@ -152,5 +156,9 @@
             android:id="@+id/action_updateCgpaFragment_to_profileScreenFragment"
             app:destination="@id/profileScreenFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.ridm.eduRIDM.screen.contactus.ContactUsFragment"
+        android:label="ContactUsFragment" />
 
 </navigation>

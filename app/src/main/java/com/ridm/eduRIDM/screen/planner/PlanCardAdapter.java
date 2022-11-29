@@ -1,5 +1,7 @@
 package com.ridm.eduRIDM.screen.planner;
 
+import static android.view.View.VISIBLE;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +22,14 @@ public class PlanCardAdapter extends RecyclerView.Adapter<PlanCardAdapter.PlanVi
 
     private Context context;
     private List<Plan> planList;
+    private String today;
+    private String date;
 
-    public PlanCardAdapter(Context context, List<Plan> planList) {
+    public PlanCardAdapter(Context context, List<Plan> planList, String today, String date) {
         this.context = context;
         this.planList = planList;
+        this.today = today;
+        this.date = date;
     }
 
     @Override
@@ -38,16 +44,20 @@ public class PlanCardAdapter extends RecyclerView.Adapter<PlanCardAdapter.PlanVi
 
         holder.planName.setText(plan.getTitle());
         holder.descInfo.setText(plan.getDescription());
-        String duration =  plan.getStartTime() + " - " + plan.getEndTime();
+        String duration = plan.getStartTime() + " - " + plan.getEndTime();
         holder.timeDuration.setText(duration);
 
         String priority = "Low";
 
-        if(plan.getPriority() == 1) {
+        if (plan.getPriority() == 1) {
             priority = "High";
         }
 
         holder.priorityInfo.setText(priority);
+
+        if (!date.equals(today)) {
+            holder.attendedButton.setVisibility(View.GONE);
+        }
     }
 
     @Override

@@ -32,15 +32,17 @@ public class PlannerFragment extends Fragment {
     int dayOfMonth;
     Calendar calendar;
 
+    String today;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(this).get(PlannerViewModel.class);
         Date today = new Date();
-        String date = new SimpleDateFormat("yyyy-MM-dd").format(today);
+        this.today = new SimpleDateFormat("yyyy-MM-dd").format(today);
 
-        viewModel.getAllPlans(date);
+        viewModel.getAllPlans(this.today);
     }
 
     @Override
@@ -59,7 +61,7 @@ public class PlannerFragment extends Fragment {
             }
         });
 
-        PlanCardAdapter adapter = new PlanCardAdapter(requireContext(), viewModel.planList);
+        PlanCardAdapter adapter = new PlanCardAdapter(requireContext(), viewModel.planList, this.today, this.today);
         binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -75,10 +77,10 @@ public class PlannerFragment extends Fragment {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                                 binding.plannerDateSelector.setText(day + "/" + (month + 1) + "/" + year);
+                                String date = year + "-" + (month+1) + "-" + day;
+                                viewModel.getAllPlans(date);
 
-                                viewModel.getAllPlans(year + "-" + (month+1) + "-" + day);
-
-                                PlanCardAdapter adapter = new PlanCardAdapter(requireContext(), viewModel.planList);
+                                PlanCardAdapter adapter = new PlanCardAdapter(requireContext(), viewModel.planList, today, date);
                                 binding.recyclerView.setAdapter(adapter);
                                 binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                             }

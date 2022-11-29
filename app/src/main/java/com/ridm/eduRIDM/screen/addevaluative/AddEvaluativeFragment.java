@@ -85,10 +85,9 @@ public class AddEvaluativeFragment extends Fragment {
             public void onClick(View v) {
                 Eval eval = new Eval();
 
-                String course[] = binding.spinnerSubject.getSelectedItem().toString().split(" ");
+//                String course[] = binding.spinnerSubject.getSelectedItem().toString().split(" ");
 
-                eval.setDeptCode(course[0]);
-//                eval.setCourseCode(course[1]);
+                eval.setCourseName(binding.spinnerSubject.getSelectedItem().toString());
 
                 String[] dates = binding.addEvalDatePicker.getText().toString().split("/");
                 String date = dates[2] + "-" + dates[1] + "-" + dates[0];
