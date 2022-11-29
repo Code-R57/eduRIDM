@@ -141,6 +141,8 @@ public class MainActivity extends AppCompatActivity implements WelcomeScreenFrag
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
+
+                toolbar.setTitle("eduRIDM");
                 if (navDestination.getId() == R.id.welcomeScreenFragment) {
                     toolbar.setVisibility(View.GONE);
                 } else if (navDestination.getId() == R.id.stopwatchScreenFragment || navDestination.getId() == R.id.registerFragment || navDestination.getId() == R.id.addTimetableFragment) {

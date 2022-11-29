@@ -105,13 +105,13 @@ public class TimeTableCardAdapter extends ArrayAdapter<CourseClass> {
             LayoutInflater inflater = LayoutInflater.from(mCtx);
             convertView = inflater.inflate(R.layout.course_card, parent, false);
 
-            viewHolder.deptCodeSpinner = convertView.findViewById(R.id.branch_spin);
-            viewHolder.courseCodeSpinner = convertView.findViewById(R.id.code_spin);
-            viewHolder.courseName = convertView.findViewById(R.id.course_name_timetable);
-            viewHolder.lectureSection = convertView.findViewById(R.id.lec_sel);
-            viewHolder.tutorialSection = convertView.findViewById(R.id.tut_sel);
-            viewHolder.labSection = convertView.findViewById(R.id.lab_sel);
-            viewHolder.removeCard = convertView.findViewById(R.id.remove_card);
+            viewHolder.deptCodeSpinner = (Spinner) convertView.findViewById(R.id.branch_spin);
+            viewHolder.courseCodeSpinner = (Spinner) convertView.findViewById(R.id.code_spin);
+            viewHolder.courseName = (TextView) convertView.findViewById(R.id.course_name_timetable);
+            viewHolder.lectureSection = (Spinner) convertView.findViewById(R.id.lec_sel);
+            viewHolder.tutorialSection = (Spinner) convertView.findViewById(R.id.tut_sel);
+            viewHolder.labSection = (Spinner) convertView.findViewById(R.id.lab_sel);
+//            viewHolder.removeCard = convertView.findViewById(R.id.remove_card);
 
             result = convertView;
 
@@ -249,6 +249,6 @@ public class TimeTableCardAdapter extends ArrayAdapter<CourseClass> {
         Spinner lectureSection;
         Spinner tutorialSection;
         Spinner labSection;
-        ImageView removeCard;
+//        ImageView removeCard;
     }
 }

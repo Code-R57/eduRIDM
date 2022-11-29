@@ -65,8 +65,8 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
 
         if(!date.equals(today)) {
             holder.missed.setVisibility(View.GONE);
-            holder.attended.setVisibility(View.GONE);
-            holder.holiday.setVisibility(View.GONE);
+//            holder.attended.setVisibility(View.GONE);
+//            holder.holiday.setVisibility(View.GONE);
         }
 
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
