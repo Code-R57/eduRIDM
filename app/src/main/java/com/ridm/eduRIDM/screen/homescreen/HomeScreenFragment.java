@@ -1,5 +1,7 @@
 package com.ridm.eduRIDM.screen.homescreen;
 
+import static com.ridm.eduRIDM.MainActivity.userInfo;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,10 +62,13 @@ public class HomeScreenFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_screen, container, false);
+        getActivity().setTitle("eduRIDM");
 
         binding.setLifecycleOwner(this);
 
         binding.setViewModel(viewModel);
+
+        binding.nameText.setText(userInfo.getString("Name").split(" ")[0]);
 
         UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, today);
 

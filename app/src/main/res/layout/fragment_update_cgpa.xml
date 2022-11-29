@@ -60,7 +60,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/final_cgpa"
             app:layout_constraintBottom_toTopOf="@+id/sgpa"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,10 +73,10 @@
             android:layout_marginStart="16dp"
             android:text="@string/sgpa"
             android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/sgpa_value"
             app:layout_constraintEnd_toStartOf="@+id/final_cgpa"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/curr_cgpa_value" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/final_cgpa"
@@ -87,38 +86,40 @@
             android:layout_marginTop="4dp"
             android:text="@string/final_cgpa"
             android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/final_cgpa_value"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.69"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/sgpa" />
+            app:layout_constraintTop_toTopOf="@+id/sgpa"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/sgpa_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/sgpa_value"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/update_cgpa_button"
             app:layout_constraintEnd_toEndOf="@+id/sgpa"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/sgpa"
-            app:layout_constraintTop_toBottomOf="@+id/sgpa" />
+            app:layout_constraintStart_toStartOf="@+id/sgpa" />
 
         <TextView
             android:id="@+id/final_cgpa_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/final_cgpa_value"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/update_cgpa_button"
             app:layout_constraintEnd_toEndOf="@+id/final_cgpa"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/final_cgpa"
-            app:layout_constraintTop_toBottomOf="@+id/final_cgpa" />
+            app:layout_constraintStart_toStartOf="@+id/final_cgpa" />
 
         <Button
             android:id="@+id/update_cgpa_button"

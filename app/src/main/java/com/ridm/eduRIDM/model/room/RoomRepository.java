@@ -1,7 +1,9 @@
 package com.ridm.eduRIDM.model.room;
 
 import android.app.Application;
+import android.text.method.BaseKeyListener;
 
+import com.ridm.eduRIDM.MainActivity;
 import com.ridm.eduRIDM.model.room.Backlog.Backlog;
 import com.ridm.eduRIDM.model.room.CurrentGrade.CurrentGrade;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
@@ -127,6 +129,19 @@ public class RoomRepository {
         return courseList;
     }
 
+    public List<Backlog> getBacklogForCourseAndDate(String deptCode, String courseCode, String date) {
+        List<Backlog> backlogList = new ArrayList<>();
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                backlogList.addAll(appDatabase.backlogDao().getBacklogForCourseAndDate(deptCode, courseCode, date));
+            }
+        });
+
+        return backlogList;
+    }
+
     public List<TimeTable> getAllClassesByDay(String days) {
         List<TimeTable> classes = new ArrayList<>();
 
@@ -208,5 +223,16 @@ public class RoomRepository {
         });
 
         return distinctCourses;
+    }
+
+    public void deletePlan(Plan plan) {
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDatabase.planDao().deletePlan(plan);
+            }
+        });
+
     }
 }
