@@ -61,16 +61,20 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
         holder.todayCourseName.setText(lec.getCourseName());
         holder.todayClassTime.setText(lec.getTime());
         holder.todayLecture.setText(lec.getSection());
-        List<Backlog> backlog = MainActivity.roomRepository.getBacklogForCourseAndDate(lec.getDeptCode(), lec.getCourseCode(), today);
+        List<Backlog> backlog = MainActivity.roomRepository.getBacklogForCourseAndDate(lec.getCourseName(), today);
 
         if(!date.equals(today)) {
             holder.missed.setVisibility(View.GONE);
-//            holder.attended.setVisibility(View.GONE);
-//            holder.holiday.setVisibility(View.GONE);
         }
 
-        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        checkboxState = sharedPreferences.getBoolean(CHECKBOX, false);
+        if(backlog != null) {
+            holder.missed.setChecked(true);
+        }
+
+        Log.d("Debug Debug", backlog + " " + today + " " + lec.getCourseName());
+
+//        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+//        checkboxState = sharedPreferences.getBoolean(CHECKBOX, false);
         holder.missed.setChecked(checkboxState);
 
         holder.missed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

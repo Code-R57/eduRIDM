@@ -33,36 +33,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button_data_backup"
-            style="@style/settings_option_style"
-            android:layout_marginTop="60dp"
-            android:drawableEnd="@drawable/ic_baseline_backup_24"
-            android:text="@string/backup_your_data"
-            app:layout_constraintBottom_toTopOf="@+id/button_restore_data"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/app_logo" />
-
-        <Button
-            android:id="@+id/button_restore_data"
-            style="@style/settings_option_style"
-            android:drawableEnd="@drawable/ic_baseline_restore_24"
-            android:text="@string/restore_your_data"
-            app:layout_constraintBottom_toTopOf="@+id/button_logout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_data_backup" />
-
-        <Button
             android:id="@+id/button_logout"
             style="@style/settings_option_style"
+            android:layout_marginTop="50dp"
             android:drawableEnd="@drawable/ic_baseline_exit_to_app_24"
             android:text="@string/logout"
-            app:layout_constraintBottom_toTopOf="@+id/button_contact_us"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_restore_data" />
+            app:layout_constraintTop_toBottomOf="@+id/app_logo" />
 
         <Button
             android:id="@+id/button_contact_us"
@@ -87,7 +65,7 @@
         <Button
             android:id="@+id/button_about_us"
             style="@style/settings_option_style"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="50dp"
             android:drawableEnd="@drawable/ic_baseline_people_24"
             android:text="@string/about_us"
             app:layout_constraintBottom_toBottomOf="parent"

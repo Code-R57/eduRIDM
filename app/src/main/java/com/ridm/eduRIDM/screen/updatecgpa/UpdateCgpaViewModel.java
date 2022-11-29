@@ -45,7 +45,6 @@ public class UpdateCgpaViewModel extends ViewModel {
             }
         }
 
-        Log.d("Some Debug Again", currentSG + " " + semGradePoint + " " + semCreds);
         currentSG = (float) semGradePoint / (float) semCreds;
     }
 

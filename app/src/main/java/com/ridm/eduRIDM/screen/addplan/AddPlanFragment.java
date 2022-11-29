@@ -79,9 +79,6 @@ public class AddPlanFragment extends Fragment {
 
                 plan.setStartTime(binding.spinnerStartTime.getText().toString());
                 plan.setEndTime(binding.spinnerEndTime.getText().toString());
-                plan.setRepeatFor(binding.spinnerRepeatFor.getSelectedItem().toString());
-                plan.setRepeatOn(getRepeatOn(binding));
-                plan.setRepeat(binding.checkBoxRepeatPlan.isChecked());
                 String priorityString = binding.spinnerPriority.getSelectedItem().toString();
                 if (priorityString.equals("High"))
                     plan.setPriority(1);
@@ -168,54 +165,5 @@ public class AddPlanFragment extends Fragment {
         });
 
         return binding.getRoot();
-    }
-
-
-    private String getRepeatOn(FragmentAddPlanBinding binding) {
-        StringBuilder repeatOn = new StringBuilder("");
-
-        if (binding.checkBoxMon.isChecked()) {
-            repeatOn.append('1');
-        } else {
-            repeatOn.append('0');
-        }
-
-        if (binding.checkBoxTue.isChecked()) {
-            repeatOn.append('1');
-        } else {
-            repeatOn.append('0');
-        }
-
-        if (binding.checkBoxWed.isChecked()) {
-            repeatOn.append('1');
-        } else {
-            repeatOn.append('0');
-        }
-
-        if (binding.checkBoxThur.isChecked()) {
-            repeatOn.append('1');
-        } else {
-            repeatOn.append('0');
-        }
-
-        if (binding.checkBoxFri.isChecked()) {
-            repeatOn.append('1');
-        } else {
-            repeatOn.append('0');
-        }
-
-        if (binding.checkBoxSat.isChecked()) {
-            repeatOn.append('1');
-        } else {
-            repeatOn.append('0');
-        }
-
-        if (binding.checkBoxSun.isChecked()) {
-            repeatOn.append('1');
-        } else {
-            repeatOn.append('0');
-        }
-
-        return repeatOn.toString();
     }
 }

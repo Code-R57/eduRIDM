@@ -27,9 +27,6 @@ public class Eval implements Serializable {
     @ColumnInfo(name = "time")
     private String time;
 
-    @ColumnInfo(name = "duration")
-    private int duration;
-
     @ColumnInfo(name = "type")
     private String type;
 
@@ -79,14 +76,6 @@ public class Eval implements Serializable {
 
     public void setTime(String time) {
         this.time = time;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
     }
 
     public String getType() {

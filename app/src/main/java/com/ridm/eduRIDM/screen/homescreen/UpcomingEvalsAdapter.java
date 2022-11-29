@@ -56,8 +56,6 @@ public class UpcomingEvalsAdapter extends ArrayAdapter<Eval> {
 
             LayoutInflater inflater = LayoutInflater.from(mCtx);
             convertView = inflater.inflate(R.layout.upcoming_eval_card, parent, false);
-            viewHolder.deptCode = (TextView) convertView.findViewById(R.id.upcoming_eval_dept_code);
-//            viewHolder.courseCode = (TextView) convertView.findViewById(R.id.upcoming_eval_dept_code);
             viewHolder.courseName = (TextView) convertView.findViewById(R.id.upcoming_eval_course_name);
             viewHolder.date = (TextView) convertView.findViewById(R.id.upcoming_eval_date);
             viewHolder.time = (TextView) convertView.findViewById(R.id.upcoming_eval_time);
@@ -68,7 +66,6 @@ public class UpcomingEvalsAdapter extends ArrayAdapter<Eval> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.deptCode.setText(eval.getDeptCode());
         viewHolder.courseName.setText(eval.getCourseName());
         viewHolder.time.setText(eval.getTime());
 

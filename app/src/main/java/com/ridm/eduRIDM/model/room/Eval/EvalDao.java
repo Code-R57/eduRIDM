@@ -19,6 +19,6 @@ public interface EvalDao {
     @Query("SELECT * FROM Eval where date >= :date ORDER BY date, time")
     List<Eval> getAllEvals(String date);
 
-    @Query("SELECT * FROM Eval WHERE date BETWEEN :date1 AND :date2")
+    @Query("SELECT * FROM Eval WHERE date BETWEEN :date1 AND :date2 ORDER BY date, time")
     List<Eval> getUpcomingEvals(String date1, String date2);
 }

@@ -54,8 +54,6 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
     public void onBindViewHolder(@NonNull AcadsViewHolder holder, int position) {
         if (currentSelection.equals("Evals")) {
             Eval eval = evalList.get(position);
-            holder.evalDeptCode.setText(eval.getDeptCode());
-            holder.evalCourseCode.setText(eval.getCourseCode());
             holder.evalCourseName.setText(eval.getCourseName());
             holder.time.setText(eval.getTime());
 
@@ -63,7 +61,6 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
             String date = dates[2] + "/" + dates[1] + "/" + dates[0];
             holder.date.setText(date);
 
-            holder.duration.setText(String.valueOf(eval.getDuration()));
             holder.nature.setText(eval.getNature());
             holder.typeText.setText(eval.getType());
             holder.syllabusDesc.setText(eval.getSyllabus());
@@ -99,7 +96,7 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
 
     class AcadsViewHolder extends RecyclerView.ViewHolder {
         // Evals Card
-        TextView evalDeptCode, evalCourseCode, evalCourseName, time, date, typeText, syllabusDesc, duration, nature;
+        TextView evalDeptCode, evalCourseCode, evalCourseName, time, date, typeText, syllabusDesc, nature;
 
         // Backlog Card
         TextView backlogDeptCode, backlogCourseCode, backlogCourseName;
@@ -109,15 +106,12 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
             super(view);
 
             if (currentSelection.equals("Evals")) {
-                evalDeptCode = view.findViewById(R.id.eval_dept_code);
-                evalCourseCode = view.findViewById(R.id.course_code_eval_card);
                 evalCourseName = view.findViewById(R.id.course_name);
                 time = view.findViewById(R.id.time);
                 date = view.findViewById(R.id.date);
                 typeText = view.findViewById(R.id.type_text);
                 syllabusDesc = view.findViewById(R.id.syllabus_description);
                 nature = view.findViewById(R.id.nature_value);
-                duration = view.findViewById(R.id.duration_value);
             } else {
                 backlogDeptCode = view.findViewById(R.id.textView_course_id);
                 backlogCourseCode = view.findViewById(R.id.textView_course_code);

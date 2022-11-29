@@ -38,10 +38,11 @@ import com.ridm.eduRIDM.databinding.ActivityMainBinding;
 import com.ridm.eduRIDM.model.firebase.FirebaseQueries;
 import com.ridm.eduRIDM.model.room.RoomRepository;
 import com.ridm.eduRIDM.screen.onboarding.WelcomeScreenFragment;
+import com.ridm.eduRIDM.screen.settings.SettingsFragment;
 
 import java.util.function.Predicate;
 
-public class MainActivity extends AppCompatActivity implements WelcomeScreenFragment.Listener {
+public class MainActivity extends AppCompatActivity implements WelcomeScreenFragment.Listener, SettingsFragment.Listener {
 
     public static RoomRepository roomRepository;
     public static GoogleSignInClient mGoogleSignInClient;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements WelcomeScreenFrag
     public BottomNavigationView bottomView;
     public Toolbar toolbar;
     NavController navController;
-    FirebaseFirestore database;
+    public static FirebaseFirestore database;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -85,11 +86,11 @@ public class MainActivity extends AppCompatActivity implements WelcomeScreenFrag
                                 DocumentSnapshot taskResult = task.getResult();
 
                                 if(!taskResult.contains("Name")) {
-                                    navController.navigate(R.id.registerFragment);
+                                    navController.navigate(R.id.action_welcomeScreenFragment_to_registerFragment);
                                 }
                                 else {
                                     userInfo = taskResult;
-                                    navController.navigate(R.id.homeScreenFragment);
+                                    navController.navigate(R.id.action_welcomeScreenFragment_to_homeScreenFragment);
                                 }
                             }
                         }
@@ -234,5 +235,11 @@ public class MainActivity extends AppCompatActivity implements WelcomeScreenFrag
     public void signInClicked() {
         Intent intent = MainActivity.mGoogleSignInClient.getSignInIntent();
         startActivityForResult(intent, MainActivity.RC_SIGN_IN);
+    }
+
+    @Override
+    public void signOutClicked() {
+        mGoogleSignInClient.signOut();
+        navController.navigate(R.id.welcomeScreenFragment);
     }
 }

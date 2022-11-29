@@ -30,15 +30,6 @@ public class Plan implements Serializable {
     @ColumnInfo(name = "date")
     private String date;
 
-    @ColumnInfo(name = "repeat")
-    private boolean repeat;
-
-    @ColumnInfo(name = "repeatOn")
-    private String repeatOn;
-
-    @ColumnInfo(name = "repeatFor")
-    private String repeatFor;
-
     // Getters and Setters
 
     public int getPlanID() {
@@ -95,29 +86,5 @@ public class Plan implements Serializable {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public boolean isRepeat() {
-        return repeat;
-    }
-
-    public void setRepeat(boolean repeat) {
-        this.repeat = repeat;
-    }
-
-    public String getRepeatOn() {
-        return repeatOn;
-    }
-
-    public void setRepeatOn(String repeatOn) {
-        this.repeatOn = repeatOn;
-    }
-
-    public String getRepeatFor() {
-        return repeatFor;
-    }
-
-    public void setRepeatFor(String repeatFor) {
-        this.repeatFor = repeatFor;
     }
 }

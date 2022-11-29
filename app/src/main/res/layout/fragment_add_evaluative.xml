@@ -155,7 +155,6 @@
             android:padding="10dp"
             android:textSize="14sp"
             android:hint="Add syllabus"
-            android:nextFocusDown="@id/add_eval_duration"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -184,35 +183,6 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nature" />
-
-        <TextView
-            android:id="@+id/duration"
-            style="@style/form_text_style"
-            android:layout_marginTop="32dp"
-            android:text="@string/duration"
-            app:layout_constraintEnd_toEndOf="@+id/add_eval_duration"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/add_eval_duration"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_nature" />
-
-        <EditText
-            android:id="@+id/add_eval_duration"
-            android:layout_width="148dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/edit_text_border"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/duration"
-            android:drawableEnd="@drawable/ic_baseline_access_time_24"
-            android:padding="10dp"
-            android:inputType="number"
-            android:ems="10"
-            android:textSize="14sp"
-            android:hint="Specify Duration"/>
 
         <Button
             android:id="@+id/add_eval_button"
