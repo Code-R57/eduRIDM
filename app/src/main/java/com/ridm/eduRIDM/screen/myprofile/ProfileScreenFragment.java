@@ -40,6 +40,7 @@ public class ProfileScreenFragment extends Fragment {
     private DecimalFormat decimalFormat;
 
     private final String hashDay = "_______";
+    private String today;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,10 @@ public class ProfileScreenFragment extends Fragment {
 
         decimalFormat = new DecimalFormat("0.000");
         decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
+
+        Date today = new Date();
+        this.today = new SimpleDateFormat("yyyy-MM-dd").format(today);
+
     }
 
     @Override
@@ -125,7 +130,7 @@ public class ProfileScreenFragment extends Fragment {
 
                 viewModel.getClassesByDay(requiredHashDay);
 
-                UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, date);
+                UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, date, viewModel.backlogMap);
 
                 binding.classesList.setAdapter(upcomingClassesAdapter);
                 binding.classesList.setLayoutManager(new LinearLayoutManager(getContext()));

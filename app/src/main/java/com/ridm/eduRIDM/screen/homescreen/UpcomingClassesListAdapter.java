@@ -2,7 +2,6 @@ package com.ridm.eduRIDM.screen.homescreen;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.Preference;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +20,7 @@ import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingClassesListAdapter.UpcomingClassesViewHolder> {
@@ -30,16 +30,18 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
     private final String date;
     private final String today;
     private final String tomorrow;
+    private final HashMap<String, Boolean> backlogMap;
 
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String CHECKBOX = "checkbox";
 
     private boolean checkboxState;
 
-    public UpcomingClassesListAdapter(Context mCtx, List<TimeTable> classList, String date) {
+    public UpcomingClassesListAdapter(Context mCtx, List<TimeTable> classList, String date, HashMap<String, Boolean> backlogMap) {
         this.mCtx = mCtx;
         this.classList = classList;
         this.date = date;
+        this.backlogMap = backlogMap;
 
         Date today = new Date();
         this.today = new SimpleDateFormat("yyyy-MM-dd").format(today);
@@ -61,17 +63,17 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
         holder.todayCourseName.setText(lec.getCourseName());
         holder.todayClassTime.setText(lec.getTime());
         holder.todayLecture.setText(lec.getSection());
-        List<Backlog> backlog = MainActivity.roomRepository.getBacklogForCourseAndDate(lec.getCourseName(), today);
 
         if(!date.equals(today)) {
             holder.missed.setVisibility(View.GONE);
         }
-
-        if(backlog != null) {
-            holder.missed.setChecked(true);
+        else {
+            String key = lec.getCourseName() + " " + lec.getSection();
+            Log.d("Debug Debug", backlogMap.get(key) + " " + backlogMap.keySet());
+            if(backlogMap.get(key) != null && backlogMap.get(key) == Boolean.TRUE) {
+                holder.missed.setChecked(true);
+            }
         }
-
-        Log.d("Debug Debug", backlog + " " + today + " " + lec.getCourseName());
 
 //        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
 //        checkboxState = sharedPreferences.getBoolean(CHECKBOX, false);

@@ -5,11 +5,13 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.ridm.eduRIDM.MainActivity;
+import com.ridm.eduRIDM.model.room.Backlog.Backlog;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class ProfileViewModel extends ViewModel {
@@ -25,6 +27,8 @@ public class ProfileViewModel extends ViewModel {
     public LiveData<String> getDate() {
         return date;
     }
+
+    HashMap<String, Boolean> backlogMap = new HashMap<>();
 
     public void setDate(String date) {
         this.date.setValue(date);
@@ -71,4 +75,12 @@ public class ProfileViewModel extends ViewModel {
     public void doneNavigatingToAddExtraClass() {
         navigateToAddExtraClass.setValue(Boolean.FALSE);
     }
+
+//    public void getBacklogsByDate(String date) {
+//        List<Backlog> backlogList = MainActivity.roomRepository.getBacklogByDate(date);
+//
+//        for(Backlog backlog: backlogList) {
+//            backlogMap.put(backlog.getCourseName() + " " + backlog.getSection(), Boolean.TRUE);
+//        }
+//    }
 }
