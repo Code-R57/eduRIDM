@@ -42,6 +42,20 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        binding.buttonAboutApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(requireView()).navigate(R.id.action_settingsFragment_to_aboutAppFragment);
+            }
+        });
+
+        binding.buttonAboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(requireView()).navigate(R.id.action_settingsFragment_to_aboutUsFragment);
+            }
+        });
+
         binding.buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -144,6 +144,12 @@
         <action
             android:id="@+id/action_settingsFragment_to_contactUsFragment"
             app:destination="@id/contactUsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_aboutAppFragment"
+            app:destination="@id/aboutAppFragment" />
     </fragment>
     <fragment
         android:id="@+id/addExtraclassFragment"
@@ -165,5 +171,13 @@
         android:id="@+id/contactUsFragment"
         android:name="com.ridm.eduRIDM.screen.contactus.ContactUsFragment"
         android:label="ContactUsFragment" />
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="com.ridm.eduRIDM.screen.aboutapp.AboutAppFragment"
+        android:label="AboutAppFragment" />
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.ridm.eduRIDM.screen.aboutus.AboutUsFragment"
+        android:label="AboutUsFragment" />
 
 </navigation>
