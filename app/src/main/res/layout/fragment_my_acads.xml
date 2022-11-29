@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.ridm.eduRIDM.screen.myacads.MyAcadsViewModel" />
@@ -96,13 +96,13 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="16dp"
+            android:onClick="@{() -> viewModel.onNavigateToAddEvalClicked()}"
             android:src="@drawable/ic_baseline_add_24"
+            app:backgroundTint="@color/app_secondary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:backgroundTint="@color/app_secondary"
-            android:onClick="@{() -> viewModel.onNavigateToAddEvalClicked()}"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

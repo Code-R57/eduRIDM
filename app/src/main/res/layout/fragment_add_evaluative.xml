@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.ridm.eduRIDM.screen.addevaluative.AddEvaluativeViewModel" />
@@ -39,8 +40,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
-            android:entries="@array/dummy_entries"
             android:background="@drawable/spinner_border"
+            android:entries="@array/dummy_entries"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/subject" />
@@ -62,19 +63,19 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/edit_text_border"
+            android:clickable="false"
+            android:cursorVisible="false"
             android:drawableEnd="@drawable/calender_icon"
-            android:padding="10dp"
             android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="Select a date"
+            android:padding="10dp"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/add_eval_time_picker"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/date"
-            android:clickable="false"
-            android:cursorVisible="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:hint="Select a date"/>
+            app:layout_constraintTop_toBottomOf="@+id/date" />
 
         <TextView
             android:id="@+id/time"
@@ -93,18 +94,18 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/edit_text_border"
+            android:clickable="false"
+            android:cursorVisible="false"
             android:drawableEnd="@drawable/ic_baseline_access_time_24"
-            android:padding="10dp"
             android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="Select a time"
+            android:padding="10dp"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/add_eval_date_picker"
-            app:layout_constraintTop_toBottomOf="@+id/time"
-            android:clickable="false"
-            android:cursorVisible="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:hint="Select a time"/>
+            app:layout_constraintTop_toBottomOf="@+id/time" />
 
         <TextView
             android:id="@+id/type"
@@ -123,8 +124,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
-            android:entries="@array/add_evaluative_type"
             android:background="@drawable/spinner_border"
+            android:entries="@array/add_evaluative_type"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -151,10 +152,10 @@
             android:ems="10"
             android:fontFamily="@font/roboto"
             android:gravity="start|top"
+            android:hint="Add syllabus"
             android:inputType="textMultiLine"
             android:padding="10dp"
             android:textSize="14sp"
-            android:hint="Add syllabus"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -177,8 +178,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
-            android:entries="@array/add_evaluative_nature"
             android:background="@drawable/spinner_border"
+            android:entries="@array/add_evaluative_nature"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

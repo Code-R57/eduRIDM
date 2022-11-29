@@ -1,7 +1,5 @@
 package com.ridm.eduRIDM.screen.onboarding;
 
-import static com.ridm.eduRIDM.MainActivity.account;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -44,10 +42,6 @@ public class WelcomeScreenFragment extends Fragment {
         binding.setLifecycleOwner(this);
 
         binding.setViewModel(viewModel);
-
-        if(account != null) {
-            binding.googleSignInButton.setVisibility(View.GONE);
-        }
 
         viewModel.getNavigateToRegister().observe(getViewLifecycleOwner(), navigateToRegister -> {
             if (navigateToRegister == Boolean.TRUE) {

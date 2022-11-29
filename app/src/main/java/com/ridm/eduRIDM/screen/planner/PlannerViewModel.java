@@ -12,9 +12,8 @@ import java.util.List;
 
 public class PlannerViewModel extends ViewModel {
 
-    List<Plan> planList = new ArrayList<>();
-
     private final MutableLiveData<Boolean> navigateToAddPlan = new MutableLiveData<>(Boolean.FALSE);
+    List<Plan> planList = new ArrayList<>();
 
     public LiveData<Boolean> getNavigateToAddPlan() {
         return navigateToAddPlan;

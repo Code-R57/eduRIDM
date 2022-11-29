@@ -15,10 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentMyAcadsBinding;
-import com.ridm.eduRIDM.model.room.TimeTable.DistinctClasses;
 
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class MyAcadsFragment extends Fragment {

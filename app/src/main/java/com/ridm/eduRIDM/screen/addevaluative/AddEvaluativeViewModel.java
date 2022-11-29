@@ -14,13 +14,12 @@ import java.util.List;
 public class AddEvaluativeViewModel extends ViewModel {
 
     Eval eval = new Eval();
+    List<DistinctClasses> courseList = new ArrayList<>();
+    private final MutableLiveData<Boolean> navigateToMyAcads = new MutableLiveData<>(Boolean.FALSE);
 
-    private MutableLiveData<Boolean> navigateToMyAcads = new MutableLiveData<>(Boolean.FALSE);
     public LiveData<Boolean> getNavigateToMyAcads() {
         return navigateToMyAcads;
     }
-
-    List<DistinctClasses> courseList = new ArrayList<>();
 
     public void onNavigateToMyAcadsClicked() {
         insertEval();

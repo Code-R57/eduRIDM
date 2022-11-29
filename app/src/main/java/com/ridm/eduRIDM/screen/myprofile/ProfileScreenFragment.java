@@ -28,18 +28,15 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class ProfileScreenFragment extends Fragment {
+    private final String hashDay = "_______";
     ProfileViewModel viewModel;
     FragmentProfileScreenBinding binding;
-
     DatePickerDialog datePickerDialog;
     int year;
     int month;
     int dayOfMonth;
     Calendar calendar;
-
     private DecimalFormat decimalFormat;
-
-    private final String hashDay = "_______";
     private String today;
 
     @Override
@@ -71,7 +68,7 @@ public class ProfileScreenFragment extends Fragment {
         binding.semesterDetail.setText(userInfo.getString("CurrentSemester"));
 
         viewModel.getNavigateToUpdateCGPA().observe(getViewLifecycleOwner(), navigateToUpdateCGPA -> {
-            if(navigateToUpdateCGPA == Boolean.TRUE) {
+            if (navigateToUpdateCGPA == Boolean.TRUE) {
                 Navigation.findNavController(this.requireView()).navigate(R.id.action_profileScreenFragment_to_updateCgpaFragment);
                 viewModel.doneNavigatingToUpdateCGPA();
             }
@@ -85,7 +82,7 @@ public class ProfileScreenFragment extends Fragment {
 //        });
 
         viewModel.getNavigateToAddExtraClass().observe(getViewLifecycleOwner(), navigateToAddExtraClass -> {
-            if(navigateToAddExtraClass == Boolean.TRUE) {
+            if (navigateToAddExtraClass == Boolean.TRUE) {
                 Navigation.findNavController(this.requireView()).navigate(R.id.action_profileScreenFragment_to_addExtraclassFragment);
                 viewModel.doneNavigatingToAddExtraClass();
             }

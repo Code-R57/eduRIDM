@@ -1,14 +1,11 @@
 package com.ridm.eduRIDM.screen.planner;
 
-import static android.view.View.VISIBLE;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,10 +20,10 @@ import java.util.List;
 
 public class PlanCardAdapter extends RecyclerView.Adapter<PlanCardAdapter.PlanViewHolder> {
 
-    private Context context;
-    private List<Plan> planList;
-    private String today;
-    private String date;
+    private final Context context;
+    private final List<Plan> planList;
+    private final String today;
+    private final String date;
 
     public PlanCardAdapter(Context context, List<Plan> planList, String today, String date) {
         this.context = context;

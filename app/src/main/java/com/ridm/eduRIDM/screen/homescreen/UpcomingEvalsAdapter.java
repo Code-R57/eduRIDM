@@ -1,7 +1,6 @@
 package com.ridm.eduRIDM.screen.homescreen;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,23 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.ridm.eduRIDM.R;
-import com.ridm.eduRIDM.model.room.CurrentGrade.CurrentGrade;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
 
 import java.util.ArrayList;
 
 public class UpcomingEvalsAdapter extends ArrayAdapter<Eval> {
 
-    private ArrayList<Eval> upcomingEvalsList;
+    private final ArrayList<Eval> upcomingEvalsList;
     Context mCtx;
-
-    public static class ViewHolder {
-        TextView deptCode;
-        TextView courseCode;
-        TextView courseName;
-        TextView date;
-        TextView time;
-    }
 
     public UpcomingEvalsAdapter(ArrayList<Eval> upcomingEvalsList, Context mCtx) {
         super(mCtx, R.layout.upcoming_eval_card);
@@ -51,7 +41,7 @@ public class UpcomingEvalsAdapter extends ArrayAdapter<Eval> {
 
         ViewHolder viewHolder;
 
-        if(convertView == null) {
+        if (convertView == null) {
             viewHolder = new ViewHolder();
 
             LayoutInflater inflater = LayoutInflater.from(mCtx);
@@ -61,8 +51,7 @@ public class UpcomingEvalsAdapter extends ArrayAdapter<Eval> {
             viewHolder.time = (TextView) convertView.findViewById(R.id.upcoming_eval_time);
 
             convertView.setTag(viewHolder);
-        }
-        else {
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
@@ -74,6 +63,14 @@ public class UpcomingEvalsAdapter extends ArrayAdapter<Eval> {
         viewHolder.date.setText(date);
 
         return convertView;
+    }
+
+    public static class ViewHolder {
+        TextView deptCode;
+        TextView courseCode;
+        TextView courseName;
+        TextView date;
+        TextView time;
     }
 
 }

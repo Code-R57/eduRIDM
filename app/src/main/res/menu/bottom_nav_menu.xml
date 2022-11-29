@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-
-    <item android:id="@+id/myAcadsFragment"
-        android:title="@string/bottom_nav_planner"
-        android:icon="@drawable/icon_acads"/>
-    <item android:id="@+id/homeScreenFragment"
-        android:title="@string/bottom_nav_home"
-        android:icon="@drawable/icon_home"/>
-    <item android:id="@+id/plannerFragment"
-        android:title="@string/bottom_nav_acads"
-        android:icon="@drawable/icon_planner"/>
-
-
+    <item
+        android:id="@+id/myAcadsFragment"
+        android:icon="@drawable/icon_acads"
+        android:title="@string/bottom_nav_planner" />
+    <item
+        android:id="@+id/homeScreenFragment"
+        android:icon="@drawable/icon_home"
+        android:title="@string/bottom_nav_home" />
+    <item
+        android:id="@+id/plannerFragment"
+        android:icon="@drawable/icon_planner"
+        android:title="@string/bottom_nav_acads" />
 </menu>

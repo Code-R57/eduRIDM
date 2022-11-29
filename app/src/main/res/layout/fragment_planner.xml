@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.ridm.eduRIDM.screen.planner.PlannerViewModel" />
@@ -29,15 +30,15 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/edit_text_border"
+            android:clickable="false"
+            android:cursorVisible="false"
             android:drawableEnd="@drawable/calender_icon"
             android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:hint="@string/select_date_hint"
             android:padding="10dp"
             android:textSize="14sp"
-            android:clickable="false"
-            android:cursorVisible="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/planner_header" />
@@ -64,12 +65,12 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="16dp"
+            android:onClick="@{() -> viewModel.onNavigateToAddPlanClicked()}"
             android:src="@drawable/ic_baseline_add_24"
             app:backgroundTint="@color/app_secondary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            android:onClick="@{() -> viewModel.onNavigateToAddPlanClicked()}"/>
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

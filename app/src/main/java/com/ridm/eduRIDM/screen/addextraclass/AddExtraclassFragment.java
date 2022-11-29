@@ -18,12 +18,8 @@ import androidx.navigation.Navigation;
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentAddExtraclassBinding;
 import com.ridm.eduRIDM.model.room.ExtraClass.ExtraClass;
-import com.ridm.eduRIDM.screen.addplan.AddPlanViewModel;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class AddExtraclassFragment extends Fragment {
 
@@ -63,7 +59,7 @@ public class AddExtraclassFragment extends Fragment {
             public void onClick(View v) {
                 ExtraClass extraClass = new ExtraClass();
 
-                String course[] = binding.subjectSpinner.getSelectedItem().toString().split(" ");
+                String[] course = binding.subjectSpinner.getSelectedItem().toString().split(" ");
 
                 extraClass.setDeptCode(course[0]);
                 extraClass.setCourseCode(course[1]);

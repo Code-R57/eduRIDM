@@ -1,8 +1,6 @@
 package com.ridm.eduRIDM.screen.homescreen;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,16 +23,14 @@ import java.util.List;
 
 public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingClassesListAdapter.UpcomingClassesViewHolder> {
 
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String CHECKBOX = "checkbox";
     private final Context mCtx;
     private final List<TimeTable> classList;
     private final String date;
     private final String today;
     private final String tomorrow;
     private final HashMap<String, Boolean> backlogMap;
-
-    public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String CHECKBOX = "checkbox";
-
     private boolean checkboxState;
 
     public UpcomingClassesListAdapter(Context mCtx, List<TimeTable> classList, String date, HashMap<String, Boolean> backlogMap) {
@@ -64,19 +60,15 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
         holder.todayClassTime.setText(lec.getTime());
         holder.todayLecture.setText(lec.getSection());
 
-        if(!date.equals(today)) {
+        if (!date.equals(today)) {
             holder.missed.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             String key = lec.getCourseName() + " " + lec.getSection();
-            Log.d("Debug Debug", backlogMap.get(key) + " " + backlogMap.keySet());
-            if(backlogMap.get(key) != null && backlogMap.get(key) == Boolean.TRUE) {
+            if (backlogMap.get(key) != null && backlogMap.get(key) == Boolean.TRUE) {
                 holder.missed.setChecked(true);
             }
         }
 
-//        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-//        checkboxState = sharedPreferences.getBoolean(CHECKBOX, false);
         holder.missed.setChecked(checkboxState);
 
         holder.missed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -91,10 +83,6 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
                 backlog.setSection(tt.getSection());
                 backlog.setExtraClass(Boolean.FALSE);
                 backlog.setCourseName(tt.getCourseName());
-
-                SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean(CHECKBOX, isChecked);
 
                 if (isChecked) {
                     MainActivity.roomRepository.insertBacklog(backlog);
@@ -124,8 +112,6 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
             todayLecture = view.findViewById(R.id.tt_lecture_text);
             todayClassTime = view.findViewById(R.id.tt_class_time_text);
             missed = view.findViewById(R.id.tt_missed_button);
-//            attended = view.findViewById(R.id.tt_attended_button);
-//            holiday = view.findViewById(R.id.tt_holiday_button);
         }
     }
 }

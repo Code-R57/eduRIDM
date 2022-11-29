@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.ridm.eduRIDM.MainActivity;
-import com.ridm.eduRIDM.model.room.Eval.Eval;
 import com.ridm.eduRIDM.model.room.ExtraClass.ExtraClass;
 
 public class AddExtraclassViewModel extends ViewModel {
 
     ExtraClass extraClass = new ExtraClass();
-    private MutableLiveData<Boolean> navigateToProfile = new MutableLiveData<>(Boolean.FALSE);
+    private final MutableLiveData<Boolean> navigateToProfile = new MutableLiveData<>(Boolean.FALSE);
+
     public LiveData<Boolean> getNavigateToProfile() {
         return navigateToProfile;
     }

@@ -9,8 +9,8 @@
         tools:context=".MainActivity">
 
         <include
-            layout="@layout/toolbar_main"
-            android:id="@+id/appbarlayout" />
+            android:id="@+id/appbarlayout"
+            layout="@layout/toolbar_main" />
 
         <fragment
             android:id="@+id/nav_host_fragment"
@@ -25,16 +25,16 @@
             app:navGraph="@navigation/app_nav_graph" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/bottomNav"
+            android:background="@color/app_secondary"
+            app:itemIconTint="@drawable/nav_icon_selector"
+            app:itemTextColor="@drawable/nav_icon_selector"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_nav_menu"
-            android:background="@color/app_secondary"
-            app:itemIconTint="@drawable/nav_icon_selector"
-            app:itemTextColor="@drawable/nav_icon_selector"/>
+            app:menu="@menu/bottom_nav_menu" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

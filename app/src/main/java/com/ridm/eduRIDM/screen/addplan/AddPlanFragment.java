@@ -1,10 +1,8 @@
 package com.ridm.eduRIDM.screen.addplan;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -23,14 +20,10 @@ import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentAddPlanBinding;
 import com.ridm.eduRIDM.model.room.Plan.Plan;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 public class AddPlanFragment extends Fragment {
 
-    //final Calendar myCalendar= Calendar.getInstance();
     EditText editText;
 
     DatePickerDialog datePickerDialog;
@@ -148,12 +141,7 @@ public class AddPlanFragment extends Fragment {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
-                        String amPm;
-                        if (hourOfDay >= 12) {
-                            amPm = "";
-                        } else {
-                            amPm = "";
-                        }
+                        String amPm = "";
                         binding.spinnerEndTime.setText(String.format("%02d:%02d", hourOfDay, minutes) + amPm);
 
                     }

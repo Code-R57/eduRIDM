@@ -1,9 +1,7 @@
 package com.ridm.eduRIDM.model.room;
 
 import android.app.Application;
-import android.text.method.BaseKeyListener;
 
-import com.ridm.eduRIDM.MainActivity;
 import com.ridm.eduRIDM.model.room.Backlog.Backlog;
 import com.ridm.eduRIDM.model.room.CurrentGrade.CurrentGrade;
 import com.ridm.eduRIDM.model.room.Eval.Eval;

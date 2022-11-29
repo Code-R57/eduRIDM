@@ -4,18 +4,15 @@ import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.TimePicker;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -24,21 +21,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.ridm.eduRIDM.AppBroadcastReceiver;
-import com.ridm.eduRIDM.MainActivity;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentAddEvaluativeBinding;
-import com.ridm.eduRIDM.databinding.FragmentAddEvaluativeBindingImpl;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
 import com.ridm.eduRIDM.model.room.TimeTable.DistinctClasses;
-import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AddEvaluativeFragment extends Fragment {
 
@@ -86,8 +75,6 @@ public class AddEvaluativeFragment extends Fragment {
             public void onClick(View v) {
                 Eval eval = new Eval();
 
-//                String course[] = binding.spinnerSubject.getSelectedItem().toString().split(" ");
-
                 eval.setCourseName(binding.spinnerSubject.getSelectedItem().toString());
 
                 String[] dates = binding.addEvalDatePicker.getText().toString().split("/");
@@ -103,8 +90,6 @@ public class AddEvaluativeFragment extends Fragment {
                 notifyIntent.putExtra("Notif Desc - Receiver", eval.getCourseName() + " " + eval.getNature() + " tomorrow");
                 notifyIntent.putExtra("Notif ID - Receiver", eval.getEvalID());
 
-                Log.d("Debug Debug", eval.getEvalID() + " ");
-
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 13, notifyIntent, PendingIntent.FLAG_MUTABLE);
                 AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
 
@@ -117,8 +102,6 @@ public class AddEvaluativeFragment extends Fragment {
                 toSet.setDate(Integer.parseInt(dates[0]));
 
                 long timeDiff = Math.abs(toSet.getTime() - 86400000 - today.getTime());
-                Log.d("Debug Debug",  dates[0] +" " +dates[1]+ " " + dates[2]+" "+new SimpleDateFormat("yyyy-MM-dd").format(toSet)+" "+ Math.abs(toSet.getTime() - 86400000 - today.getTime()) + " " + Math.abs(toSet.getTime() - today.getTime()) + " " + toSet.getTime() + " " + today.getTime() );
-
                 alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeDiff, pendingIntent);
 
                 viewModel.eval = eval;
@@ -153,11 +136,6 @@ public class AddEvaluativeFragment extends Fragment {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
                         String amPm = "";
-//                        if (hourOfDay >= 12) {
-//                            amPm = "PM";
-//                        } else {
-//                            amPm = "AM";
-//                        }
                         String time = String.format("%02d:%02d", hourOfDay, minutes) + amPm;
                         binding.addEvalTimePicker.setText(time);
                     }

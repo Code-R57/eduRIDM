@@ -77,7 +77,7 @@ public class PlannerFragment extends Fragment {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                                 binding.plannerDateSelector.setText(day + "/" + (month + 1) + "/" + year);
-                                String date = year + "-" + (month+1) + "-" + day;
+                                String date = year + "-" + (month + 1) + "-" + day;
                                 viewModel.getAllPlans(date);
 
                                 PlanCardAdapter adapter = new PlanCardAdapter(requireContext(), viewModel.planList, today, date);

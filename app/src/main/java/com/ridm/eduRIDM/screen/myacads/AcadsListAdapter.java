@@ -94,6 +94,10 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
         }
     }
 
+    public interface OnItemClickListener {
+        void onBacklogItemClick(Backlog backlog);
+    }
+
     class AcadsViewHolder extends RecyclerView.ViewHolder {
         // Evals Card
         TextView evalDeptCode, evalCourseCode, evalCourseName, time, date, typeText, syllabusDesc, nature;
@@ -119,9 +123,5 @@ public class AcadsListAdapter extends RecyclerView.Adapter<AcadsListAdapter.Acad
                 backlogListView = view.findViewById(R.id.backlog_list);
             }
         }
-    }
-
-    public interface OnItemClickListener {
-        void onBacklogItemClick(Backlog backlog);
     }
 }

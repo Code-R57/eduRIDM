@@ -4,25 +4,19 @@ import static com.ridm.eduRIDM.MainActivity.account;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.ridm.eduRIDM.R;
-import com.ridm.eduRIDM.databinding.FragmentPlannerBinding;
 import com.ridm.eduRIDM.databinding.FragmentRegisterBinding;
-import com.ridm.eduRIDM.screen.planner.PlannerViewModel;
-import com.ridm.eduRIDM.screen.onboarding.RegisterViewModel;
 
 public class RegisterFragment extends Fragment {
 
@@ -46,7 +40,7 @@ public class RegisterFragment extends Fragment {
         binding.setViewModel(viewModel);
 
         viewModel.getNavigateToAddTimetable().observe(getViewLifecycleOwner(), navigateToAddTimetable -> {
-            if(navigateToAddTimetable == Boolean.TRUE) {
+            if (navigateToAddTimetable == Boolean.TRUE) {
                 Navigation.findNavController(this.requireView()).navigate(R.id.action_registerFragment_to_addTimetableFragment);
                 viewModel.doneNavigatingToAddTimetable();
             }
@@ -55,11 +49,10 @@ public class RegisterFragment extends Fragment {
         binding.fresherCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b) {
+                if (b) {
                     binding.creditsCompleted.setText("0");
                     binding.currentCgpa.setText("0");
-                }
-                else {
+                } else {
                     binding.creditsCompleted.setText("");
                     binding.currentCgpa.setText("");
                 }

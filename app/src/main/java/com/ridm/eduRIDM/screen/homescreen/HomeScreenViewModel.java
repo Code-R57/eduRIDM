@@ -1,8 +1,6 @@
 package com.ridm.eduRIDM.screen.homescreen;
 
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -10,7 +8,6 @@ import androidx.lifecycle.ViewModel;
 import com.ridm.eduRIDM.MainActivity;
 import com.ridm.eduRIDM.model.room.Backlog.Backlog;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
-import com.ridm.eduRIDM.model.room.TimeTable.DistinctClasses;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.util.ArrayList;
@@ -18,22 +15,25 @@ import java.util.HashMap;
 import java.util.List;
 
 public class HomeScreenViewModel extends ViewModel {
-    private MutableLiveData<Boolean> navigateToStopwatchScreen = new MutableLiveData<>(Boolean.FALSE);
+    List<Eval> upcomingEvalList = new ArrayList<>();
+    List<TimeTable> classList = new ArrayList<>();
+    HashMap<String, Boolean> backlogMap = new HashMap<>();
+    private final MutableLiveData<Boolean> navigateToStopwatchScreen = new MutableLiveData<>(Boolean.FALSE);
+    private final MutableLiveData<String> currentSelection = new MutableLiveData<>("Today");
+    private final MutableLiveData<Boolean> classMissed = new MutableLiveData<>(Boolean.FALSE);
+
     public LiveData<Boolean> getNavigateToStopwatchScreen() {
         return navigateToStopwatchScreen;
     }
 
-    List<Eval> upcomingEvalList = new ArrayList<>();
-    List<TimeTable> classList = new ArrayList<>();
-
-    HashMap<String, Boolean> backlogMap = new HashMap<>();
-
-    private MutableLiveData<String> currentSelection = new MutableLiveData<>("Today");
     public LiveData<String> getCurrentSelection() {
         return currentSelection;
     }
 
-    private MutableLiveData<Boolean> classMissed = new MutableLiveData<>(Boolean.FALSE);
+    public void setCurrentSelection(String currentSelection) {
+        this.currentSelection.setValue(currentSelection);
+    }
+
     public LiveData<Boolean> getClassMissed() {
         return classMissed;
     }
@@ -47,7 +47,7 @@ public class HomeScreenViewModel extends ViewModel {
     }
 
     public void getUpcomingEvals(String date1, String date2) {
-       upcomingEvalList = MainActivity.roomRepository.getUpcomingEvals(date1, date2);
+        upcomingEvalList = MainActivity.roomRepository.getUpcomingEvals(date1, date2);
     }
 
     public void getAllEvals(String date) {
@@ -56,10 +56,6 @@ public class HomeScreenViewModel extends ViewModel {
 
     public void getClassesByDay(String days) {
         classList = MainActivity.roomRepository.getAllClassesByDay(days);
-    }
-
-    public void setCurrentSelection(String currentSelection) {
-        this.currentSelection.setValue(currentSelection);
     }
 
     public void getBacklogForDateAndCourse(String courseName, String section, String date) {

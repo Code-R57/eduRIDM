@@ -1,7 +1,5 @@
 package com.ridm.eduRIDM.screen.myacads;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -17,12 +15,11 @@ import java.util.List;
 
 public class MyAcadsViewModel extends ViewModel {
 
+    private final MutableLiveData<Boolean> navigateToAddEval = new MutableLiveData<>(Boolean.FALSE);
+    private final MutableLiveData<String> currentSelection = new MutableLiveData<>("Evals");
     List<Eval> evalList = new ArrayList<>();
     MutableLiveData<List<DistinctClasses>> courses = new MutableLiveData<>();
     HashMap<String, List<Backlog>> courseBacklog = new HashMap<>();
-
-    private final MutableLiveData<Boolean> navigateToAddEval = new MutableLiveData<>(Boolean.FALSE);
-    private final MutableLiveData<String> currentSelection = new MutableLiveData<>("Evals");
 
     public LiveData<Boolean> getNavigateToAddEval() {
         return navigateToAddEval;

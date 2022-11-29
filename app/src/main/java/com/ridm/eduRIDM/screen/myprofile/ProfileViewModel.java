@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.ridm.eduRIDM.MainActivity;
-import com.ridm.eduRIDM.model.room.Backlog.Backlog;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.text.SimpleDateFormat;
@@ -16,25 +15,22 @@ import java.util.List;
 
 public class ProfileViewModel extends ViewModel {
 
-    private MutableLiveData<Boolean> navigateToUpdateCGPA = new MutableLiveData<>(Boolean.FALSE);
-//    private MutableLiveData<Boolean> navigateToEditTT = new MutableLiveData<>(Boolean.FALSE);
-    private MutableLiveData<Boolean> navigateToAddExtraClass = new MutableLiveData<>(Boolean.FALSE);
-
     Date today = new Date();
     String todayDate = new SimpleDateFormat("yyyy-MM-dd").format(today);
+    private final MutableLiveData<String> date = new MutableLiveData<>(todayDate);
+    HashMap<String, Boolean> backlogMap = new HashMap<>();
+    List<TimeTable> classList = new ArrayList<>();
+    private final MutableLiveData<Boolean> navigateToUpdateCGPA = new MutableLiveData<>(Boolean.FALSE);
+    //    private MutableLiveData<Boolean> navigateToEditTT = new MutableLiveData<>(Boolean.FALSE);
+    private final MutableLiveData<Boolean> navigateToAddExtraClass = new MutableLiveData<>(Boolean.FALSE);
 
-    private MutableLiveData<String> date = new MutableLiveData<>(todayDate);
     public LiveData<String> getDate() {
         return date;
     }
 
-    HashMap<String, Boolean> backlogMap = new HashMap<>();
-
     public void setDate(String date) {
         this.date.setValue(date);
     }
-
-    List<TimeTable> classList = new ArrayList<>();
 
     public void getClassesByDay(String days) {
         classList = MainActivity.roomRepository.getAllClassesByDay(days);

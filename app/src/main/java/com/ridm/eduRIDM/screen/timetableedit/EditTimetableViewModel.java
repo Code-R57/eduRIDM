@@ -10,13 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EditTimetableViewModel extends ViewModel {
-    private MutableLiveData<Boolean> onSubmit = new MutableLiveData<>(Boolean.FALSE);
+    List<TimeTable> courseList = new ArrayList<>();
+    private final MutableLiveData<Boolean> onSubmit = new MutableLiveData<>(Boolean.FALSE);
 
     public LiveData<Boolean> getOnSubmit() {
         return onSubmit;
     }
-
-    List<TimeTable> courseList = new ArrayList<>();
 
     public void onSubmitClicked() {
         onSubmit.setValue(Boolean.TRUE);

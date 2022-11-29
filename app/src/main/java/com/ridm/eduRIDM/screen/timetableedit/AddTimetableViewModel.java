@@ -16,11 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddTimetableViewModel extends ViewModel {
+    private final MutableLiveData<Boolean> navigateToHomeScreen = new MutableLiveData<>(Boolean.FALSE);
     List<TimeTable> currentCourseList = new ArrayList<>();
     List<QueryDocumentSnapshot> coursesList = new ArrayList<>();
     int numberOfCards = 0;
     List<CourseClass> coursesToEnroll = new ArrayList<>();
-    private final MutableLiveData<Boolean> navigateToHomeScreen = new MutableLiveData<>(Boolean.FALSE);
 
     public LiveData<Boolean> getNavigateToHomeScreen() {
         return navigateToHomeScreen;

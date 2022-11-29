@@ -5,7 +5,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class StopwatchScreenViewModel extends ViewModel {
-    private MutableLiveData<Boolean> navigateToHomePage = new MutableLiveData<>(Boolean.FALSE);
+    private final MutableLiveData<Boolean> navigateToHomePage = new MutableLiveData<>(Boolean.FALSE);
+
     public LiveData<Boolean> getNavigateToHomePage() {
         return navigateToHomePage;
     }

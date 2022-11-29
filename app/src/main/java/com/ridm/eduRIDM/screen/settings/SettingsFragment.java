@@ -13,7 +13,6 @@ import androidx.navigation.Navigation;
 
 import com.ridm.eduRIDM.R;
 import com.ridm.eduRIDM.databinding.FragmentSettingsBinding;
-import com.ridm.eduRIDM.screen.onboarding.WelcomeScreenFragment;
 
 public class SettingsFragment extends Fragment {
     FragmentSettingsBinding binding;

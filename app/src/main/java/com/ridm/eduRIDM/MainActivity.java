@@ -3,8 +3,6 @@ package com.ridm.eduRIDM;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,14 +33,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.ridm.eduRIDM.databinding.ActivityMainBinding;
 import com.ridm.eduRIDM.model.firebase.FirebaseQueries;
 import com.ridm.eduRIDM.model.room.RoomRepository;
 import com.ridm.eduRIDM.screen.onboarding.WelcomeScreenFragment;
 import com.ridm.eduRIDM.screen.settings.SettingsFragment;
-
-import java.util.function.Predicate;
 
 public class MainActivity extends AppCompatActivity implements WelcomeScreenFragment.Listener, SettingsFragment.Listener {
 
@@ -53,10 +48,10 @@ public class MainActivity extends AppCompatActivity implements WelcomeScreenFrag
     public static GoogleSignInAccount account;
     public static FirebaseQueries firebaseQueries;
     public static DocumentSnapshot userInfo;
+    public static FirebaseFirestore database;
     public BottomNavigationView bottomView;
     public Toolbar toolbar;
     NavController navController;
-    public static FirebaseFirestore database;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -81,18 +76,17 @@ public class MainActivity extends AppCompatActivity implements WelcomeScreenFrag
 
         if (account != null) {
             database.collection("users").document(account.getEmail())
-                            .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            if(task.isSuccessful()) {
+                            if (task.isSuccessful()) {
                                 DocumentSnapshot taskResult = task.getResult();
                                 FragmentManager fragMgr = getSupportFragmentManager();
                                 FragmentTransaction fragTrans = fragMgr.beginTransaction();
 
-                                if(!taskResult.contains("Name")) {
+                                if (!taskResult.contains("Name")) {
                                     navController.navigate(R.id.registerFragment);
-                                }
-                                else {
+                                } else {
                                     userInfo = taskResult;
                                     navController.navigate(R.id.homeScreenFragment);
                                 }

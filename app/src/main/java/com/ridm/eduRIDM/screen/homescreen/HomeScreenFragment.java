@@ -70,7 +70,7 @@ public class HomeScreenFragment extends Fragment {
 
         binding.setViewModel(viewModel);
 
-        if(userInfo != null)
+        if (userInfo != null)
             binding.nameText.setText(userInfo.getString("Name").split(" ")[0]);
 
         UpcomingEvalsAdapter adapter = new UpcomingEvalsAdapter((ArrayList<Eval>) viewModel.upcomingEvalList, requireContext());

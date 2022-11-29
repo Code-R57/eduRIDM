@@ -1,7 +1,5 @@
 package com.ridm.eduRIDM.screen.updatecgpa;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -13,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UpdateCgpaViewModel extends ViewModel {
-    private MutableLiveData<Boolean> navigateToProfile = new MutableLiveData<>(Boolean.FALSE);
+    List<CurrentGrade> currentGradeList = new ArrayList<>();
+    float currentSG = 0;
+    private final MutableLiveData<Boolean> navigateToProfile = new MutableLiveData<>(Boolean.FALSE);
+
     public LiveData<Boolean> getNavigateToProfile() {
         return navigateToProfile;
     }
-
-    List<CurrentGrade> currentGradeList = new ArrayList<>();
-    float currentSG = 0;
 
     public void onNavigateToProfileClicked() {
         insertAllGrades();
@@ -38,8 +36,8 @@ public class UpdateCgpaViewModel extends ViewModel {
         int semCreds = 0;
         int semGradePoint = 0;
 
-        for(CurrentGrade currentGrade: currentGradeList) {
-            if(getGradePoint(currentGrade.getGrade()) == 0) {
+        for (CurrentGrade currentGrade : currentGradeList) {
+            if (getGradePoint(currentGrade.getGrade()) == 0) {
                 semCreds += currentGrade.getCredits();
                 semGradePoint += getGradePoint(currentGrade.getGrade());
             }

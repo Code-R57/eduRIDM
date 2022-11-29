@@ -1,7 +1,5 @@
 package com.ridm.eduRIDM.screen.myacads;
 
-import static com.ridm.eduRIDM.MainActivity.roomRepository;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,16 +18,10 @@ import java.util.List;
 
 public class BacklogListAdapter extends ArrayAdapter<Backlog> {
 
-    private List<Backlog> backlogList;
-    private Context mCtx;
-    private OnItemClickListener listener;
-
-    public static class ViewHolder {
-        TextView backlogType;
-        TextView backlogDate;
-        TextView extraClass;
-        ImageButton backlogDone;
-    }
+    private final List<Backlog> backlogList;
+    private final Context mCtx;
+    private final OnItemClickListener listener;
+    private final int lastPosition = -1;
 
     public BacklogListAdapter(List<Backlog> backlogList, Context mCtx, OnItemClickListener listener) {
         super(mCtx, R.layout.backlog_list_item);
@@ -46,13 +38,11 @@ public class BacklogListAdapter extends ArrayAdapter<Backlog> {
 
     @Override
     public int getCount() {
-        if(backlogList == null) {
+        if (backlogList == null) {
             return 0;
         }
         return backlogList.size();
     }
-
-    private int lastPosition = -1;
 
     public View getView(int position, View convertView, ViewGroup parent) {
         Backlog backlog = getItem(position);
@@ -61,7 +51,7 @@ public class BacklogListAdapter extends ArrayAdapter<Backlog> {
 
         final View result;
 
-        if(convertView == null) {
+        if (convertView == null) {
             viewHolder = new ViewHolder();
 
             LayoutInflater inflater = LayoutInflater.from(mCtx);
@@ -74,8 +64,7 @@ public class BacklogListAdapter extends ArrayAdapter<Backlog> {
             result = convertView;
 
             convertView.setTag(viewHolder);
-        }
-        else {
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
             result = convertView;
         }
@@ -83,7 +72,7 @@ public class BacklogListAdapter extends ArrayAdapter<Backlog> {
         viewHolder.backlogType.setText(backlog.getSection());
         viewHolder.backlogDate.setText(backlog.getDate());
 
-        if(!backlog.isExtraClass()) {
+        if (!backlog.isExtraClass()) {
             viewHolder.extraClass.setVisibility(View.GONE);
         }
 
@@ -96,6 +85,13 @@ public class BacklogListAdapter extends ArrayAdapter<Backlog> {
         });
 
         return convertView;
+    }
+
+    public static class ViewHolder {
+        TextView backlogType;
+        TextView backlogDate;
+        TextView extraClass;
+        ImageButton backlogDone;
     }
 }
 

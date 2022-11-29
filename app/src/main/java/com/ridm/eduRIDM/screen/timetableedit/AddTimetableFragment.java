@@ -56,7 +56,7 @@ public class AddTimetableFragment extends Fragment {
         binding.addCourseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(binding.courseList.getAdapter() != null) {
+                if (binding.courseList.getAdapter() != null) {
                     int count = binding.courseList.getAdapter().getCount();
 
                     for (int i = 0; i < count; i++) {
@@ -207,7 +207,7 @@ public class AddTimetableFragment extends Fragment {
                             .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                    if(task.isSuccessful()) {
+                                    if (task.isSuccessful()) {
                                         DocumentSnapshot taskResult = task.getResult();
 
                                         MainActivity.userInfo = taskResult;
