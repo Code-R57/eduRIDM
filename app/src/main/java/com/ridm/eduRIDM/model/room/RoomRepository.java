@@ -129,13 +129,13 @@ public class RoomRepository {
         return courseList;
     }
 
-    public List<Backlog> getBacklogForCourseAndDate(String courseName, String date) {
+    public List<Backlog> getBacklogByDate(String courseName, String section, String date) {
         List<Backlog> backlogList = new ArrayList<>();
 
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                backlogList.addAll(appDatabase.backlogDao().getBacklogForCourseAndDate(courseName, date));
+                backlogList.addAll(appDatabase.backlogDao().getBacklogByDate(courseName, section, date));
             }
         });
 

@@ -15,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -84,13 +86,15 @@ public class MainActivity extends AppCompatActivity implements WelcomeScreenFrag
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if(task.isSuccessful()) {
                                 DocumentSnapshot taskResult = task.getResult();
+                                FragmentManager fragMgr = getSupportFragmentManager();
+                                FragmentTransaction fragTrans = fragMgr.beginTransaction();
 
                                 if(!taskResult.contains("Name")) {
-                                    navController.navigate(R.id.action_welcomeScreenFragment_to_registerFragment);
+                                    navController.navigate(R.id.registerFragment);
                                 }
                                 else {
                                     userInfo = taskResult;
-                                    navController.navigate(R.id.action_welcomeScreenFragment_to_homeScreenFragment);
+                                    navController.navigate(R.id.homeScreenFragment);
                                 }
                             }
                         }

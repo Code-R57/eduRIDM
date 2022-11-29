@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
@@ -55,10 +53,12 @@ public class HomeScreenFragment extends Fragment {
         if (day == -1) {
             day = 6;
         }
+
         requiredHashToday = hashDay.substring(0, day) + '1' + hashDay.substring(day + 1);
         requiredHashTomorrow = hashDay.substring(0, (day + 1) % 7) + '1' + hashDay.substring((day + 1) % 7 + 1);
         viewModel.getUpcomingEvals(this.today, this.dayAfterTomorrow);
         viewModel.getClassesByDay(requiredHashToday);
+        viewModel.getBacklogs(this.today);
     }
 
     @Override
@@ -73,13 +73,12 @@ public class HomeScreenFragment extends Fragment {
         if(userInfo != null)
             binding.nameText.setText(userInfo.getString("Name").split(" ")[0]);
 
-        UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, today);
-
-        binding.yourClassesList.setAdapter(upcomingClassesAdapter);
-        binding.yourClassesList.setLayoutManager(new LinearLayoutManager(getContext()));
-
         UpcomingEvalsAdapter adapter = new UpcomingEvalsAdapter((ArrayList<Eval>) viewModel.upcomingEvalList, requireContext());
         binding.upcomingEvalsList.setAdapter(adapter);
+
+        UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, today, viewModel.backlogMap);
+        binding.yourClassesList.setAdapter(upcomingClassesAdapter);
+        binding.yourClassesList.setLayoutManager(new LinearLayoutManager(getContext()));
 
         binding.daySelector.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -88,7 +87,7 @@ public class HomeScreenFragment extends Fragment {
                     viewModel.setCurrentSelection("Today");
                     viewModel.getClassesByDay(requiredHashToday);
 
-                    UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, today);
+                    UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, today, viewModel.backlogMap);
 
                     binding.yourClassesList.setAdapter(upcomingClassesAdapter);
                     binding.yourClassesList.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -96,7 +95,7 @@ public class HomeScreenFragment extends Fragment {
                     viewModel.setCurrentSelection("Tomorrow");
                     viewModel.getClassesByDay(requiredHashTomorrow);
 
-                    UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, tomorrow);
+                    UpcomingClassesListAdapter upcomingClassesAdapter = new UpcomingClassesListAdapter(requireContext(), viewModel.classList, tomorrow, viewModel.backlogMap);
 
                     binding.yourClassesList.setAdapter(upcomingClassesAdapter);
                     binding.yourClassesList.setLayoutManager(new LinearLayoutManager(getContext()));

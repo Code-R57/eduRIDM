@@ -112,8 +112,8 @@ public class AddEvaluativeFragment extends Fragment {
 
                 Date today = new Date();
                 Date toSet = new Date();
-                toSet.setYear(Integer.parseInt(dates[2]));
-                toSet.setMonth(Integer.parseInt(dates[1]));
+                toSet.setYear(Integer.parseInt(dates[2]) - 1900);
+                toSet.setMonth(Integer.parseInt(dates[1]) - 1);
                 toSet.setDate(Integer.parseInt(dates[0]));
 
                 long timeDiff = Math.abs(toSet.getTime() - 86400000 - today.getTime());

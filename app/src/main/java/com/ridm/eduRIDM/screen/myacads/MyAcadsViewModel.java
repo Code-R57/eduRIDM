@@ -1,5 +1,7 @@
 package com.ridm.eduRIDM.screen.myacads;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;

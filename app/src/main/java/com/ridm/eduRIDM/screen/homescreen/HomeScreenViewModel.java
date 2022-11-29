@@ -1,5 +1,6 @@
 package com.ridm.eduRIDM.screen.homescreen;
 
+
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -7,10 +8,13 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.ridm.eduRIDM.MainActivity;
+import com.ridm.eduRIDM.model.room.Backlog.Backlog;
 import com.ridm.eduRIDM.model.room.Eval.Eval;
+import com.ridm.eduRIDM.model.room.TimeTable.DistinctClasses;
 import com.ridm.eduRIDM.model.room.TimeTable.TimeTable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class HomeScreenViewModel extends ViewModel {
@@ -21,6 +25,8 @@ public class HomeScreenViewModel extends ViewModel {
 
     List<Eval> upcomingEvalList = new ArrayList<>();
     List<TimeTable> classList = new ArrayList<>();
+
+    HashMap<String, Boolean> backlogMap = new HashMap<>();
 
     private MutableLiveData<String> currentSelection = new MutableLiveData<>("Today");
     public LiveData<String> getCurrentSelection() {
@@ -56,4 +62,14 @@ public class HomeScreenViewModel extends ViewModel {
         this.currentSelection.setValue(currentSelection);
     }
 
+    public void getBacklogForDateAndCourse(String courseName, String section, String date) {
+        List<Backlog> backlogList = MainActivity.roomRepository.getBacklogByDate(courseName, section, date);
+        backlogMap.put(courseName + " " + section, Boolean.TRUE);
+    }
+
+    public void getBacklogs(String date) {
+        for (TimeTable course : classList) {
+            getBacklogForDateAndCourse(course.getCourseName(), course.getSection(), date);
+        }
+    }
 }
