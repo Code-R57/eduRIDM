@@ -83,15 +83,15 @@
                 app:layout_constraintStart_toEndOf="@+id/eval_dept_code"
                 app:layout_constraintTop_toTopOf="@+id/eval_dept_code" />
 
-            <ImageView
-                android:id="@+id/more_options"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_more_vert_24" />
+<!--            <ImageView-->
+<!--                android:id="@+id/more_options"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:srcCompat="@drawable/ic_baseline_more_vert_24" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

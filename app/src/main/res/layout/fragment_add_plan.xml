@@ -42,6 +42,7 @@
             android:background="@drawable/edit_text_border"
             android:ems="10"
             android:hint="@string/name_edittext_hint"
+            android:singleLine="true"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:textSize="14sp"

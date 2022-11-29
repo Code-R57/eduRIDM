@@ -81,8 +81,8 @@ public class PlanCardAdapter extends RecyclerView.Adapter<PlanCardAdapter.PlanVi
             planName = (TextView) itemView.findViewById(R.id.plan_name);
             priorityInfo = (TextView) itemView.findViewById(R.id.priority_info_value);
             descInfo = (TextView) itemView.findViewById(R.id.desc_info);
-            attendedButton = (CheckBox) itemView.findViewById(R.id.attended_button);
-            moreOptions = (ImageView) itemView.findViewById(R.id.more_options);
+            attendedButton = (ImageButton) itemView.findViewById(R.id.attended_button);
+//            moreOptions = (ImageView) itemView.findViewById(R.id.more_options);
         }
     }
 }

@@ -72,12 +72,12 @@ public class ProfileScreenFragment extends Fragment {
             }
         });
 
-        viewModel.getNavigateToEditTT().observe(getViewLifecycleOwner(), navigateToEditTT -> {
-            if(navigateToEditTT == Boolean.TRUE) {
-                Navigation.findNavController(this.requireView()).navigate(R.id.action_profileScreenFragment_to_editTimetableFragment);
-                viewModel.doneNavigatingToEditTT();
-            }
-        });
+//        viewModel.getNavigateToEditTT().observe(getViewLifecycleOwner(), navigateToEditTT -> {
+//            if(navigateToEditTT == Boolean.TRUE) {
+//                Navigation.findNavController(this.requireView()).navigate(R.id.action_profileScreenFragment_to_editTimetableFragment);
+//                viewModel.doneNavigatingToEditTT();
+//            }
+//        });
 
         viewModel.getNavigateToAddExtraClass().observe(getViewLifecycleOwner(), navigateToAddExtraClass -> {
             if(navigateToAddExtraClass == Boolean.TRUE) {

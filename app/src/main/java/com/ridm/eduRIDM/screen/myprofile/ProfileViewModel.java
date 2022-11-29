@@ -15,7 +15,7 @@ import java.util.List;
 public class ProfileViewModel extends ViewModel {
 
     private MutableLiveData<Boolean> navigateToUpdateCGPA = new MutableLiveData<>(Boolean.FALSE);
-    private MutableLiveData<Boolean> navigateToEditTT = new MutableLiveData<>(Boolean.FALSE);
+//    private MutableLiveData<Boolean> navigateToEditTT = new MutableLiveData<>(Boolean.FALSE);
     private MutableLiveData<Boolean> navigateToAddExtraClass = new MutableLiveData<>(Boolean.FALSE);
 
     Date today = new Date();
@@ -48,17 +48,17 @@ public class ProfileViewModel extends ViewModel {
         navigateToUpdateCGPA.setValue(Boolean.FALSE);
     }
 
-    public LiveData<Boolean> getNavigateToEditTT() {
-        return navigateToEditTT;
-    }
+//    public LiveData<Boolean> getNavigateToEditTT() {
+//        return navigateToEditTT;
+//    }
 
-    public void onNavigateToEditTTClicked() {
-        navigateToEditTT.setValue(Boolean.TRUE);
-    }
+//    public void onNavigateToEditTTClicked() {
+//        navigateToEditTT.setValue(Boolean.TRUE);
+//    }
 
-    public void doneNavigatingToEditTT() {
-        navigateToEditTT.setValue(Boolean.FALSE);
-    }
+//    public void doneNavigatingToEditTT() {
+//        navigateToEditTT.setValue(Boolean.FALSE);
+//    }
 
     public LiveData<Boolean> getNavigateToAddExtraClass() {
         return navigateToAddExtraClass;

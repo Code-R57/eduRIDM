@@ -149,30 +149,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/semester_detail" />
 
-        <ImageButton
-            android:id="@+id/edit_timetable"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="8dp"
-            android:backgroundTint="@color/white"
-            android:onClick="@{() -> viewModel.onNavigateToEditTTClicked()}"
-            app:layout_constraintBottom_toBottomOf="@+id/your_timetable_header"
-            app:layout_constraintEnd_toStartOf="@+id/add_extra_class"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/your_timetable_header"
-            app:layout_constraintTop_toTopOf="@+id/your_timetable_header"
-            app:srcCompat="@drawable/ic_baseline_edit_24" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/edit_timetable"-->
+<!--            android:layout_width="24dp"-->
+<!--            android:layout_height="24dp"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:backgroundTint="@color/white"-->
+<!--            android:onClick="@{() -> viewModel.onNavigateToEditTTClicked()}"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/your_timetable_header"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/add_extra_class"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/your_timetable_header"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/your_timetable_header"-->
+<!--            app:srcCompat="@drawable/ic_baseline_edit_24" />-->
 
         <ImageButton
             android:id="@+id/add_extra_class"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
             android:backgroundTint="@color/white"
             android:onClick="@{() -> viewModel.onNavigateToAddExtraClass()}"
-            app:layout_constraintBottom_toBottomOf="@+id/edit_timetable"
+            app:layout_constraintBottom_toTopOf="@+id/date_selector"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/edit_timetable"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/your_timetable_header"
             app:srcCompat="@drawable/ic_baseline_add_box_24" />
 
         <EditText

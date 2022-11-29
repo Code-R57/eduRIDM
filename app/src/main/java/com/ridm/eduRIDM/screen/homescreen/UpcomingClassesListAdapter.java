@@ -118,8 +118,8 @@ public class UpcomingClassesListAdapter extends RecyclerView.Adapter<UpcomingCla
             todayLecture = view.findViewById(R.id.tt_lecture_text);
             todayClassTime = view.findViewById(R.id.tt_class_time_text);
             missed = view.findViewById(R.id.tt_missed_button);
-            attended = view.findViewById(R.id.tt_attended_button);
-            holiday = view.findViewById(R.id.tt_holiday_button);
+//            attended = view.findViewById(R.id.tt_attended_button);
+//            holiday = view.findViewById(R.id.tt_holiday_button);
         }
     }
 }
