@@ -1,6 +1,7 @@
 <h1 align='center'> <img src='https://github.com/Code-R57/eduRIDM/blob/main/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png' width='75' align='center'> eduRIDM</h1>
 
-**eduRIDM** is a Academic Planner and Manager App made for Android devices. The app is developed as a part of submission for the Software Development for Portable Devices course of **[BITS Pilani, Hyderabad Campus](https://www.bits-pilani.ac.in/hyderabad/)**.
+**eduRIDM** is a Academic Planner and Manager App made for Android devices. The app is developed as a part of submission for the Software Development for Portable Devices course of **[BITS Pilani, Hyderabad Campus](https://www.bits-pilani.ac.in/hyderabad/)**.  
+UI of the app : **[eduRIDM Design](https://www.figma.com/file/HhAYUIlv6xWV3Xd4RH3ax6/eduRIDM-Design?node-id=0%3A1&t=3rWmVv3DAb8bGv4x-0)**.
 
 ## Features
 - Shows upcoming evals and timetable to mark attendance
